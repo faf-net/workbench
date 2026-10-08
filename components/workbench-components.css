@@ -1,0 +1,79 @@
+/* Workbench 1.0 — Bausteine. Setzt css/workbench.css voraus. */
+html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 15px/24px var(--font-sans); }
+/* Jede Vorschau malt Fläche und Schrift selbst aus demselben Theme, unabhängig vom Rahmen. */
+.wb-stapel { display: grid; gap: var(--abstand-3); padding: var(--abstand-4); background: var(--grund); color: var(--schrift); border-radius: var(--ecke-karte); }
+.wb-stapel p { color: var(--schrift); }
+.wb-reihe { display: flex; flex-wrap: wrap; gap: var(--abstand-2); align-items: center; }
+
+/* Hinweisband */
+.wb-band { display: flex; align-items: center; gap: var(--abstand-3); padding: var(--abstand-2) var(--abstand-3); border-left: 3px solid var(--bernstein); background: var(--band-bernstein); color: var(--fett); font-weight: 700; }
+.wb-band--salbei { border-left-color: var(--salbei); background: var(--band-salbei); }
+.wb-band--gold { border-left-color: var(--gold); background: var(--band-gold); }
+.wb-band--rose { border-left-color: var(--rose); background: var(--band-rose); }
+.wb-band--stahl { border-left-color: var(--stahl); background: var(--band-stahl); }
+
+/* Textmarker */
+.wb-mark { padding: 1px 6px; border-radius: var(--ecke-marker); background: var(--marker-bernstein); color: var(--fett); font-weight: 700; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.wb-mark--salbei { background: var(--marker-salbei); }
+.wb-mark--gold { background: var(--marker-gold); }
+.wb-mark--rose { background: var(--marker-rose); }
+.wb-mark--stahl { background: var(--marker-stahl); }
+.wb-mark--dezent { color: var(--schrift); font-weight: 400; background: var(--dezent-bernstein); }
+.wb-mark--dezent.wb-mark--salbei { background: var(--dezent-salbei); }
+.wb-mark--dezent.wb-mark--gold { background: var(--dezent-gold); }
+.wb-mark--dezent.wb-mark--rose { background: var(--dezent-rose); }
+.wb-mark--dezent.wb-mark--stahl { background: var(--dezent-stahl); }
+
+/* Statuspille mit Wort */
+.wb-status { display: inline-flex; align-items: center; gap: var(--abstand-1); padding: 5px var(--abstand-2); border-radius: var(--ecke-marker); font: 800 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--status-stahl); background: var(--marker-stahl); }
+.wb-status--gut { color: var(--status-salbei); background: var(--marker-salbei); }
+.wb-status--achtung { color: var(--status-gold); background: var(--marker-gold); }
+.wb-status--kritisch { color: var(--status-rose); background: var(--marker-rose); }
+.wb-status--laeuft { color: var(--status-bernstein); background: var(--marker-bernstein); }
+
+/* Host-Karte */
+.wb-host { background: var(--panel); border: 1px solid var(--linie); border-radius: var(--ecke-karte); overflow: hidden; display: grid; max-width: 360px; }
+.wb-host__kopf { display: flex; justify-content: space-between; align-items: baseline; gap: var(--abstand-2); padding: var(--abstand-2) var(--abstand-3); background: var(--panel-2); border-bottom: 1px solid var(--linie); }
+.wb-host__name { color: var(--fett); font-weight: 800; font-size: 19px; line-height: 26px; }
+.wb-host__rolle { font: 11px/14px var(--font-mono); color: var(--gedaempft); }
+.wb-host__rumpf { padding: var(--abstand-3); display: grid; gap: var(--abstand-1); font: 13px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--schrift); }
+
+/* Segmentierter Balken */
+.wb-balken { display: grid; gap: var(--abstand-1); max-width: 360px; }
+.wb-balken__kopf { display: flex; justify-content: space-between; font: 13px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--schrift); }
+.wb-balken__kopf b { color: var(--fett); }
+.wb-balken__segmente { display: grid; grid-template-columns: repeat(20, 1fr); gap: 2px; }
+.wb-balken__segmente i { height: 12px; background: var(--rille); border-radius: 1px; }
+.wb-balken__segmente i.an { background: var(--salbei); }
+.wb-balken--achtung .wb-balken__segmente i.an { background: var(--gold); }
+.wb-balken--kritisch .wb-balken__segmente i.an { background: var(--rose); }
+
+/* Messtabelle */
+.wb-mess { border-collapse: collapse; font: 13px/20px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--schrift); }
+.wb-mess th { text-align: left; font: 600 11px/14px var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gedaempft); padding: 0 var(--abstand-4) var(--abstand-1) 0; border-bottom: 1px solid var(--linie); }
+.wb-mess td { color: var(--schrift); padding: var(--abstand-1) var(--abstand-4) var(--abstand-1) 0; border-bottom: 1px solid var(--linie); }
+.wb-mess .zahl { text-align: right; }
+.wb-herkunft { font: 600 10px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; padding: 3px 5px; border-radius: var(--ecke-marker); }
+.wb-herkunft--gemessen { background: var(--dezent-salbei); color: var(--salbei); }
+.wb-herkunft--geschaetzt { background: var(--dezent-gold); color: var(--gold); }
+
+/* Diagramm */
+.wb-diagramm { max-width: 420px; }
+.wb-diagramm svg { width: 100%; height: auto; display: block; }
+.wb-diagramm .achse { stroke: var(--schwach); stroke-width: 1; }
+.wb-diagramm .reihe { fill: var(--diagramm-reihe); }
+.wb-diagramm .spitze { fill: var(--diagramm-hervorhebung); }
+.wb-diagramm .l1 { stroke: var(--diagramm-1); } .wb-diagramm .t1 { fill: var(--diagramm-1); }
+.wb-diagramm .l2 { stroke: var(--diagramm-2); } .wb-diagramm .t2 { fill: var(--diagramm-2); }
+.wb-diagramm .l3 { stroke: var(--diagramm-3); } .wb-diagramm .t3 { fill: var(--diagramm-3); }
+.wb-diagramm .l4 { stroke: var(--diagramm-4); } .wb-diagramm .t4 { fill: var(--diagramm-4); }
+.wb-diagramm .linie { fill: none; stroke-width: 2; stroke-linejoin: round; }
+.wb-diagramm text { font: 11px var(--font-mono); }
+.wb-diagramm .wert { fill: var(--fett); }
+
+/* Schwebendes Element */
+.wb-schwebend { background: var(--panel); border: 1px solid var(--linie); border-radius: var(--ecke-karte); box-shadow: var(--schatten-schwebend); padding: var(--abstand-2) 0; min-width: 200px; display: grid; }
+.wb-schwebend a { padding: var(--abstand-1) var(--abstand-3); color: var(--schrift); text-decoration: none; font: 13px/20px var(--font-mono); }
+.wb-schwebend a:hover, .wb-schwebend a:focus-visible { background: var(--marker-bernstein); color: var(--fett); outline: none; }
+
+:focus-visible { outline: 2px solid var(--fokus); outline-offset: 2px; }

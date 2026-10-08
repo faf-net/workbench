@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workbench — Bausteine</title>
+<link rel="stylesheet" href="../css/workbench.css">
+<link rel="stylesheet" href="../components/workbench-components.css">
+<style>
+  body { max-width: 960px; margin: 0 auto; padding: 32px 16px; }
+  h1, h2 { color: var(--fett); font-family: var(--font-sans); }
+  .beispiel { display: grid; gap: 8px; margin-block: 24px; }
+  .leiste { display: flex; gap: 8px; }
+  .leiste button { font: 600 12px var(--font-mono); background: var(--panel); color: var(--schrift); border: 1px solid var(--linie); border-radius: var(--ecke-marker); padding: 6px 10px; cursor: pointer; }
+</style>
+</head>
+<body>
+<h1>Workbench — Bausteine</h1>
+<div class="leiste"><button onclick="document.documentElement.dataset.theme='dark'">Dunkel</button><button onclick="document.documentElement.dataset.theme='light'">Hell</button><button onclick="delete document.documentElement.dataset.theme">System</button></div>
+<section class="beispiel"><h2>Balken</h2>
+<div class="wb-stapel">
+  <div class="wb-balken"><div class="wb-balken__kopf"><span>volume1</span><b>4 %</b></div><div class="wb-balken__segmente" role="img" aria-label="4 Prozent belegt"><i class="an"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="wb-balken"><div class="wb-balken__kopf"><span>volume2</span><b>29 %</b></div><div class="wb-balken__segmente" role="img" aria-label="29 Prozent belegt"><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+  <div class="wb-balken wb-balken--achtung"><div class="wb-balken__kopf"><span>Kanal 6 · Auslastung</span><b>87 %</b></div><div class="wb-balken__segmente" role="img" aria-label="87 Prozent"><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i class="an"></i><i></i><i></i><i></i></div></div>
+</div>
+</section>
+<section class="beispiel"><h2>Diagramm</h2>
+<div class="wb-stapel">
+  <div class="wb-diagramm"><svg viewBox="0 0 320 110" role="img" aria-label="Säulen in Stahl, der Höchstwert 23 Uhr in Bernstein">
+    <line class="achse" x1="0" y1="96" x2="300" y2="96"/>
+    <rect class="reihe" x="6" y="62" width="26" height="34"/><rect class="reihe" x="42" y="50" width="26" height="46"/><rect class="reihe" x="78" y="68" width="26" height="28"/>
+    <rect class="spitze" x="114" y="16" width="26" height="80"/><text class="wert" x="127" y="11" text-anchor="middle">23 Uhr</text>
+    <rect class="reihe" x="150" y="44" width="26" height="52"/><rect class="reihe" x="186" y="72" width="26" height="24"/><rect class="reihe" x="222" y="58" width="26" height="38"/><rect class="reihe" x="258" y="64" width="26" height="32"/>
+  </svg></div>
+  <div class="wb-diagramm"><svg viewBox="0 0 320 120" role="img" aria-label="Vier Linien mit Beschriftung: nas-01, server-02, waechter, cloud-01">
+    <line class="achse" x1="0" y1="110" x2="260" y2="110"/>
+    <polyline class="linie l4" points="4,22 70,18 136,12 202,16 256,10"/>
+    <polyline class="linie l1" points="4,78 70,62 136,68 202,36 256,28"/>
+    <polyline class="linie l2" points="4,48 70,54 136,42 202,50 256,46"/>
+    <polyline class="linie l3" points="4,98 70,92 136,94 202,82 256,74"/>
+    <text class="t4" x="262" y="14">cloud-01</text><text class="t1" x="262" y="32">nas-01</text><text class="t2" x="262" y="50">server-02</text><text class="t3" x="262" y="78">waechter</text>
+  </svg></div>
+</div>
+</section>
+<section class="beispiel"><h2>Hinweisband</h2>
+<div class="wb-stapel">
+  <div class="wb-band">Browser gehärtet, alle Prüfungen bestanden</div>
+  <div class="wb-band wb-band--salbei">Abgleich 100 % in beide Richtungen</div>
+  <div class="wb-band wb-band--gold">Statusdisplay aus, kein Bildschirm angeschlossen</div>
+  <div class="wb-band wb-band--rose">Letzte Sicherung ist drei Tage alt</div>
+</div>
+</section>
+<section class="beispiel"><h2>HostKarte</h2>
+<div class="wb-stapel"><div class="wb-reihe" style="align-items:flex-start">
+  <div class="wb-host">
+    <div class="wb-host__kopf"><span class="wb-host__name">nas-01</span><span class="wb-host__rolle">Speicher</span></div>
+    <div class="wb-host__rumpf"><span>Dateiablage · Sicherung</span><span>Fotos · Medien</span><span><span class="wb-status wb-status--gut">läuft</span></span></div>
+  </div>
+  <div class="wb-host">
+    <div class="wb-host__kopf"><span class="wb-host__name">waechter</span><span class="wb-host__rolle">Wächter</span></div>
+    <div class="wb-host__rumpf"><span>Überwachung · Meldungen</span><span><span class="wb-status wb-status--achtung">Display aus</span></span></div>
+  </div>
+</div></div>
+</section>
+<section class="beispiel"><h2>Messtabelle</h2>
+<div class="wb-stapel">
+  <table class="wb-mess">
+    <tr><th>Wert</th><th class="zahl">Zahl</th><th>Herkunft</th></tr>
+    <tr><td>Richtlinien gesetzt</td><td class="zahl">52 / 52</td><td><span class="wb-herkunft wb-herkunft--gemessen">gemessen</span></td></tr>
+    <tr><td>Vault-Dateien</td><td class="zahl">1.740</td><td><span class="wb-herkunft wb-herkunft--gemessen">gemessen</span></td></tr>
+    <tr><td>Beispiel Leistungsaufnahme</td><td class="zahl">~ 85 W</td><td><span class="wb-herkunft wb-herkunft--geschaetzt">geschätzt</span></td></tr>
+  </table>
+</div>
+</section>
+<section class="beispiel"><h2>Schwebend</h2>
+<div class="wb-stapel" style="background:var(--grund)">
+  <div class="wb-host" style="max-width:300px"><div class="wb-host__kopf"><span class="wb-host__name">server-02</span><span class="wb-host__rolle">Infrastruktur</span></div><div class="wb-host__rumpf"><span>Datenbank · Abgleich</span></div></div>
+  <nav class="wb-schwebend" aria-label="Aktionen" style="margin-top:-36px;margin-left:120px;max-width:220px">
+    <a href="#">Neu starten</a><a href="#">Protokoll öffnen</a><a href="#">Sicherung prüfen</a>
+  </nav>
+</div>
+</section>
+<section class="beispiel"><h2>Statuspille</h2>
+<div class="wb-stapel"><div class="wb-reihe">
+  <span class="wb-status wb-status--gut">frei</span>
+  <span class="wb-status wb-status--achtung">eng</span>
+  <span class="wb-status wb-status--kritisch">gesättigt</span>
+  <span class="wb-status wb-status--laeuft">läuft</span>
+  <span class="wb-status">neutral</span>
+</div></div>
+</section>
+<section class="beispiel"><h2>Textmarker</h2>
+<div class="wb-stapel">
+  <p style="margin:0">Ergebnis: <span class="wb-mark">52 von 52 wie Soll</span>, Sicherung <span class="wb-mark wb-mark--rose">überfällig</span>, Sicherung <span class="wb-mark wb-mark--salbei">gesichert</span>.</p>
+  <p style="margin:0">Einordnung: <span class="wb-mark wb-mark--dezent wb-mark--stahl">gemessen 08.10.2026</span>, <span class="wb-mark wb-mark--dezent">läuft</span>, <span class="wb-mark wb-mark--dezent wb-mark--gold">offen</span>.</p>
+</div>
+</section>
+</body>
+</html>

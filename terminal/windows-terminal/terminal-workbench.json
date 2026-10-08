@@ -1,0 +1,56 @@
+{
+  "theme": "Workbench",
+  "defaults": {
+    "colorScheme": "Workbench",
+    "font": {
+      "face": "JetBrainsMono Nerd Font Mono",
+      "size": 11
+    },
+    "intenseTextStyle": "all",
+    "antialiasingMode": "grayscale",
+    "cursorShape": "filledBox",
+    "padding": "12,10,12,10",
+    "historySize": 32767,
+    "useAcrylic": false,
+    "opacity": 100
+  },
+  "scheme": {
+    "name": "Workbench",
+    "background": "#1A1918",
+    "foreground": "#E9E3D8",
+    "cursorColor": "#CC9166",
+    "selectionBackground": "#3A3634",
+    "black": "#2B2827",
+    "red": "#C07F73",
+    "green": "#93A373",
+    "yellow": "#C7A854",
+    "blue": "#7D97AB",
+    "purple": "#B1899B",
+    "cyan": "#7FA79F",
+    "white": "#A49C90",
+    "brightBlack": "#6F6961",
+    "brightRed": "#D69A8D",
+    "brightGreen": "#ADBB8E",
+    "brightYellow": "#DDC274",
+    "brightBlue": "#9AB2C4",
+    "brightPurple": "#C9A3B4",
+    "brightCyan": "#9BC0B8",
+    "brightWhite": "#F5F1EB"
+  },
+  "themeDef": {
+    "name": "Workbench",
+    "tab": {
+      "background": "#232120",
+      "unfocusedBackground": "#1A1918",
+      "showCloseButton": "always"
+    },
+    "tabRow": {
+      "background": "#151413",
+      "unfocusedBackground": "#151413"
+    },
+    "window": {
+      "applicationTheme": "dark",
+      "useMica": false
+    }
+  }
+}

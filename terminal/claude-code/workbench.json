@@ -1,0 +1,63 @@
+{
+  "name": "Workbench",
+  "base": "dark",
+  "overrides": {
+    "text": "#e9e3d8",
+    "inverseText": "#1a1918",
+    "inactive": "#a49c90",
+    "inactiveShimmer": "#c0b8ab",
+    "subtle": "#6f6961",
+
+    "claude": "#cc9166",
+    "claudeShimmer": "#e0a87f",
+    "clawd_body": "#cc9166",
+    "clawd_background": "#1a1918",
+    "briefLabelClaude": "#cc9166",
+    "briefLabelYou": "#7d97ab",
+
+    "success": "#93a373",
+    "error": "#c07f73",
+    "warning": "#c7a854",
+    "warningShimmer": "#dcc37a",
+    "merged": "#7d97ab",
+
+    "permission": "#7d97ab",
+    "permissionShimmer": "#9db3c4",
+    "autoAccept": "#c7a854",
+    "autoAcceptShimmer": "#dcc37a",
+    "planMode": "#93a373",
+    "skill": "#7d97ab",
+    "bashBorder": "#7d97ab",
+    "ide": "#7d97ab",
+    "suggestion": "#7d97ab",
+    "remember": "#7d97ab",
+    "background": "#7d97ab",
+    "professionalBlue": "#7d97ab",
+    "chromeYellow": "#c7a854",
+    "claudeBlue_FOR_SYSTEM_SPINNER": "#7d97ab",
+    "claudeBlueShimmer_FOR_SYSTEM_SPINNER": "#9db3c4",
+
+    "promptBorder": "#6f6961",
+    "promptBorderShimmer": "#a49c90",
+
+    "diffAdded": "#383c2f",
+    "diffAddedDimmed": "#2b2c25",
+    "diffAddedWord": "#93a373",
+    "diffRemoved": "#44322f",
+    "diffRemovedDimmed": "#312725",
+    "diffRemovedWord": "#c07f73",
+
+    "userMessageBackground": "#232120",
+    "userMessageBackgroundHover": "#2b2827",
+    "composerSidebarBackground": "#232120",
+    "bashMessageBackgroundColor": "#282b2d",
+    "memoryBackgroundColor": "#332a23",
+    "selectionBg": "#33383d",
+
+    "rate_limit_fill": "#cc9166",
+    "rate_limit_empty": "#3a3634",
+    "fastMode": "#c7a854",
+    "fastModeShimmer": "#dcc37a",
+    "effortUltra": "#cc9166"
+  }
+}
