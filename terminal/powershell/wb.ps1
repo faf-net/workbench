@@ -1,7 +1,7 @@
 <#
-  wb.ps1 — Workbench-Farben fuer die PowerShell (Rechner B, Windows 11 Pro)
-  Portierung von ~/bin/wb.sh (Rechner B/Fedora, Rechner A/Git Bash), Stand 17.08.2026.
-  Quelle der Farbwerte: Vault-Notiz "Farbpalette Workbench".
+  wb.ps1 — Workbench-Farben fuer die PowerShell (Windows)
+  Gegenstueck zu wb.sh (Bash).
+  Quelle der Farbwerte: tokens/tokens.json.
 
   AUFRUFFORM — bewusst leicht anders als die Bash-Fassung, bitte lesen:
 

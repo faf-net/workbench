@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # wb.sh — Workbench-Farben fuers Terminal
 #
-# Palette und Begruendung: 40 RESOURCEN/Farbpalette Workbench.md
-# Portiert von Rechner B auf Rechner A (Windows/Git Bash) am 2026-08-08.
+# Palette und Begruendung: 40 Resources/Farbpalette Workbench.md
+# Fassung fuer Linux und fuer Git Bash unter Windows.
 # Toene sind 24-Bit-Werte, KEINE Palettenfarben — funktioniert unabhaengig
 # vom Farbschema des Terminals, solange es Truecolor kann.
 #
@@ -14,11 +14,11 @@
 
 set -uo pipefail
 
-# PFLICHT auf Rechner A/Git Bash: LANG und LC_ALL sind hier leer, dadurch zaehlt
+# PFLICHT in Git Bash unter Windows: LANG und LC_ALL sind hier leer, dadurch zaehlt
 # bash ${#t} in BYTES statt Zeichen — ein "—" waere 3 statt 1, und jedes Band
-# mit Sonderzeichen kaeme 2 Spalten zu kurz heraus. Genau Fallstrick 2 aus der
-# Notiz, nur ueber die Locale statt ueber printf '%-*s'. Auf Rechner B faellt das
-# nicht auf, weil dort eine UTF-8-Locale gesetzt ist.
+# mit Sonderzeichen kaeme 2 Spalten zu kurz heraus. Dieselbe Falle wie bei
+# printf '%-*s', nur ueber die Locale. Unter Linux faellt das
+# meist nicht auf, weil dort eine UTF-8-Locale gesetzt ist.
 export LC_ALL=C.UTF-8
 
 e=$'\033'; R="${e}[0m"; B="${e}[1m"

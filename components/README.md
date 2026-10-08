@@ -44,7 +44,7 @@ Ein Band über die volle Breite trägt die eine Kernaussage eines Ergebnisses, v
 - Ton nach Bedeutung: `bernstein` (Standard) für die Kernaussage, `--salbei` in Ordnung, `--gold` Vorbehalt, `--rose` Problem, `--stahl` neutral.
 - Fläche `band-*` (33 %), Kante 3 px im vollen Akzent, Text `fett`.
 - Höchstens ein Band pro Bildschirm, höchstens zwei Hervorhebungsstufen insgesamt.
-- Im Terminal: `wb.sh band <ton> <text>` (Rechner A) bzw. `wb.ps1 band` (Rechner B).
+- Im Terminal: `wb.sh band <ton> <text>` (Bash) bzw. `wb.ps1 band` (PowerShell).
 - Nicht für Fließtext oder Listen, dafür gibt es den Textmarker.
 
 ---
@@ -58,13 +58,13 @@ Eine Karte pro Maschine: Name und Rolle im Kopf, Dienste und Zustand darunter.
 ```html
 <div class="wb-host">
   <div class="wb-host__kopf"><span class="wb-host__name">nas-01</span><span class="wb-host__rolle">Haupt-NAS</span></div>
-  <div class="wb-host__rumpf"><span>Vault-Master</span></div>
+  <div class="wb-host__rumpf"><span>Dateiablage</span></div>
 </div>
 ```
 
 - Fläche `panel`, Kopf `panel-2`, Rahmen `linie`, Ecke `ecke-karte`. Kein Schatten, die Karte liegt nicht über anderem Inhalt.
 - Name in Atkinson 19 px fett, Rolle und Inhalt in JetBrains Mono.
-- IP-Adressen und Hostnamen nur in privaten Ausgaben, nie in externen (Vault-Regel Vertraulichkeit).
+- IP-Adressen und Hostnamen nur in privaten Ausgaben, nie in externen.
 
 ---
 
@@ -104,7 +104,7 @@ Eine Pille mit Wort zeigt einen Zustand, und das Wort trägt die Bedeutung, nich
 ```
 
 - `--gut` Salbei · `--achtung` Gold · `--kritisch` Rosé · `--laeuft` Bernstein · ohne Zusatz Stahl.
-- Fläche `marker-*` (25 %), das Wort in `status-*` und extrafett. Entscheidung 09.10.2026: Die Pille mit heller Schrift war zu blass. `status-*` sind die helleren (dunkel) bzw. dunkleren (hell) Töne derselben Familie, damit das Wort 4,5 : 1 erreicht.
+- Fläche `marker-*` (25 %), das Wort in `status-*` und extrafett. Die Pille mit heller Schrift war zu blass. `status-*` sind die helleren (dunkel) bzw. dunkleren (hell) Töne derselben Familie, damit das Wort 4,5 : 1 erreicht.
 - **Immer mit Wort.** Salbei und Rosé sind bei Deuteranopie nur ΔE 3,0 voneinander entfernt, Bernstein und Salbei bei Protanopie 2,8. Ohne Wort ist die Pille für farbschwache Menschen wertlos.
 - In Versalien, JetBrains Mono 11 px, gesperrt. Ecke `ecke-marker`.
 - Im Einsatz auf dem Statusdisplay (WLAN-Kanäle: frei, eng, gesättigt).
@@ -124,6 +124,6 @@ Eine getönte Fläche hinter Text wirkt wie ein echter Textmarker und ist das wi
 
 - **Kräftig (25 %)** `marker-*`, Text `fett`: Kernergebnis, Warnung, FEHLER, die Zahl zum Merken.
 - **Dezent (14 %)** `dezent-*` mit `--dezent`, Text `schrift`: Einordnung im Fließtext, INFO/OK, Diff-Zeilen.
-- Die Hexwerte sind fest, nicht per `color-mix` gerechnet (Entscheidung 08.10.2026), und kaufmännisch gerundet.
+- Die Hexwerte sind fest, nicht per `color-mix` gerechnet, und kaufmännisch gerundet.
 - Höchstens zwei Stufen pro Bildschirm. Eine getönte Fläche schlägt ein eingefärbtes Zeichen.
 - Im Terminal: `wb.sh mark [--dezent] <ton> <text>`.

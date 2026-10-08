@@ -227,11 +227,11 @@ The theme "Workbench" is derived from [Soft Paper](https://github.com/nickmilo/s
 
 | Folder | Colour |
 |---|---|
-| `00 KONTEXT` | amber |
-| `10 INBOX` | sage |
-| `20 PROJEKTE` | steel |
-| `30 WORKBENCH` | gold |
-| `40 RESOURCEN` | petrol |
+| `00 Home` | amber |
+| `10 Inbox` | sage |
+| `20 Projects` | steel |
+| `30 Areas` | gold |
+| `40 Resources` | petrol |
 
 The colours are tied to the folder **names** (`data-path`, via `:has()`), not to their position. To use your own names, edit the five paths in `obsidian_theme_bauen.py` and rebuild.
 

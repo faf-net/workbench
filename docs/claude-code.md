@@ -1,6 +1,6 @@
 # Claude Code
 
-So ist Claude Code auf Rechner A und Rechner B eingerichtet, und so antwortet jede Claude-Instanz im Terminal.
+So ist Claude Code eingerichtet, und so antwortet Claude im Terminal.
 
 ## Einstellungen
 
@@ -39,7 +39,7 @@ Erlaubte Werte in einem Theme: `#rrggbb`, `rgb(r,g,b)`, `ansi256(n)` oder `ansi:
 ## Wie Claude antwortet
 
 - **Jede Antwort mit Status, Messwerten, Inventar, Vergleich oder Bewertung bekommt mindestens einen Farbblock**, und zwar **vor** der Prosa. Nur Rückfragen und Einzeiler ohne.
-- Der Farbblock kommt aus `wb.sh` (Rechner A, Bash-Werkzeug) bzw. `wb.ps1` (Rechner B, PowerShell-Werkzeug). Zuerst `hostname` messen, nie die Maschine annehmen.
+- Der Farbblock kommt aus `wb.sh` (Bash) bzw. `wb.ps1` (PowerShell).
 - **Kernaussage zuerst**, Nebenbefunde weglassen. Ein Farbblock, der in Prosa untergeht, ist wertlos.
 - In der Chat-Antwort selbst gibt es keine frei wählbare Farbe. Struktur entsteht dort über Codeblöcke mit Box-Zeichen `╭─│└├╰`, ausgerichtete Spalten, Markdown-Tabellen, Statussymbole `● ✗ ▸ ⚠ ✔ ⏸ ◐` und Balken aus `█`. `Code-Spans` erscheinen im Akzentton, **Fettes** heller. Beides bestimmt das Theme.
 - Immer sagen, was **gemessen** und was **geschätzt** ist.

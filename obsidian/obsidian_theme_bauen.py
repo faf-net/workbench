@@ -155,7 +155,7 @@ body {
   --anp-header-font: var(--wb-sans);
 }
 
-/* Callouts: feste Zuordnung aus der Vault-Notiz „Farbpalette Workbench“ */
+/* Callouts: feste Zuordnung nach der Workbench-Palette */
 .callout[data-callout=success], .callout[data-callout=check], .callout[data-callout=done] { --callout-color: var(--ctp-green); }
 .callout[data-callout=important] { --callout-color: var(--ctp-peach); }
 .callout[data-callout=warning], .callout[data-callout=caution], .callout[data-callout=attention] { --callout-color: var(--ctp-yellow); }
@@ -194,18 +194,18 @@ body.theme-light .nav-files-container .collapse-icon svg.svg-icon { color: var(-
 body .nav-files-container .nav-file-title.is-active { background-color: var(--text-highlight-bg); color: var(--wb-fett); }
 
 /* Hauptkategorien: Titelzeile in voller Farbe, Name dunkel bzw. hell (09.10.2026, Variante D) */
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="00 KONTEXT"])  { --wb-kat: var(--wb-kat-1); }
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="10 INBOX"])    { --wb-kat: var(--wb-kat-2); }
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="20 PROJEKTE"]) { --wb-kat: var(--wb-kat-3); }
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="30 WORKBENCH"]) { --wb-kat: var(--wb-kat-4); }
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="40 RESOURCEN"]) { --wb-kat: var(--wb-kat-5); }
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="00 KONTEXT"], > .nav-folder-title[data-path="10 INBOX"], > .nav-folder-title[data-path="20 PROJEKTE"], > .nav-folder-title[data-path="30 WORKBENCH"], > .nav-folder-title[data-path="40 RESOURCEN"]) > .nav-folder-title {
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="00 Home"])  { --wb-kat: var(--wb-kat-1); }
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="10 Inbox"])    { --wb-kat: var(--wb-kat-2); }
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="20 Projects"]) { --wb-kat: var(--wb-kat-3); }
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="30 Areas"]) { --wb-kat: var(--wb-kat-4); }
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="40 Resources"]) { --wb-kat: var(--wb-kat-5); }
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="00 Home"], > .nav-folder-title[data-path="10 Inbox"], > .nav-folder-title[data-path="20 Projects"], > .nav-folder-title[data-path="30 Areas"], > .nav-folder-title[data-path="40 Resources"]) > .nav-folder-title {
   background-color: var(--wb-kat) !important;
   color: var(--wb-on-akzent) !important;
   font-weight: 700;
   border-radius: 5px;
 }
-body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="00 KONTEXT"], > .nav-folder-title[data-path="10 INBOX"], > .nav-folder-title[data-path="20 PROJEKTE"], > .nav-folder-title[data-path="30 WORKBENCH"], > .nav-folder-title[data-path="40 RESOURCEN"]) > .nav-folder-title * {
+body .nav-files-container > div > .nav-folder:has(> .nav-folder-title[data-path="00 Home"], > .nav-folder-title[data-path="10 Inbox"], > .nav-folder-title[data-path="20 Projects"], > .nav-folder-title[data-path="30 Areas"], > .nav-folder-title[data-path="40 Resources"]) > .nav-folder-title * {
   color: var(--wb-on-akzent) !important;
   --icon-color: var(--wb-on-akzent) !important;
 }

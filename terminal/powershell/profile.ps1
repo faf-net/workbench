@@ -1,7 +1,7 @@
 # =====================================================================
-#  PowerShell-Profil — Workbench-Erscheinungsbild, Windows 11 Pro
+#  PowerShell-Profil — Workbench-Erscheinungsbild, Windows
 #  Maschinenneutral: enthaelt keinen Rechnernamen und keinen festen Pfad.
-#  Urfassung Rechner B 17.08.2026, als Paket verteilt seit 08.09.2026.
+#  Workbench 1.0.
 #
 #  Traegt die Workbench-Hausfarben (Vault: "Farbpalette Workbench") in
 #  die Shell: PSReadLine, PSStyle, Dateilisten, Prompt.
@@ -80,7 +80,7 @@ if ($PSStyle) {
     $PSStyle.Progress.Style = "$(Bg $WB.MarkSteel)$(Fg $WB.Fett)"
 
     $fi = $PSStyle.FileInfo
-    # Verzeichnisse in Bernstein — die Wahl, ohne getoente Flaeche: bei einem
+    # Verzeichnisse in Bernstein — ohne getoente Flaeche: bei einem
     # Dutzend Ordnern wuerde die halbe Ausgabe zur Flaeche.
     $fi.Directory  = "$(Fg $WB.Amber)$($PSStyle.Bold)"
     $fi.SymbolicLink = (Fg $WB.Petrol)

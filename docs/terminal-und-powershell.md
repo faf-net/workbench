@@ -1,6 +1,6 @@
 # Terminal und PowerShell
 
-So sieht die Shell auf Rechner A und Rechner B aus (beide Windows 11 Pro). Alles kommt aus einem Paket: `terminal/powershell/`, installiert mit `pwsh -NoProfile -File .\Install-Workbench.ps1` (zuerst `-Pruefen`). Kein Adminrecht, idempotent, vor jedem Überschreiben eine `.bak`-Datei. Das Paket ist nur der Transportweg, die Farbwerte kommen aus diesem System.
+So sieht die Shell unter Windows aus. Die Dateien liegen in `terminal/`, die Einrichtung steht in der README. Die Farbwerte kommen aus diesem System.
 
 ## Vier Ebenen
 
@@ -9,7 +9,7 @@ So sieht die Shell auf Rechner A und Rechner B aus (beide Windows 11 Pro). Alles
 | Schrift | **JetBrainsMono Nerd Font Mono**, vier Schnitte, benutzerweit | `%LOCALAPPDATA%\Microsoft\Windows\Fonts`. Ohne sie stehen im Prompt Kästchen statt Glyphen |
 | Terminal | Farbschema und Fenster-Theme „Workbench“ | `settings.json` des Windows Terminals, eigene Profile bleiben unberührt |
 | Profil | `profile.ps1` als AllHosts-Profil | gilt in Windows Terminal, VS Code und Claude Code. Gibt bewusst nichts aus |
-| Helfer | `wb.ps1` (Rechner B), `wb.sh` (Rechner A, Git Bash) | `~/bin` |
+| Helfer | `wb.ps1` (PowerShell), `wb.sh` (Bash, auch Git Bash) | `~/bin` |
 
 ## Windows Terminal
 
@@ -58,7 +58,7 @@ Grund `#1a1918`, Vordergrund `#e9e3d8`, Cursor `#cc9166`, Auswahl `#3a3634`. Das
 
 | Typ | Ton |
 |---|---|
-| Ordner | `bernstein` fett, ohne Fläche (die Wahl 08.09.2026) |
+| Ordner | `bernstein` fett, ohne Fläche |
 | Programme und Skripte (`.ps1 .psm1 .cmd .bat .sh`) | `salbei` |
 | Archive (`.zip .7z .tar .gz .iso .msi`) | `malve` |
 | Konfiguration (`.json .yml .yaml .toml .ini .xml`) | `gold` |
@@ -71,7 +71,7 @@ Ausgabe ist UTF-8 ohne BOM. Die Variable `$WB` hält die Palette für eigene Skr
 
 ## Farbhelfer
 
-| | Rechner A | Rechner B |
+| | Bash | PowerShell |
 |---|---|---|
 | Datei | `~/bin/wb.sh` | `~/bin/wb.ps1` |
 | Aufruf aus Claude Code | Bash-Werkzeug: `export LC_ALL=C.UTF-8; ~/bin/wb.sh …` | PowerShell-Werkzeug: `& "$HOME\bin\wb.ps1" …` |
@@ -81,9 +81,9 @@ Unterkommandos auf beiden: `band <ton> <text>` (Hinweisband, 33 %), `mark [--dez
 
 ## Fallen, die Zeit gekostet haben
 
-- **Git Bash auf Rechner A:** `LANG` und `LC_ALL` sind leer, `${#text}` zählt dann Bytes. Ohne `export LC_ALL=C.UTF-8` werden Bänder mit Umlauten zu kurz.
+- **Git Bash unter Windows:** `LANG` und `LC_ALL` sind leer, `${#text}` zählt dann Bytes. Ohne `export LC_ALL=C.UTF-8` werden Bänder mit Umlauten zu kurz.
 - **`printf '%-*s'`** füllt nach Bytes, nicht nach Zeichen. Umlaute und Geviertstriche verschieben die Ausrichtung.
 - **Windows PowerShell 5.1** liest Skripte ohne BOM als ANSI. Skripte mit Umlauten als UTF-8 **mit** BOM speichern.
-- **`wb.ps1` aus der Git Bash** (`pwsh -File …`) verliert Umlaute über die ANSI-Codepage. Auf Rechner B immer das PowerShell-Werkzeug nehmen.
+- **`wb.ps1` aus der Git Bash** (`pwsh -File …`) verliert Umlaute über die ANSI-Codepage. Aus der PowerShell aufrufen.
 - **PowerShell 7 muss Standardprofil** im Terminal sein. Unter 5.1 greifen Schema und Schrift, Prompt und Dateifarben nicht.
 - **Die Schrift** erscheint erst nach einem Neustart des Terminals.

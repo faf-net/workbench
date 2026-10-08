@@ -4,7 +4,7 @@ Workbench ist ein persönlicher Hausstil für alles, was am Bildschirm erscheint
 
 ## Wann Workbench gilt und wann nicht
 
-- **Gilt** für alles Private und alles Homelab: Antworten mit Farbe, Artefakte, Notizen, Skripte, eigene Webseiten.
+- **Gilt** für alles Private und die eigene Technik: Antworten mit Farbe, Artefakte, Notizen, Skripte, eigene Webseiten.
 - **Gilt nicht** für Arbeit mit eigenem Corporate Design. Dort niemals Workbench-Töne mischen.
 
 ## Die drei Regeln
@@ -66,4 +66,4 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 
 - Das Monogramm **wb** in Bernstein auf `grund`, Ecke 6 px (`wb-monogramm.svg`), hell in Bernstein auf hellem Grund (`wb-monogramm-hell.svg`).
 - In 16 px die vereinfachte Fassung `wb-favicon.svg`.
-- Das Zeichen ist ein Entwurf vom 08.10.2026. Es ist aus Linien gezeichnet, nicht aus der Schrift gesetzt, damit es als Bild ohne Webfont funktioniert.
+- Das Zeichen ist ein Entwurf. Es ist aus Linien gezeichnet, nicht aus der Schrift gesetzt, damit es als Bild ohne Webfont funktioniert.

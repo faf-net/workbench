@@ -1,49 +1,45 @@
-# Obsidian
+# Obsidian-Theme
 
-die Vault läuft mit dem Theme **„Workbench“**. Es liegt unter `.obsidian/themes/Workbench/` und wird von `obsidian/obsidian_theme_bauen.py` aus **Soft Paper 1.2.1** von Nick Milo erzeugt. Soft Paper beruht auf AnuPpuccin, beide stehen unter GPL-3.0, das Theme damit auch. Layout, Abstände und Style-Settings-Schalter sind die von Soft Paper, Farben und Schriften kommen aus diesem System.
+Das Theme „Workbench“ ist aus [Soft Paper](https://github.com/nickmilo/soft-paper) 1.2.1 von Nick Milo abgeleitet. Layout, Abstände und die Style-Settings-Schalter stammen von Soft Paper. Farben und Schriften kommen aus Workbench.
 
-## Was das Theme setzt
+| Element | Dunkel | Hell |
+|---|---|---|
+| Rahmen (Titelleiste, Reiterleisten, Trennlinien, Vault-Leiste) | Bernstein-Marker 25 % `#47372c`, Symbole Bernstein | `#d9c6b6`, Symbole `#975b34` |
+| aktiver Seitenleisten-Reiter | `#1a1918`, Symbol Bernstein | `#efeae1` |
+| Editor | `#1a1918` | `#efeae1` |
+| Seitenleisten | `#151413` | `#ece6db` |
+| Akzent (Tags, Auswahl, Zitatbalken) | Bernstein | Bernstein |
+| Verweise | Stahl | Stahl |
+| Überschriften | H1/H2 Bernstein · H3/H4 fett · H5/H6 gedämpft | ebenso |
+| `==Markierung==` | Bernstein-Textmarker | Bernstein-Textmarker |
+| übrige Ordner, Dateien im Wurzelordner | `#3a3634` | `#e2dbcf` |
+| Schrift | Atkinson Hyperlegible Next, Code JetBrains Mono | ebenso |
 
-| Element | Dunkel / Hell |
+**Hauptordner.** Bei fünf Ordnern der obersten Ebene ist die Titelzeile in voller Palettenfarbe gefüllt, mit dunkler Schrift (im hellen Theme mit heller). Der aufgeklappte Inhalt bleibt neutral.
+
+| Ordner | Farbe |
 |---|---|
-| Editor | `grund` |
-| Seitenleisten | `rille`, hell `panel-2` |
-| Akzent (Tags, Auswahl, Zitatbalken) | `bernstein` |
-| Verweise | `stahl` |
-| Überschriften | H1/H2 `bernstein` · H3/H4 `fett` · H5/H6 `gedaempft` |
-| `==Markierung==` | `marker-bernstein` |
-| Vault-Leiste unten links, aktiver Seitenleisten-Reiter, Sidebar-Knopf | Fläche `marker-bernstein`, Symbol `bernstein`, Name `fett` |
-| Dateien im Wurzelordner, Ordner ab 50 ARCHIV | Fläche `linie` (hell `rille`), Schrift `schrift` |
-| Geöffnete Datei im Dateibaum | `marker-bernstein`, Schrift `fett` |
-| Schrift | Atkinson Hyperlegible Next, Code JetBrains Mono |
+| `00 Home` | Bernstein |
+| `10 Inbox` | Salbei |
+| `20 Projects` | Stahl |
+| `30 Areas` | Gold |
+| `40 Resources` | Petrol |
 
-## Die fünf Hauptkategorien
+Die Farben hängen am Ordner**namen** (`data-path`, per `:has()`), nicht an der Position. Für eigene Namen die fünf Pfade in `obsidian_theme_bauen.py` ändern und neu bauen.
 
-Jeder Hauptordner trägt ein Band (33 %) in seinem Ton, Name `fett`:
+**Callouts** haben eine feste Bedeutung: `[!success]` Salbei, `[!important]` Bernstein, `[!warning]` Gold, `[!danger]` und `[!failure]` Rosé, `[!note]` und `[!info]` Stahl, `[!tip]` Petrol.
 
-| Ordner | Ton | Token |
-|---|---|---|
-| 00 KONTEXT | Bernstein | `band-bernstein` |
-| 10 INBOX | Salbei | `band-salbei` |
-| 20 PROJEKTE | Stahl | `band-stahl` |
-| 30 WORKBENCH | Gold | `band-gold` |
-| 40 RESOURCEN | Petrol | `band-petrol` |
+**Einrichten:**
 
-Die Zuordnung hängt am Ordnernamen (`data-path`), nicht an der Position. Ein umbenannter Ordner verliert seine Farbe, bis das Skript angepasst ist.
+1. `obsidian/Workbench/` nach `<Vault>/.obsidian/themes/Workbench/` kopieren.
+2. Einstellungen → Darstellung → Themes → „Workbench“.
+3. Unter Darstellung → Schrift das Feld für die Textschrift leer lassen, sonst übersteuert es Atkinson. Die Akzentfarbe auf `#cc9166` setzen.
+4. Die Schriften kommen von Google Fonts. Wer das Theme offline nutzen will, installiert Atkinson Hyperlegible Next und JetBrains Mono lokal.
 
-## Callouts
+**Neu bauen** nach Änderungen am Bau-Skript (es liest Soft Paper und schreibt das Theme):
 
-Feste Zuordnung, damit die Bedeutung in allen Notizen gleich bleibt:
+```
+python obsidian/obsidian_theme_bauen.py "<Pfad>/Soft Paper/theme.css" "<Vault>/.obsidian/themes/Workbench"
+```
 
-| Callout | Ton | Bedeutung |
-|---|---|---|
-| `[!success]` | Salbei | erledigt, bestätigt, gesichert |
-| `[!important]` | Bernstein | das Wichtigste, Kernentscheidung |
-| `[!warning]` | Gold | Achtung, offener Punkt |
-| `[!danger]`, `[!failure]` | Rosé | kritisch, widerlegt, gefährlich |
-| `[!note]`, `[!info]` | Stahl | Einordnung, Hintergrund |
-| `[!tip]` | Petrol | Hinweis |
-
-## Einstellungen, die das Theme übersteuern
-
-In `.obsidian/appearance.json`: Eine feste Textschrift (`textFontFamily`) schlägt Atkinson, und `accentColor` färbt einzelne Stellen im Obsidian-Kern. Für das volle Bild die Textschrift leeren und den Akzent auf `#cc9166` setzen. Die Datei geht über Syncthing auf alle Geräte.
+Danach in Obsidian `Strg+R`. `theme.css` nie von Hand ändern, der nächste Bau überschreibt sie.

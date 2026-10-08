@@ -225,11 +225,11 @@ Das Theme „Workbench“ ist aus [Soft Paper](https://github.com/nickmilo/soft-
 
 | Ordner | Farbe |
 |---|---|
-| `00 KONTEXT` | Bernstein |
-| `10 INBOX` | Salbei |
-| `20 PROJEKTE` | Stahl |
-| `30 WORKBENCH` | Gold |
-| `40 RESOURCEN` | Petrol |
+| `00 Home` | Bernstein |
+| `10 Inbox` | Salbei |
+| `20 Projects` | Stahl |
+| `30 Areas` | Gold |
+| `40 Resources` | Petrol |
 
 Die Farben hängen am Ordner**namen** (`data-path`, per `:has()`), nicht an der Position. Für eigene Namen die fünf Pfade in `obsidian_theme_bauen.py` ändern und neu bauen.
 
