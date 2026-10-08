@@ -82,21 +82,177 @@ terminal/                             Windows Terminal, PowerShell profile, wb.p
 
 Dark is the default. Light switches on through `prefers-color-scheme`, or explicitly with `data-theme="light"` on the `<html>` element.
 
-### Obsidian
+### Word, Excel, PowerPoint
 
-Copy the folder `obsidian/Workbench/` to `<vault>/.obsidian/themes/`, then pick "Workbench" under Settings → Appearance → Themes. The five main folders are coloured by name (`00 KONTEXT` to `40 RESOURCEN`). For other names, edit `obsidian_theme_bauen.py` and rebuild:
+Theme colours, paragraph styles and slide layout are in [`docs/office.md`](docs/office.md). The values also apply to OnlyOffice and LibreOffice.
+
+## PowerShell design
+
+The PowerShell look has four layers. Each one works on its own, together they give the full picture.
+
+| Layer | What | File |
+|---|---|---|
+| Font | **JetBrainsMono Nerd Font Mono**, installed per user. Without it the prompt shows boxes instead of folder, git and admin glyphs | not included, [nerdfonts.com](https://www.nerdfonts.com/) |
+| Terminal | colour scheme and window theme "Workbench" for Windows Terminal | `terminal/windows-terminal/terminal-workbench.json` |
+| Profile | syntax colours, output colours, file colours, prompt | `terminal/powershell/profile.ps1` |
+| Helper | `wb` for text markers and banners in your own scripts | `terminal/powershell/wb.ps1`, `terminal/bash/wb.sh` |
+
+### Windows Terminal
+
+- Font JetBrainsMono Nerd Font Mono **11 pt**, grayscale antialiasing, cursor as a filled block in amber.
+- Padding **12, 10, 12, 10**, no acrylic, opacity 100.
+- `intenseTextStyle: all`: bold text becomes bold **and** brighter (`#f5f1eb`), otherwise it cannot be told apart from normal text.
+- Window theme: active tab `panel`, tab row `rille`, dark application theme, no Mica.
+
+The 16 ANSI colours map onto the palette:
+
+| ANSI | normal | bright |
+|---|---|---|
+| black | `#2b2827` | `#6f6961` |
+| red | `#c07f73` rosé | `#d69a8d` |
+| green | `#93a373` sage | `#adbb8e` |
+| yellow | `#c7a854` gold | `#ddc274` |
+| blue | `#7d97ab` steel | `#9ab2c4` |
+| magenta | `#b1899b` mauve | `#c9a3b4` |
+| cyan | `#7fa79f` petrol | `#9bc0b8` |
+| white | `#a49c90` | `#f5f1eb` |
+
+Background `#1a1918`, foreground `#e9e3d8`, cursor `#cc9166`, selection `#3a3634`.
+
+**Install:** open the Windows Terminal settings as JSON and merge the three parts of `terminal-workbench.json`. Add `scheme` to `schemes`, add `themeDef` to `themes`, and copy `defaults` into `profiles.defaults`. Then set `"theme": "Workbench"`.
+
+### Profile
+
+| Element | Colour |
+|---|---|
+| command | amber |
+| parameter | steel |
+| variable | sage |
+| string | gold |
+| number | petrol |
+| type, keyword | mauve |
+| comment, prediction | `schwach` |
+| error | rosé |
+| table header | amber, bold |
+| errors / warnings | bold text on rosé / gold marker |
+| folders | amber, bold |
+| scripts and executables | sage |
+| archives | mauve |
+| configuration (json, yaml, toml …) | gold |
+| text (md, txt, log) | muted |
+| images, PDF, links | petrol |
+
+The **prompt** has two lines. The first shows the path in steel (home as `~`), the git branch in sage (clean) or gold (changes), and `admin` in rosé when elevated. The second line is `❯` in amber, or in rosé after a failed command. The profile prints nothing on its own, so output that other tools read stays clean.
+
+**Install:** PowerShell 7 must be the default profile in Windows Terminal, Windows PowerShell 5.1 does not apply the profile.
+
+```powershell
+Copy-Item terminal\powershell\profile.ps1 $PROFILE.CurrentUserAllHosts
+New-Item -ItemType Directory -Force ~\bin | Out-Null
+Copy-Item terminal\powershell\wb.ps1 ~\bin\
+```
+
+### Colour helper `wb`
+
+```powershell
+wb band amber "Backup finished, 52 of 52 checks passed"   # banner across the full width
+wb mark sage "done"                                        # text marker (25 %)
+wb mark -Dezent steel "note"                               # subtle marker (14 %)
+wb swatch                                                  # show the palette
+```
+
+Tones: `amber sage gold rose steel`. The Bash version `wb.sh` has the same subcommands. In Git Bash on Windows it needs `export LC_ALL=C.UTF-8`, otherwise umlauts and dashes break the alignment of banners.
+
+### Pitfalls
+
+- Windows PowerShell 5.1 reads scripts without a BOM as ANSI. Save scripts with umlauts as UTF-8 **with** BOM.
+- Calling `wb.ps1` from Git Bash (`pwsh -File …`) loses umlauts through the ANSI code page. Call it from PowerShell.
+- The Nerd Font only appears after restarting the terminal.
+
+More detail (German): [`docs/terminal-und-powershell.md`](docs/terminal-und-powershell.md).
+
+## Claude Code design
+
+Claude Code reads custom themes from `~/.claude/themes/<name>.json` in the format `{ "name", "base", "overrides" }`. The Workbench theme uses `base: "dark"` and sets 50 of the 72 colour keys. Everything else comes from the dark base theme. Claude Code watches the folder and reloads changes immediately.
+
+**Install:**
+
+```
+copy terminal/claude-code/workbench.json  →  ~/.claude/themes/workbench.json
+```
+
+Then add this to `~/.claude/settings.json`:
+
+```json
+"theme": "custom:workbench",
+"verbose": true
+```
+
+`verbose: true` keeps tool output expanded. Without it, Claude Code folds every coloured block from `wb` into a one-line summary and you never see it.
+
+| Role in Claude Code | Keys | Colour |
+|---|---|---|
+| text, muted, faint | `text` · `inactive` · `subtle` | `schrift` · `gedaempft` · `schwach` |
+| Claude itself, mascot, rate bar | `claude` · `clawd_body` · `rate_limit_fill` | amber |
+| success, plan mode, added words | `success` · `planMode` · `diffAddedWord` | sage |
+| error, removed words | `error` · `diffRemovedWord` | rosé |
+| warning, auto-accept, fast mode | `warning` · `autoAccept` · `fastMode` | gold |
+| permissions, skills, bash border, IDE, suggestions | `permission` · `skill` · `bashBorder` · `ide` · `suggestion` | steel |
+| diff lines | `diffAdded` · `diffRemoved` (+ `Dimmed`) | sage / rosé text markers 25 % and 14 % |
+| message background, hover | `userMessageBackground` · `…Hover` | `panel` · `panel-2` |
+| shimmer animations | `claudeShimmer` · `warningShimmer` · `permissionShimmer` | lighter amber, gold, steel |
+
+Allowed values in a theme are `#rrggbb`, `rgb(r,g,b)`, `ansi256(n)` and `ansi:<name>`. Possible bases are `dark`, `light`, `dark-daltonized`, `light-daltonized`, `dark-ansi` and `light-ansi`.
+
+More detail (German): [`docs/claude-code.md`](docs/claude-code.md).
+
+## Obsidian theme
+
+The theme "Workbench" is derived from [Soft Paper](https://github.com/nickmilo/soft-paper) 1.2.1 by Nick Milo. Layout, spacing and the Style Settings toggles come from Soft Paper. Colours and fonts come from Workbench.
+
+| Element | Dark | Light |
+|---|---|---|
+| frame (title bar, tab bars, dividers, vault bar) | amber marker 25 % `#47372c`, icons amber | `#d9c6b6`, icons `#975b34` |
+| active sidebar tab | `#1a1918`, icon amber | `#efeae1` |
+| editor | `#1a1918` | `#efeae1` |
+| sidebars | `#151413` | `#ece6db` |
+| accent (tags, selection, quote bar) | amber | amber |
+| links | steel | steel |
+| headings | H1/H2 amber · H3/H4 bold · H5/H6 muted | same |
+| `==highlight==` | amber text marker | amber text marker |
+| other folders, files in the vault root | `#3a3634` | `#e2dbcf` |
+| font | Atkinson Hyperlegible Next, code JetBrains Mono | same |
+
+**Main folders.** The title row of five top-level folders is filled with a full palette colour, with dark text (light text in the light theme). Their open contents stay neutral.
+
+| Folder | Colour |
+|---|---|
+| `00 KONTEXT` | amber |
+| `10 INBOX` | sage |
+| `20 PROJEKTE` | steel |
+| `30 WORKBENCH` | gold |
+| `40 RESOURCEN` | petrol |
+
+The colours are tied to the folder **names** (`data-path`, via `:has()`), not to their position. To use your own names, edit the five paths in `obsidian_theme_bauen.py` and rebuild.
+
+**Callouts** keep a fixed meaning: `[!success]` sage, `[!important]` amber, `[!warning]` gold, `[!danger]` and `[!failure]` rosé, `[!note]` and `[!info]` steel, `[!tip]` petrol.
+
+**Install:**
+
+1. Copy `obsidian/Workbench/` to `<vault>/.obsidian/themes/Workbench/`.
+2. Settings → Appearance → Themes → "Workbench".
+3. Leave the text font empty under Settings → Appearance → Font, otherwise it overrides Atkinson. Set the accent colour to `#cc9166`.
+4. The fonts load from Google Fonts. To use the theme offline, install Atkinson Hyperlegible Next and JetBrains Mono locally.
+
+**Rebuild** after changing the build script (it reads Soft Paper and writes the theme):
 
 ```
 python obsidian/obsidian_theme_bauen.py "<path>/Soft Paper/theme.css" "<vault>/.obsidian/themes/Workbench"
 ```
 
-### Windows Terminal, PowerShell, Claude Code
+Then press `Ctrl+R` in Obsidian. Do not edit `theme.css` by hand, the next build overwrites it.
 
-Templates live in [`terminal/`](terminal/). [`docs/terminal-und-powershell.md`](docs/terminal-und-powershell.md) describes the colour scheme, prompt, file colours and colour helpers. [`docs/claude-code.md`](docs/claude-code.md) covers the Claude Code theme.
-
-### Word, Excel, PowerPoint
-
-Theme colours, paragraph styles and slide layout are in [`docs/office.md`](docs/office.md). The values also apply to OnlyOffice and LibreOffice.
+More detail (German): [`docs/obsidian.md`](docs/obsidian.md).
 
 ## Licence
 
