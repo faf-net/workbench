@@ -257,7 +257,7 @@ Eine getönte Fläche hinter Text wirkt wie ein echter Textmarker und ist das wi
 ```
 
 - **Kräftig (25 %)** `marker-*`, Text `fett`: Kernergebnis, Warnung, FEHLER, die Zahl zum Merken.
-- **Dezent (14 %)** `dezent-*` mit `--dezent`, Text `schrift`: Einordnung im Fließtext, INFO/OK, Diff-Zeilen.
+- **Dezent (20 %)** `dezent-*` mit `--dezent`, Text `schrift`: Einordnung im Fließtext, INFO/OK, Diff-Zeilen.
 - Die Hexwerte sind fest, nicht per `color-mix` gerechnet, und kaufmännisch gerundet.
 - Höchstens zwei Stufen pro Bildschirm. Eine getönte Fläche schlägt ein eingefärbtes Zeichen.
 - Im Terminal: `wb.sh mark [--dezent] <ton> <text>`.

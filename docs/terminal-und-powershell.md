@@ -77,7 +77,7 @@ Ausgabe ist UTF-8 ohne BOM. Die Variable `$WB` hält die Palette für eigene Skr
 | Aufruf aus Claude Code | Bash-Werkzeug: `export LC_ALL=C.UTF-8; ~/bin/wb.sh …` | PowerShell-Werkzeug: `& "$HOME\bin\wb.ps1" …` |
 | `mark` | ohne Zeilenumbruch | **mit** Zeilenumbruch (`-NoNewline` für mitten im Satz) |
 
-Unterkommandos auf beiden: `band <ton> <text>` (Hinweisband, 33 %), `mark [--dezent] <ton> <text>` (Textmarker 25 % bzw. 14 %), `swatch` (Palette). Töne: `amber sage gold rose steel`.
+Unterkommandos auf beiden: `band <ton> <text>` (Hinweisband, 33 %), `mark [--dezent] <ton> <text>` (Textmarker 25 % bzw. 20 %), `swatch` (Palette). Töne: `amber sage gold rose steel`.
 
 ## Fallen, die Zeit gekostet haben
 

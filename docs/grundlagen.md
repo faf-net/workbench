@@ -38,7 +38,7 @@ Workbench ist ein persönlicher Hausstil für alles, was am Bildschirm erscheint
 Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · Textmarker. **Höchstens zwei pro Bildschirm.**
 
 - **Textmarker kräftig** `marker-*` (25 %): das Kernergebnis, Warnungen, FEHLER. Text `fett`.
-- **Textmarker dezent** `dezent-*` (14 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
+- **Textmarker dezent** `dezent-*` (20 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
 - **Hinweisband** `band-*` (33 %): die eine Kernaussage, über die volle Breite.
 - **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, rund, flach, Wort in Versalien. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
 - Die Werte sind feste Hexwerte, kaufmännisch gerundet, und auf allen Trägern identisch.

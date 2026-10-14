@@ -36,8 +36,8 @@ A_AMBER=cc9166; A_SAGE=93a373; A_GOLD=c7a854; A_ROSE=c07f73; A_STEEL=7d97ab
 # --- Marker kraeftig 25 % ----------------------------------------------
 M_AMBER=47372c; M_SAGE=383c2f; M_GOLD=453d27; M_ROSE=44322f; M_STEEL=33383d
 
-# --- Marker dezent 14 % -------------------------------------------------
-S_AMBER=332a23; S_SAGE=2b2c25; S_GOLD=322d20; S_ROSE=312725; S_STEEL=282b2d
+# --- Marker dezent 20 % -------------------------------------------------
+S_AMBER=3e3128; S_SAGE=32352a; S_GOLD=3d3624; S_ROSE=3b2d2a; S_STEEL=2e3235
 
 # --- Band 33 % (leuchtender, bestaetigt 03.08.2026) ---------------------
 BAND_AMBER=554132; BAND_SAGE=424736; BAND_GOLD=53482c; BAND_ROSE=513b36; BAND_STEEL=3b4349
@@ -93,7 +93,7 @@ swatch(){
         printf '    %s      %s %s#%s%s  %s\n' "$(hexbg "$2")" "$R" "$(hexfg "$2")" "$2" "$R" "$1"
     done
 
-    printf '\n  %sMARKER — kraeftig 25 %%  /  dezent 14 %%%s\n' "$(hexfg "$MUTED")" "$R"
+    printf '\n  %sMARKER — kraeftig 25 %%  /  dezent 20 %%%s\n' "$(hexfg "$MUTED")" "$R"
     printf '    %s   %s   %s\n' "$(mark amber 'Bernstein')" "$(mark --dezent amber 'Bernstein')" ""
     printf '    %s      %s\n'   "$(mark sage 'Salbei')"     "$(mark --dezent sage 'Salbei')"
     printf '    %s        %s\n' "$(mark gold 'Gold')"       "$(mark --dezent gold 'Gold')"

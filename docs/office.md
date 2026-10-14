@@ -41,7 +41,7 @@ Die Reihenfolge Akzent 1 bis 4 entspricht der Diagrammregel. Diagramme mit mehre
 - **Seite:** weißes Papier, Ränder 2,5 cm. Die Wärme kommt aus der Textfarbe `#2A2724` statt Schwarz.
 - **Fußzeile:** Seitenzahl in JetBrains Mono 8 pt `#6A6258`, rechts. Optional das Monogramm „wb“ klein links.
 - **Hinweisband:** Absatz mit Schattierung `#D2BBA8` (Bernstein 33 %) und linkem Rahmen 3 pt `#975B34`, Text fett `#171512`. Für Vorbehalt Gold `#CABFA1` / `#7E6820`, für Problem Rosé `#D4B6AC` / `#9C4D40`.
-- **Textmarker:** Zeichenschattierung (nicht die Word-Markerfarben): kräftig `#D9C6B6` mit Text `#171512` fett, dezent `#E3D6C9`.
+- **Textmarker:** Zeichenschattierung (nicht die Word-Markerfarben): kräftig `#D9C6B6` mit Text `#171512` fett, dezent `#DDCDBE`.
 - **Tabellen:** Kopfzeile Fläche `#ECE6DB`, Kopfschrift JetBrains Mono 8 pt Versalien `#6A6258`. Nur waagerechte Linien 0,5 pt `#D3CABB`. Zahlen rechtsbündig, deutsche Notation.
 
 ## Excel

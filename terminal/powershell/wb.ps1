@@ -62,8 +62,8 @@ $INK = 'e9e3d8'; $BOLD = 'f5f1eb'; $DIM = '6f6961'; $GROUND = '1a1918'; $LINE = 
 $A = @{ amber = 'cc9166'; sage = '93a373'; gold = 'c7a854'; rose = 'c07f73'; steel = '7d97ab' }
 # Marker kraeftig 25 %
 $M = @{ amber = '47372c'; sage = '383c2f'; gold = '453d27'; rose = '44322f'; steel = '33383d' }
-# Marker dezent 14 %
-$S = @{ amber = '332a23'; sage = '2b2c25'; gold = '322d20'; rose = '312725'; steel = '282b2d' }
+# Marker dezent 20 %
+$S = @{ amber = '3e3128'; sage = '32352a'; gold = '3d3624'; rose = '3b2d2a'; steel = '2e3235' }
 # Band 33 % — leuchtender, nur fuer Baender
 $D = @{ amber = '554132'; sage = '424736'; gold = '53482c'; rose = '513b36'; steel = '3b4349' }
 
@@ -117,7 +117,7 @@ switch ($Command) {
         }
         [Console]::WriteLine('')
 
-        [Console]::WriteLine("$(Fg $DIM)  AKZENT      MARKER 25 %        DEZENT 14 %        BAND 33 %$R")
+        [Console]::WriteLine("$(Fg $DIM)  AKZENT      MARKER 25 %        DEZENT 20 %        BAND 33 %$R")
         foreach ($k in 'amber', 'sage', 'gold', 'rose', 'steel') {
             $line  = "$(Bg $A[$k])$(Fg $GROUND)$B " + (Pad $k 10) + "$R  "
             $line += "$(Bg $M[$k])$(Fg $BOLD)$B " + (Pad "#$($M[$k])" 16) + "$R "

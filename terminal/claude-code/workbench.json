@@ -48,8 +48,8 @@
 
     "diffAdded": "#383c2f",
     "diffRemoved": "#44322f",
-    "diffAddedDimmed": "#2b2c25",
-    "diffRemovedDimmed": "#312725",
+    "diffAddedDimmed": "#32352a",
+    "diffRemovedDimmed": "#3b2d2a",
     "diffAddedWord": "#4a503c",
     "diffRemovedWord": "#5c423c",
 
@@ -57,7 +57,7 @@
     "userMessageBackgroundHover": "#2b2827",
     "composerSidebarBackground": "#151413",
     "selectionBg": "#33383d",
-    "bashMessageBackgroundColor": "#282b2d",
-    "memoryBackgroundColor": "#322d20"
+    "bashMessageBackgroundColor": "#2e3235",
+    "memoryBackgroundColor": "#3d3624"
   }
 }
