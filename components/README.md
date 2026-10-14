@@ -95,19 +95,22 @@ Menüs, Dialoge und Aufklapper liegen über dem Inhalt und sind das Einzige mit 
 
 ## Statuspille
 
-Eine Pille mit Wort zeigt einen Zustand, und das Wort trägt die Bedeutung, nicht die Farbe.
+Eine runde Pille mit Wort zeigt einen Zustand, und das Wort trägt die Bedeutung, nicht die Farbe.
 
-**Was du lieferst:** ein Wort (frei, eng, voll, läuft, gesichert …), dazu den Ton über die Klasse.
+**Was du lieferst:** ein Wort (gesichert, läuft, eng, gesättigt, geplant …), dazu den Ton über die Klasse.
 
 ```html
-<span class="wb-status wb-status--gut">frei</span>
+<span class="wb-status wb-status--gut">gesichert</span>
 ```
 
 - `--gut` Salbei · `--achtung` Gold · `--kritisch` Rosé · `--laeuft` Bernstein · ohne Zusatz Stahl.
-- Fläche `marker-*` (25 %), das Wort in `status-*` und extrafett. Die Pille mit heller Schrift war zu blass. `status-*` sind die helleren (dunkel) bzw. dunkleren (hell) Töne derselben Familie, damit das Wort 4,5 : 1 erreicht.
-- **Immer mit Wort.** Salbei und Rosé sind bei Deuteranopie nur ΔE 3,0 voneinander entfernt, Bernstein und Salbei bei Protanopie 2,8. Ohne Wort ist die Pille für farbschwache Menschen wertlos.
-- In Versalien, JetBrains Mono 11 px, gesperrt. Ecke `ecke-marker`.
-- Im Einsatz auf dem Statusdisplay (WLAN-Kanäle: frei, eng, gesättigt).
+- **Form:** runde Enden (`ecke-pille`), flach, kein Rahmen, kein Schein. Innenabstand `abstand-1` oben und unten, `abstand-3` links und rechts, 20 px hoch.
+- **Fläche** `pille-*`: 30 % Ton auf `grund`, als fester Hexwert. **Wort** in `status-*`, Atkinson Hyperlegible Next 12 px, Gewicht 700, **immer Versalien**, Sperrung 0,1em (Textstil `pille`).
+- **Kontrast**, berechnet nach WCAG: dunkel 4,6 bis 5,5 : 1, hell 4,5 bis 4,6 : 1. Damit das hell reicht, sind die hellen `status-*` am 14.10.2026 nachgedunkelt worden. Die Pille liegt als feste Fläche auf jedem Grund gleich.
+- **Druck:** Papier ist hell. `bundle.css` druckt deshalb immer die hellen Werte und setzt `print-color-adjust: exact`, sonst lassen Browser die Fläche weg. Auf Schwarz-Weiß-Druckern werden alle fünf Töne zum selben Grau (L* 83 bis 84); dann trägt nur das Wort.
+- **Immer mit Wort.** Salbei und Rosé sind bei Deuteranopie nur ΔE 3,0 voneinander entfernt, Bernstein und Salbei bei Protanopie 2,8.
+- Ausgewählt am 14.10.2026 aus drei Runden mit 38 Varianten (Variante „4.4 Kräftig“, Stärke 30 %, flach). Vorgängerin: eckige Pille in JetBrains Mono auf `marker-*` (25 %).
+- Im Einsatz auf dem Statusdisplay (WLAN-Kanäle: frei, eng, gesättigt), in Host-Karten und als Tags im Obsidian-Theme.
 
 ---
 

@@ -2,7 +2,7 @@
 
 /*
  * Workbench — Obsidian-Theme in den Workbench-Farben
- * Version 1.0.0 · 09.10.2026
+ * Version 1.1.0 · 14.10.2026 (Statuspille für Tags und Eigenschaften)
  *
  * Abgeleitet aus Soft Paper 1.2.1 von Nick Milo (https://github.com/nickmilo/soft-paper),
  * das wiederum auf AnuPpuccin von Anubis beruht (https://github.com/AnubisNekhet/AnuPpuccin).
@@ -2530,3 +2530,57 @@ body { --card-background-color: var(--wb-rahmen); }
 
 /* Auswahl und Fokus */
 body { --text-selection: rgba(var(--ctp-sapphire), 0.3); }
+
+/*===============================================================
+ * WORKBENCH — STATUSPILLE (Design System)
+ * Rund, flach, 30 % Fläche (pille-*), Wort in status-*, Atkinson 700 in Versalien.
+ * Tags tragen Bernstein, übrige Listenwerte in den Eigenschaften Stahl.
+ *===============================================================*/
+body.theme-dark {
+  --wb-pille-bernstein: #4f3d2f; --wb-status-bernstein: #e0a87f;
+  --wb-pille-stahl: #383f44;     --wb-status-stahl: #9ab2c4;
+}
+body.theme-light {
+  --wb-pille-bernstein: #d5bfad; --wb-status-bernstein: #734528;
+  --wb-pille-stahl: #bcc2c2;     --wb-status-stahl: #385262;
+}
+body.theme-dark, body.theme-light {
+  --tag-background: var(--wb-pille-bernstein);
+  --tag-background-hover: var(--wb-pille-bernstein);
+  --tag-border-color: transparent;
+  --tag-border-color-hover: transparent;
+  --tag-border-width: 0px;
+  --tag-color: var(--wb-status-bernstein);
+  --tag-color-hover: var(--wb-status-bernstein);
+  --tag-decoration: none;
+  --tag-decoration-hover: none;
+  --tag-radius: 999px;
+  --tag-padding-x: 0.75em;
+  --tag-padding-y: 0.25em;
+  --tag-size: 0.72em;
+  --tag-weight: 700;
+  --pill-background: var(--wb-pille-stahl);
+  --pill-background-hover: var(--wb-pille-stahl);
+  --pill-border-color: transparent;
+  --pill-border-color-hover: transparent;
+  --pill-border-width: 0px;
+  --pill-color: var(--wb-status-stahl);
+  --pill-color-hover: var(--wb-status-stahl);
+  --pill-color-remove: var(--wb-status-stahl);
+  --pill-color-remove-hover: var(--wb-fett);
+  --pill-radius: 999px;
+  --pill-weight: 700;
+}
+body a.tag, body .cm-hashtag, body .multi-select-pill-content {
+  font-family: var(--wb-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+/* Tags in den Eigenschaften sehen aus wie Tags im Text */
+body .metadata-property[data-property-key="tags"] .multi-select-pill {
+  background-color: var(--wb-pille-bernstein);
+  color: var(--wb-status-bernstein);
+}
+@media print {
+  body a.tag, body .cm-hashtag { background-color: #d5bfad !important; color: #734528 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

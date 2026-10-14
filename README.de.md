@@ -38,14 +38,15 @@ Dazu kommt: **Farbe entscheidet nie allein.** Jede Statusanzeige trägt ein Wort
 | Petrol | `#7fa79f` | `#4e716a` | Nebenton, dritte Datenreihe |
 | Malve | `#b1899b` | `#8c5c72` | Nebenton, Code |
 
-Alle 60 Tokens, darunter Textmarker (25 %), dezente Marker (14 %), Hinweisbänder (33 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
+Alle 65 Tokens, darunter Textmarker (25 %), dezente Marker (14 %), Hinweisbänder (33 %), Pillenflächen (30 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
 
 ## Schrift, Raster, Formen
 
 - **Atkinson Hyperlegible Next** für Überschriften und Text, gebaut für Lesbarkeit (I, l und 1 sind klar getrennt).
 - **JetBrains Mono** für Code, Zahlen und Beschriftungen.
 - **4er-Raster:** 4 · 8 · 12 · 16 · 24 · 32 · 48 px.
-- **Ecken:** 6 px für Karten, 3 px für Marker und Pillen.
+- **Ecken:** 6 px für Karten, 3 px für Marker und Knöpfe, rund für Statuspillen.
+- **Statuspille:** rund, flach, 30 % Fläche, das Wort in Versalien. Gedruckt wird immer mit den hellen Werten und print-color-adjust: exact.
 - **Tiefe** über Flächen-Ebenen statt Schatten. Ein Schatten nur für schwebende Elemente.
 - **Diagramme:** eine Reihe in Stahl mit dem wichtigen Wert in Bernstein. Mehrere Reihen in Bernstein · Stahl · Petrol · Gold, höchstens vier, direkt beschriftet.
 

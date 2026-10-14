@@ -40,14 +40,15 @@ Token names are German. They are listed here with their English meaning.
 | `petrol` | `#7fa79f` | `#4e716a` | secondary tone, third data series |
 | `malve` (mauve) | `#b1899b` | `#8c5c72` | secondary tone, code |
 
-All 60 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes text markers (25 %), subtle markers (14 %), banners (33 %) and status tones. Every token has a usage note with contrast ratios. The notes and the documentation in `docs/` are written in German.
+All 65 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes text markers (25 %), subtle markers (14 %), banners (33 %), status pill fills (30 %) and status tones. Every token has a usage note with contrast ratios. The notes and the documentation in `docs/` are written in German.
 
 ## Type, grid, shapes
 
 - **Atkinson Hyperlegible Next** for headings and body text, designed for legibility (I, l and 1 are clearly distinct).
 - **JetBrains Mono** for code, numbers and labels.
 - **4 px grid:** 4 · 8 · 12 · 16 · 24 · 32 · 48 px.
-- **Corners:** 6 px for cards, 3 px for markers and pills.
+- **Corners:** 6 px for cards, 3 px for markers and buttons, fully round for status pills.
+- **Status pill:** round, flat, 30 % fill, the word in capitals. Printing always uses the light values with print-color-adjust: exact.
 - **Depth** comes from surface layers instead of shadows. Only floating elements get a shadow.
 - **Charts:** a single series in steel, with the value that matters in amber. Multiple series in amber · steel · petrol · gold, at most four, labelled directly.
 

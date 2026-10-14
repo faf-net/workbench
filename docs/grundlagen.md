@@ -29,7 +29,7 @@ Workbench ist ein persönlicher Hausstil für alles, was am Bildschirm erscheint
 - `schwach` nur für Linien, Raster, Rahmen und Deaktiviertes. Als Text erreicht es nur 3,2 : 1.
 - Bedeutung: `salbei` gut, `gold` Achtung oder geschätzt, `rose` kritisch (geschrieben „Rosé“), `stahl` neutral und Daten, `bernstein` läuft oder das Wichtigste.
 - `malve` und `petrol` sind Nebentöne für Code-Hervorhebung. Im Diagramm nie zusammen.
-- **Farbe entscheidet nie allein.** Jede Statusfläche trägt ein Wort. In der Statuspille steht das Wort in `status-*` auf `marker-*`. Salbei und Rosé sind bei Deuteranopie kaum zu trennen (ΔE 3,0).
+- **Farbe entscheidet nie allein.** Jede Statusfläche trägt ein Wort. In der Statuspille steht das Wort in `status-*` auf `pille-*` (30 %). Salbei und Rosé sind bei Deuteranopie kaum zu trennen (ΔE 3,0).
 - Hell: `bernstein` (`#975b34`) und `gold` (`#7e6820`) erreichen 4,5 : 1 auf `grund` und `panel`, aber nicht auf `panel-2`. Dort sind sie als Text tabu.
 - Text auf voller Bernstein-Fläche ist `on-bernstein`.
 
@@ -40,21 +40,29 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - **Textmarker kräftig** `marker-*` (25 %): das Kernergebnis, Warnungen, FEHLER. Text `fett`.
 - **Textmarker dezent** `dezent-*` (14 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
 - **Hinweisband** `band-*` (33 %): die eine Kernaussage, über die volle Breite.
+- **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, rund, flach, Wort in Versalien. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
 - Die Werte sind feste Hexwerte, kaufmännisch gerundet, und auf allen Trägern identisch.
 
 ## Schrift
 
 - **Atkinson Hyperlegible Next** (`sans`) für Überschriften und Text. Gewählt für Lesbarkeit: I, l und 1 sind klar getrennt.
 - **JetBrains Mono** (`mono`) für Code, Befehle, Pfade, Zahlen in Tabellen und alle Beschriftungen. Ziffern mit `tabular-nums`.
-- Stile: `anzeige` 32 · `titel` 24 · `abschnitt` 19 · `text` 15 · `klein` 13; Mono: `mono-text` 13 · `beschriftung` 11 in Versalien mit 0,18em Sperrung · `zahl-gross` 34.
+- Stile: `anzeige` 32 · `titel` 24 · `abschnitt` 19 · `text` 15 · `klein` 13 · `pille` 12 in Versalien; Mono: `mono-text` 13 · `beschriftung` 11 in Versalien mit 0,18em Sperrung · `zahl-gross` 34.
 - Beide Schriften kommen von Google Fonts. Im Terminal gilt JetBrains Mono bzw. die Nerd-Font-Variante.
 
 ## Raster, Ecken, Tiefe
 
 - 4er-Raster: `abstand-1` 4 · `abstand-2` 8 · `abstand-3` 12 · `abstand-4` 16 · `abstand-6` 24 · `abstand-8` 32 · `abstand-12` 48.
-- Ecken: `ecke-karte` 6 px für Karten und Tafeln, `ecke-marker` 3 px für Marker, Pillen und Knöpfe.
+- Ecken: `ecke-karte` 6 px für Karten und Tafeln, `ecke-marker` 3 px für Marker und Knöpfe, `ecke-pille` rund nur für die Statuspille.
 - Tiefe kommt aus den Flächen-Ebenen und der Linie. `schatten-schwebend` nur für Menüs und Dialoge, die über dem Inhalt liegen. Karten haben keinen Schatten.
 - Fokus: 2 px durchgehender Ring in `fokus` (Stahl), 2 px Abstand, auf allen Flächen ≥ 3 : 1.
+
+## Druck
+
+- Papier ist hell: gedruckt wird immer mit den Werten des hellen Themas, auch wenn der Bildschirm dunkel ist.
+- Getönte Flächen (Pille, Marker, Band) brauchen `print-color-adjust: exact`, sonst lässt der Browser sie weg.
+- Schatten, Schein und Animation gibt es auf Papier nicht. Was gedruckt werden soll, braucht keins davon.
+- Auf Schwarz-Weiß-Druckern fallen die Töne zusammen. Deshalb gilt die Regel „Farbe entscheidet nie allein“ auf Papier erst recht.
 
 ## Diagramme
 

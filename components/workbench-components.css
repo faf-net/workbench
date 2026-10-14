@@ -24,12 +24,20 @@ html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 1
 .wb-mark--dezent.wb-mark--rose { background: var(--dezent-rose); }
 .wb-mark--dezent.wb-mark--stahl { background: var(--dezent-stahl); }
 
-/* Statuspille mit Wort */
-.wb-status { display: inline-flex; align-items: center; gap: var(--abstand-1); padding: 5px var(--abstand-2); border-radius: var(--ecke-marker); font: 800 11px/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--status-stahl); background: var(--marker-stahl); }
-.wb-status--gut { color: var(--status-salbei); background: var(--marker-salbei); }
-.wb-status--achtung { color: var(--status-gold); background: var(--marker-gold); }
-.wb-status--kritisch { color: var(--status-rose); background: var(--marker-rose); }
-.wb-status--laeuft { color: var(--status-bernstein); background: var(--marker-bernstein); }
+/* Statuspille: rund, flach, 30 % Fläche, Wort in Versalien */
+.wb-status { display: inline-flex; align-items: center; gap: var(--abstand-1); padding: var(--abstand-1) var(--abstand-3); border-radius: var(--ecke-pille); font: 700 12px/12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; color: var(--status-stahl); background: var(--pille-stahl); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.wb-status--gut { color: var(--status-salbei); background: var(--pille-salbei); }
+.wb-status--achtung { color: var(--status-gold); background: var(--pille-gold); }
+.wb-status--kritisch { color: var(--status-rose); background: var(--pille-rose); }
+.wb-status--laeuft { color: var(--status-bernstein); background: var(--pille-bernstein); }
+/* Druck: Papier ist hell, deshalb immer die hellen Werte, und die Fläche wird mitgedruckt. */
+@media print {
+  .wb-status { color: #385262; background: #bcc2c2; }
+  .wb-status--gut { color: #485530; background: #c3c5b1; }
+  .wb-status--achtung { color: #5f4e18; background: #cdc3a7; }
+  .wb-status--kritisch { color: #7a3c32; background: #d6bbb1; }
+  .wb-status--laeuft { color: #734528; background: #d5bfad; }
+}
 
 /* Host-Karte */
 .wb-host { background: var(--panel); border: 1px solid var(--linie); border-radius: var(--ecke-karte); overflow: hidden; display: grid; max-width: 360px; }
