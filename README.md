@@ -40,7 +40,7 @@ Token names are German. They are listed here with their English meaning.
 | `petrol` | `#7fa79f` | `#4e716a` | secondary tone, third data series |
 | `malve` (mauve) | `#b1899b` | `#8c5c72` | secondary tone, code |
 
-All 65 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes text markers (25 %), subtle markers (14 %), banners (33 %), status pill fills (30 %) and status tones. Every token has a usage note with contrast ratios. The notes and the documentation in `docs/` are written in German.
+All 68 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes text markers (25 %), subtle markers (14 %), banners (33 %), status pill fills (30 %) and status tones. Every token has a usage note with contrast ratios. The notes and the documentation in `docs/` are written in German.
 
 ## Type, grid, shapes
 
@@ -58,11 +58,13 @@ All 65 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes 
 tokens/tokens.json                    all tokens, dark and light (the source)
 css/workbench.css                     CSS custom properties, generated from the tokens
 components/workbench-components.css   components: banner, text marker, status pill,
-                                      host card, bar, measurement table, chart, menu
+                                      host card, bar, measurement table, chart, menu,
+                                      button, input, switch, tabs, toast, empty state
 components/README.md                  guide for each component (German)
 examples/bausteine.html               every component on one page, dark and light
 docs/                                 basics, office, Obsidian, terminal, Claude Code (German)
-assets/                               "wb" monogram (dark, light, favicon)
+assets/                               "wb" monogram, lockup with wordmark, favicon,
+                                      app icons 180/192/512 (rules in assets/README.md)
 obsidian/                             Obsidian theme "Workbench" (GPL-3.0, see below)
 terminal/                             Windows Terminal, PowerShell profile, wb.ps1, wb.sh,
                                       Claude Code theme
@@ -78,6 +80,7 @@ terminal/                             Windows Terminal, PowerShell profile, wb.p
 
 <div class="wb-band">Key message across the full width</div>
 <span class="wb-status wb-status--gut">free</span>
+<button class="wb-knopf wb-knopf--haupt">Start backup</button>
 <span class="wb-mark">Key result</span>
 ```
 

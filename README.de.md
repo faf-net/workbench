@@ -38,7 +38,7 @@ Dazu kommt: **Farbe entscheidet nie allein.** Jede Statusanzeige trägt ein Wort
 | Petrol | `#7fa79f` | `#4e716a` | Nebenton, dritte Datenreihe |
 | Malve | `#b1899b` | `#8c5c72` | Nebenton, Code |
 
-Alle 65 Tokens, darunter Textmarker (25 %), dezente Marker (14 %), Hinweisbänder (33 %), Pillenflächen (30 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
+Alle 68 Tokens, darunter Textmarker (25 %), dezente Marker (14 %), Hinweisbänder (33 %), Pillenflächen (30 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
 
 ## Schrift, Raster, Formen
 
@@ -55,12 +55,14 @@ Alle 65 Tokens, darunter Textmarker (25 %), dezente Marker (14 %), Hinweisbände
 ```
 tokens/tokens.json                    alle Tokens, dunkel und hell (Quelle)
 css/workbench.css                     CSS-Variablen, generiert aus den Tokens
-components/workbench-components.css   Bausteine: Hinweisband, Textmarker, Statuspille,
+components/workbench-components.css   Bausteine: Hinweisband, Textmarker, Statuspille, Knopf,
+                                      Eingabefeld, Schalter, Reiter, Meldung, Leerzustand,
                                       Host-Karte, Balken, Messtabelle, Diagramm, Menü
 components/README.md                  Anleitung je Baustein
 examples/bausteine.html               alle Bausteine zum Ansehen, dunkel und hell
 docs/                                 Grundlagen, Office, Obsidian, Terminal, Claude Code
-assets/                               Monogramm „wb“ (dunkel, hell, Favicon)
+assets/                               Monogramm „wb“, Lockup mit Wortmarke, Favicon,
+                                      App-Symbole 180/192/512 (Regeln in assets/README.md)
 obsidian/                             Obsidian-Theme „Workbench“ (GPL-3.0, siehe unten)
 terminal/                             Windows Terminal, PowerShell-Profil, wb.ps1, wb.sh,
                                       Claude-Code-Theme
@@ -76,6 +78,7 @@ terminal/                             Windows Terminal, PowerShell-Profil, wb.ps
 
 <div class="wb-band">Kernaussage über die volle Breite</div>
 <span class="wb-status wb-status--gut">frei</span>
+<button class="wb-knopf wb-knopf--haupt">Sicherung starten</button>
 <span class="wb-mark">Kernergebnis</span>
 ```
 

@@ -84,4 +84,57 @@ html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 1
 .wb-schwebend a { padding: var(--abstand-1) var(--abstand-3); color: var(--schrift); text-decoration: none; font: 13px/20px var(--font-mono); }
 .wb-schwebend a:hover, .wb-schwebend a:focus-visible { background: var(--marker-bernstein); color: var(--fett); outline: none; }
 
+/* ===== Bedienelemente (14.10.2026) ===== */
+
+/* Knopf: Zweitknopf ist der Normalfall, Hauptknopf höchstens einmal je Bereich */
+.wb-knopf { display: inline-flex; align-items: center; justify-content: center; gap: var(--abstand-2); min-height: 32px; padding: 0 var(--abstand-3); border: 1px solid var(--rand-bedien); border-radius: var(--ecke-marker); background: var(--panel-2); color: var(--schrift); font: 700 15px/16px var(--font-sans); text-decoration: none; white-space: nowrap; cursor: pointer; }
+.wb-knopf:hover { background: var(--linie); }
+.wb-knopf--haupt { background: var(--bernstein); border-color: var(--bernstein); color: var(--on-bernstein); }
+.wb-knopf--haupt:hover { background: var(--knopf-hover); border-color: var(--knopf-hover); }
+.wb-knopf--leise { background: transparent; border-color: transparent; color: var(--bernstein); }
+.wb-knopf--leise:hover { background: var(--dezent-bernstein); color: var(--status-bernstein); }
+.wb-knopf--gefahr { background: var(--pille-rose); border-color: var(--pille-rose); color: var(--status-rose); }
+.wb-knopf--gefahr:hover { background: var(--band-rose); border-color: var(--band-rose); color: var(--fett); }
+.wb-knopf--klein { min-height: 24px; padding: 0 var(--abstand-2); font-size: 13px; }
+.wb-knopf:disabled, .wb-knopf[aria-disabled="true"] { background: var(--panel-2); border-color: var(--linie); color: var(--schwach); cursor: not-allowed; }
+
+/* Eingabefeld: Beschriftung oben, Hilfe oder Fehler unten */
+.wb-feld { display: grid; gap: var(--abstand-1); max-width: 360px; }
+.wb-feld__label { font: 600 11px/14px var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gedaempft); }
+.wb-feld__eingabe { min-height: 32px; padding: var(--abstand-1) var(--abstand-2); border: 1px solid var(--rand-bedien); border-radius: var(--ecke-marker); background: var(--feld); color: var(--schrift); font: 400 15px/22px var(--font-sans); }
+.wb-feld__eingabe::placeholder { color: var(--gedaempft); }
+.wb-feld__eingabe:hover { border-color: var(--gedaempft); }
+.wb-feld__eingabe--zahl { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.wb-feld__hilfe { font: 400 13px/20px var(--font-sans); color: var(--gedaempft); }
+.wb-feld--fehler .wb-feld__eingabe { border-color: var(--rose); }
+.wb-feld--fehler .wb-feld__hilfe { color: var(--rose); }
+
+/* Schalter: Lage des Knopfs und das Wort an/aus tragen den Zustand, nicht die Farbe */
+.wb-schalter { display: inline-flex; align-items: center; gap: var(--abstand-2); padding: 0; border: 0; background: none; color: var(--schrift); font: 400 15px/24px var(--font-sans); cursor: pointer; }
+.wb-schalter__spur { position: relative; flex: none; width: 36px; height: 20px; border: 1px solid var(--rand-bedien); border-radius: var(--ecke-pille); background: var(--feld); }
+.wb-schalter__spur::after { content: ""; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--gedaempft); transition: transform .15s ease; }
+.wb-schalter[aria-checked="true"] .wb-schalter__spur { background: var(--bernstein); border-color: var(--bernstein); }
+.wb-schalter[aria-checked="true"] .wb-schalter__spur::after { transform: translateX(16px); background: var(--on-bernstein); }
+.wb-schalter__zustand { font: 600 11px/14px var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gedaempft); }
+@media (prefers-reduced-motion: reduce) { .wb-schalter__spur::after { transition: none; } }
+
+/* Reiter */
+.wb-reiter { display: flex; flex-wrap: wrap; gap: var(--abstand-4); border-bottom: 1px solid var(--linie); }
+.wb-reiter__tab { margin-bottom: -1px; padding: var(--abstand-2) 0; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--gedaempft); font: 700 15px/16px var(--font-sans); cursor: pointer; }
+.wb-reiter__tab:hover { color: var(--schrift); }
+.wb-reiter__tab[aria-selected="true"] { color: var(--fett); border-bottom-color: var(--bernstein); }
+.wb-reiter__zahl { margin-left: var(--abstand-1); font: 400 13px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--gedaempft); }
+
+/* Meldung: schwebende Rückmeldung nach einer Aktion */
+.wb-meldung { display: flex; align-items: center; gap: var(--abstand-3); max-width: 480px; padding: var(--abstand-3) var(--abstand-4); border: 1px solid var(--linie); border-radius: var(--ecke-karte); background: var(--panel); box-shadow: var(--schatten-schwebend); }
+.wb-meldung__text { flex: 1; margin: 0; color: var(--schrift); font: 400 15px/24px var(--font-sans); }
+.wb-meldung__zu { flex: none; padding: var(--abstand-1); border: 0; border-radius: var(--ecke-marker); background: none; color: var(--gedaempft); font: 700 15px/1 var(--font-sans); cursor: pointer; }
+.wb-meldung__zu:hover { color: var(--fett); }
+
+/* Leerzustand */
+.wb-leer { display: grid; justify-items: start; gap: var(--abstand-2); max-width: 520px; padding: var(--abstand-8) var(--abstand-6); border: 1px dashed var(--rand-bedien); border-radius: var(--ecke-karte); }
+.wb-leer__marke { font: 600 11px/14px var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gedaempft); }
+.wb-leer__titel { margin: 0; color: var(--fett); font: 700 19px/26px var(--font-sans); }
+.wb-leer__text { margin: 0 0 var(--abstand-2); max-width: 48ch; color: var(--gedaempft); font: 400 15px/24px var(--font-sans); }
+
 :focus-visible { outline: 2px solid var(--fokus); outline-offset: 2px; }

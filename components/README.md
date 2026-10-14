@@ -30,6 +30,28 @@ Zwei Regeln für Datenreihen, beide geprüft auf Rot-Grün-Schwäche (ΔE 2000, 
 
 ---
 
+## Eingabefeld
+
+Ein Eingabefeld nimmt einen Wert auf, mit Beschriftung darüber und Hilfe oder Fehler darunter.
+
+**Was du lieferst:** Beschriftung, das Feld (`<input>`, `<select>`, `<textarea>`), optional einen Hilfetext und im Fehlerfall einen Satz, der sagt, wie es richtig geht.
+
+```html
+<label class="wb-feld">
+  <span class="wb-feld__label">Aufbewahrung in Tagen</span>
+  <input class="wb-feld__eingabe wb-feld__eingabe--zahl" value="30">
+  <span class="wb-feld__hilfe">Ältere Sicherungen werden gelöscht.</span>
+</label>
+```
+
+- Fläche `feld` (dunkel `rille`, hell `panel`), Rand `rand-bedien` (mindestens 3 : 1), Schrift `schrift`, Platzhalter `gedaempft`.
+- Beschriftung im Stil `beschriftung`: JetBrains Mono 11 px, Versalien, `gedaempft`. Steht immer über dem Feld, nie nur als Platzhalter.
+- Zahlen mit `--zahl`: JetBrains Mono, `tabular-nums`.
+- **Fehler** `wb-feld--fehler`: Rand `rose`, Hilfetext in `rose` (4,9 bis 5,5 : 1). Der Satz sagt, was zu tun ist, nicht nur, dass etwas falsch ist.
+- 32 px hoch, Ecke `ecke-marker`, höchstens 360 px breit. Fokus: Ring in `fokus`.
+
+---
+
 ## Hinweisband
 
 Ein Band über die volle Breite trägt die eine Kernaussage eines Ergebnisses, vor allem anderen Text.
@@ -68,6 +90,74 @@ Eine Karte pro Maschine: Name und Rolle im Kopf, Dienste und Zustand darunter.
 
 ---
 
+## Knopf
+
+Ein Knopf löst eine Aktion aus, und seine Beschriftung sagt in einem Verb, was dann passiert.
+
+**Was du lieferst:** ein `<button>` (oder `<a>` für einen Seitenwechsel) mit einer Beschriftung wie „Sicherung starten“, dazu die Art über die Klasse.
+
+```html
+<button class="wb-knopf wb-knopf--haupt">Sicherung starten</button>
+<button class="wb-knopf">Protokoll öffnen</button>
+<button class="wb-knopf wb-knopf--leise">Abbrechen</button>
+<button class="wb-knopf wb-knopf--gefahr">Sicherung löschen</button>
+```
+
+- **Hauptknopf** `--haupt`: volle Fläche `bernstein`, Schrift `on-bernstein` (dunkel 6,5 : 1, hell 4,9 : 1), beim Überfahren `knopf-hover`. **Höchstens einer je Bereich**, sonst gibt es zwei laute Akzente.
+- **Zweitknopf** ohne Zusatz: `panel-2` mit Rand `rand-bedien`, Schrift `schrift`. Der Normalfall.
+- **Leiser Knopf** `--leise`: nur Schrift `bernstein`, beim Überfahren `dezent-bernstein` mit `status-bernstein`. Für Abbrechen, Zurück, Nebenaktionen.
+- **Gefahr** `--gefahr`: Fläche `pille-rose`, Schrift `status-rose` (4,6 : 1). Nur für Unumkehrbares, und dann mit Nachfrage.
+- **Klein** `--klein`: 24 px hoch, 13 px Schrift, für Tabellen und Meldungen. Sonst 32 px.
+- **Deaktiviert** (`disabled`): Schrift `schwach`. Daneben steht immer, warum.
+- Atkinson 700, 15 px (Textstil `knopf`), Ecke `ecke-marker`, keine Versalien. Fokus: Ring in `fokus`.
+
+---
+
+## Leerzustand
+
+Ein Leerzustand füllt eine Fläche, auf der noch nichts steht, und sagt, was hier erscheinen wird und wie es dazu kommt.
+
+**Was du lieferst:** eine kurze Beschriftung, einen Titel, einen Satz und höchstens eine Aktion.
+
+```html
+<div class="wb-leer">
+  <span class="wb-leer__marke">noch keine Daten</span>
+  <h3 class="wb-leer__titel">Noch keine Messwerte</h3>
+  <p class="wb-leer__text">Sobald die erste Sicherung gelaufen ist, steht hier ihr Verlauf.</p>
+  <button class="wb-knopf wb-knopf--haupt">Sicherung starten</button>
+</div>
+```
+
+- Gestrichelter Rand `rand-bedien`, keine Fläche, Ecke `ecke-karte`. Linksbündig wie alles andere.
+- Titel `fett` 19 px, Satz `gedaempft`, Beschriftung im Stil `beschriftung`.
+- Kein Bild, keine Illustration, kein Monogramm. Der Satz erklärt, die Aktion löst.
+- Der Satz sagt, wann sich die Fläche von selbst füllt. Ist das nie der Fall, steht dort die Aktion, die es ändert.
+
+---
+
+## Meldung
+
+Eine Meldung bestätigt nach einer Aktion kurz, was passiert ist, und schwebt dabei über dem Inhalt.
+
+**Was du lieferst:** eine Statuspille, einen Satz mit dem Ergebnis, optional eine Aktion.
+
+```html
+<div class="wb-meldung" role="status">
+  <span class="wb-status wb-status--gut">gesichert</span>
+  <p class="wb-meldung__text">Sicherung abgeschlossen, 1.740 Dateien.</p>
+  <button class="wb-knopf wb-knopf--leise wb-knopf--klein">Protokoll</button>
+  <button class="wb-meldung__zu" aria-label="Meldung schließen">✕</button>
+</div>
+```
+
+- Fläche `panel`, Rand `linie`, Ecke `ecke-karte`, Schatten `schatten-schwebend`: eines der wenigen Elemente mit Schatten.
+- Unten rechts, 24 px vom Rand, höchstens drei übereinander, die neueste unten.
+- **Erfolg** (`role="status"`) verschwindet nach 5 Sekunden. **Fehler** (`role="alert"`, Pille `--kritisch`) bleibt, bis sie geschlossen wird.
+- Der Satz nennt das Ergebnis mit Zahl, nicht nur „Erfolgreich“.
+- Nicht für die Kernaussage einer Seite, dafür gibt es das Hinweisband.
+
+---
+
 ## Messtabelle
 
 Eine Tabelle mit Messwerten, in der jede Zahl ihre Herkunft trägt: gemessen oder geschätzt.
@@ -78,6 +168,47 @@ Eine Tabelle mit Messwerten, in der jede Zahl ihre Herkunft trägt: gemessen ode
 - Herkunft als kleines Etikett: `gemessen` auf `dezent-salbei`, `geschätzt` auf `dezent-gold`.
 - Spaltenköpfe im Stil `beschriftung`, Farbe `gedaempft`.
 - Eine Grafik wirkt präziser, als die Daten sind. Deshalb steht die Herkunft immer dabei.
+
+---
+
+## Reiter
+
+Reiter teilen eine Fläche in Ansichten, von denen immer genau eine offen ist.
+
+**Was du lieferst:** zwei bis sieben kurze Namen, welcher offen ist, optional eine Zahl je Reiter.
+
+```html
+<div class="wb-reiter" role="tablist">
+  <button class="wb-reiter__tab" role="tab" aria-selected="true">Übersicht</button>
+  <button class="wb-reiter__tab" role="tab" aria-selected="false">Meldungen<span class="wb-reiter__zahl">3</span></button>
+</div>
+```
+
+- Offen: Schrift `fett`, darunter 2 px `bernstein`. Zu: `gedaempft`, beim Überfahren `schrift`. Alle in Atkinson 700, damit beim Wechsel nichts springt.
+- Grundlinie 1 px `linie` über die ganze Breite.
+- Zahl in JetBrains Mono, `gedaempft`, `tabular-nums`.
+- Nicht für Abläufe in Schritten: Reiter sind gleichrangig.
+
+---
+
+## Schalter
+
+Ein Schalter stellt eine Einstellung sofort an oder aus, und das Wort daneben sagt, welcher Zustand gilt.
+
+**Was du lieferst:** einen `<button role="switch">` mit `aria-checked`, die Bezeichnung der Einstellung und das Zustandswort, das dein Skript mit umschaltet.
+
+```html
+<button class="wb-schalter" role="switch" aria-checked="true">
+  <span class="wb-schalter__spur"></span>
+  <span>Nachtsicherung</span>
+  <span class="wb-schalter__zustand">an</span>
+</button>
+```
+
+- Spur 36 × 20 px, rund (`ecke-pille`). Aus: Fläche `feld`, Rand `rand-bedien`, Knopf `gedaempft`. An: Fläche `bernstein`, Knopf `on-bernstein` rechts.
+- **Farbe entscheidet nie allein:** Lage des Knopfs und das Wort `an`/`aus` tragen den Zustand.
+- Wirkt sofort. Muss erst gespeichert werden, ist es kein Schalter, sondern ein Kontrollkästchen.
+- Bewegung 150 ms, bei reduzierter Bewegung keine. Fokus: Ring in `fokus`.
 
 ---
 
@@ -130,3 +261,23 @@ Eine getönte Fläche hinter Text wirkt wie ein echter Textmarker und ist das wi
 - Die Hexwerte sind fest, nicht per `color-mix` gerechnet, und kaufmännisch gerundet.
 - Höchstens zwei Stufen pro Bildschirm. Eine getönte Fläche schlägt ein eingefärbtes Zeichen.
 - Im Terminal: `wb.sh mark [--dezent] <ton> <text>`.
+
+---
+
+## Zeichen
+
+Das Monogramm „wb“ und die Wortmarke „Workbench“ kennzeichnen alles, was zu Workbench gehört, in festen Fassungen und Größen.
+
+**Was du lieferst:** nichts. Die Dateien liegen unter Assets → Zeichen und werden unverändert eingebunden.
+
+```html
+<img src="wb-lockup.svg" alt="Workbench" height="32">
+<link rel="icon" href="wb-favicon.svg" type="image/svg+xml">
+<link rel="icon" href="wb-favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="wb-app-symbol-180.png">
+```
+
+- **Schutzraum:** rundum ein Viertel der Kantenlänge des Monogramms (16 bei 64). Gilt auch für den Lockup, gemessen am Monogramm.
+- **Mindestgröße:** Monogramm 24 px bzw. 8 mm, darunter die Favicon-Fassung (16 bis 23 px). Lockup ab 24 px Höhe, darunter nur das Monogramm.
+- **Fassungen:** dunkel (Bernstein auf `grund`, Wort `fett`) und hell (Bernstein hell auf `grund` hell, Wort `fett` hell). Keine weiteren.
+- **Nie:** verzerren, drehen, umfärben, mit Schatten, Schein oder Kontur versehen, die Wortmarke allein oder in einer anderen Schrift setzen, den Abstand im Lockup ändern.

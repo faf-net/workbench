@@ -42,6 +42,20 @@
   </svg></div>
 </div>
 </section>
+<section class="beispiel"><h2>Eingabefeld</h2>
+<div class="wb-stapel">
+  <label class="wb-feld">
+    <span class="wb-feld__label">Aufbewahrung in Tagen</span>
+    <input class="wb-feld__eingabe wb-feld__eingabe--zahl" value="30">
+    <span class="wb-feld__hilfe">Ältere Sicherungen werden gelöscht.</span>
+  </label>
+  <label class="wb-feld wb-feld--fehler">
+    <span class="wb-feld__label">Zieladresse</span>
+    <input class="wb-feld__eingabe" value="sicherung@" aria-invalid="true">
+    <span class="wb-feld__hilfe">Bitte eine vollständige Adresse eingeben, etwa sicherung@beispiel.de.</span>
+  </label>
+</div>
+</section>
 <section class="beispiel"><h2>Hinweisband</h2>
 <div class="wb-stapel">
   <div class="wb-band">Browser gehärtet, alle Prüfungen bestanden</div>
@@ -62,6 +76,46 @@
   </div>
 </div></div>
 </section>
+<section class="beispiel"><h2>Knopf</h2>
+<div class="wb-stapel">
+  <div class="wb-reihe">
+    <button class="wb-knopf wb-knopf--haupt">Sicherung starten</button>
+    <button class="wb-knopf">Protokoll öffnen</button>
+    <button class="wb-knopf wb-knopf--leise">Abbrechen</button>
+    <button class="wb-knopf wb-knopf--gefahr">Sicherung löschen</button>
+  </div>
+  <div class="wb-reihe">
+    <button class="wb-knopf wb-knopf--klein">Neu laden</button>
+    <button class="wb-knopf wb-knopf--haupt wb-knopf--klein">Übernehmen</button>
+    <button class="wb-knopf" disabled>Wiederherstellen</button>
+  </div>
+</div>
+</section>
+<section class="beispiel"><h2>Leerzustand</h2>
+<div class="wb-stapel">
+  <div class="wb-leer">
+    <span class="wb-leer__marke">noch keine Daten</span>
+    <h3 class="wb-leer__titel">Noch keine Messwerte</h3>
+    <p class="wb-leer__text">Sobald die erste Sicherung gelaufen ist, steht hier ihr Verlauf.</p>
+    <button class="wb-knopf wb-knopf--haupt">Sicherung starten</button>
+  </div>
+</div>
+</section>
+<section class="beispiel"><h2>Meldung</h2>
+<div class="wb-stapel">
+  <div class="wb-meldung" role="status">
+    <span class="wb-status wb-status--gut">gesichert</span>
+    <p class="wb-meldung__text">Sicherung abgeschlossen, 1.740 Dateien.</p>
+    <button class="wb-knopf wb-knopf--leise wb-knopf--klein">Protokoll</button>
+    <button class="wb-meldung__zu" aria-label="Meldung schließen">✕</button>
+  </div>
+  <div class="wb-meldung" role="alert">
+    <span class="wb-status wb-status--kritisch">Fehler</span>
+    <p class="wb-meldung__text">Ziel nicht erreichbar, nichts gesichert.</p>
+    <button class="wb-meldung__zu" aria-label="Meldung schließen">✕</button>
+  </div>
+</div>
+</section>
 <section class="beispiel"><h2>Messtabelle</h2>
 <div class="wb-stapel">
   <table class="wb-mess">
@@ -71,6 +125,39 @@
     <tr><td>Beispiel Leistungsaufnahme</td><td class="zahl">~ 85 W</td><td><span class="wb-herkunft wb-herkunft--geschaetzt">geschätzt</span></td></tr>
   </table>
 </div>
+</section>
+<section class="beispiel"><h2>Reiter</h2>
+<div class="wb-stapel">
+  <div class="wb-reiter" role="tablist" aria-label="Ansichten">
+    <button class="wb-reiter__tab" role="tab" aria-selected="true">Übersicht</button>
+    <button class="wb-reiter__tab" role="tab" aria-selected="false">Verlauf</button>
+    <button class="wb-reiter__tab" role="tab" aria-selected="false">Meldungen<span class="wb-reiter__zahl">3</span></button>
+    <button class="wb-reiter__tab" role="tab" aria-selected="false">Einstellungen</button>
+  </div>
+</div>
+<script>
+document.querySelectorAll('.wb-reiter').forEach(function (l) {
+  l.addEventListener('click', function (e) {
+    var t = e.target.closest('.wb-reiter__tab'); if (!t) return;
+    l.querySelectorAll('.wb-reiter__tab').forEach(function (x) { x.setAttribute('aria-selected', x === t); });
+  });
+});
+</script>
+</section>
+<section class="beispiel"><h2>Schalter</h2>
+<div class="wb-stapel">
+  <button class="wb-schalter" role="switch" aria-checked="true"><span class="wb-schalter__spur"></span><span>Nachtsicherung</span><span class="wb-schalter__zustand">an</span></button>
+  <button class="wb-schalter" role="switch" aria-checked="false"><span class="wb-schalter__spur"></span><span>Meldung aufs Handy</span><span class="wb-schalter__zustand">aus</span></button>
+</div>
+<script>
+document.querySelectorAll('.wb-schalter').forEach(function (s) {
+  s.addEventListener('click', function () {
+    var an = s.getAttribute('aria-checked') !== 'true';
+    s.setAttribute('aria-checked', an);
+    s.querySelector('.wb-schalter__zustand').textContent = an ? 'an' : 'aus';
+  });
+});
+</script>
 </section>
 <section class="beispiel"><h2>Schwebend</h2>
 <div class="wb-stapel" style="background:var(--grund)">
@@ -96,6 +183,36 @@
 <div class="wb-stapel">
   <p style="margin:0">Ergebnis: <span class="wb-mark">52 von 52 wie Soll</span>, Sicherung <span class="wb-mark wb-mark--rose">überfällig</span>, Sicherung <span class="wb-mark wb-mark--salbei">gesichert</span>.</p>
   <p style="margin:0">Einordnung: <span class="wb-mark wb-mark--dezent wb-mark--stahl">gemessen 08.10.2026</span>, <span class="wb-mark wb-mark--dezent">läuft</span>, <span class="wb-mark wb-mark--dezent wb-mark--gold">offen</span>.</p>
+</div>
+</section>
+<section class="beispiel"><h2>Zeichen</h2>
+<style>
+  .zf { display: flex; flex-wrap: wrap; gap: var(--abstand-6); align-items: center; }
+  .dunkel, .hell { padding: var(--abstand-4); border-radius: var(--ecke-karte); line-height: 0; }
+  .dunkel { background: #1a1918; outline: 1px solid var(--linie); }
+  .hell { background: #efeae1; outline: 1px solid var(--linie); }
+  .schutz { position: relative; padding: 16px; outline: 1px dashed var(--schwach); outline-offset: 0; }
+  .schutz img { display: block; }
+  .masse { font: 11px/14px var(--font-mono); color: var(--gedaempft); letter-spacing: .1em; }
+  .groessen { display: flex; gap: var(--abstand-4); align-items: end; }
+  .groessen figure { margin: 0; display: grid; gap: var(--abstand-1); justify-items: center; }
+</style>
+<div class="wb-stapel">
+  <div class="zf">
+    <div class="dunkel"><img src="../assets/wb-lockup.svg" alt="Workbench, dunkle Fassung" height="48"></div>
+    <div class="hell"><img src="../assets/wb-lockup-hell.svg" alt="Workbench, helle Fassung" height="48"></div>
+  </div>
+  <div class="zf">
+    <div class="schutz"><img src="../assets/wb-monogramm.svg" alt="Monogramm mit Schutzraum" width="64" height="64"></div>
+    <div class="groessen">
+      <figure><img src="../assets/wb-monogramm.svg" alt="" width="48" height="48"><figcaption class="masse">48</figcaption></figure>
+      <figure><img src="../assets/wb-monogramm.svg" alt="" width="32" height="32"><figcaption class="masse">32</figcaption></figure>
+      <figure><img src="../assets/wb-monogramm.svg" alt="" width="24" height="24"><figcaption class="masse">24 MIN</figcaption></figure>
+      <figure><img src="../assets/wb-favicon.svg" alt="" width="16" height="16"><figcaption class="masse">16 FAVICON</figcaption></figure>
+      <figure><img src="../assets/wb-app-symbol.svg" alt="" width="48" height="48"><figcaption class="masse">APP</figcaption></figure>
+    </div>
+  </div>
+  <span class="masse">SCHUTZRAUM 16 BEI 64 · GESTRICHELT</span>
 </div>
 </section>
 </body>

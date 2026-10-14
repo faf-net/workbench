@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Workbench-App-Symbol wb">
+  <rect width="64" height="64" fill="#1a1918"/>
+  <g transform="translate(32 32) scale(0.9) translate(-32 -30)" fill="none" stroke="#cc9166" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,25 14,45 20,31 26,45 31,25"/><path d="M38 14 V45 M38 31 Q38 25 45 25 Q53 25 53 35 Q53 45 45 45 Q38 45 38 39"/></g>
+</svg>

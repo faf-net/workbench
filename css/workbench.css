@@ -21,6 +21,9 @@
   --petrol: #7fa79f;
   --on-bernstein: #1a1918;
   --fokus: var(--stahl);
+  --rand-bedien: #787269;
+  --feld: var(--rille);
+  --knopf-hover: var(--status-bernstein);
   --marker-bernstein: #47372c;
   --marker-salbei: #383c2f;
   --marker-gold: #453d27;
@@ -104,6 +107,9 @@
     --petrol: #4e716a;
     --on-bernstein: #f7f3ec;
     --fokus: var(--stahl);
+    --rand-bedien: #817a6f;
+    --feld: var(--panel);
+    --knopf-hover: var(--status-bernstein);
     --marker-bernstein: #d9c6b6;
     --marker-salbei: #cbccb9;
     --marker-gold: #d3cab1;
@@ -175,6 +181,9 @@
   --petrol: #4e716a;
   --on-bernstein: #f7f3ec;
   --fokus: var(--stahl);
+  --rand-bedien: #817a6f;
+  --feld: var(--panel);
+  --knopf-hover: var(--status-bernstein);
   --marker-bernstein: #d9c6b6;
   --marker-salbei: #cbccb9;
   --marker-gold: #d3cab1;

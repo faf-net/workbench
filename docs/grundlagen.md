@@ -70,8 +70,17 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - Mehrere Reihen: `diagramm-1` bis `diagramm-4` (Bernstein · Stahl · Petrol · Gold), höchstens vier, Beschriftung direkt an der Reihe statt Legende.
 - Dauerbildschirme zeigen Fluss und Verlauf, nicht Zustand. Zustand meldet schon das Handy.
 
+## Bedienelemente
+
+- **Knopf** in vier Arten: Haupt (`bernstein`, höchstens einer je Bereich), Zweit (Normalfall), Leise, Gefahr. 32 px hoch, klein 24 px. Die Beschriftung ist ein Verb, das sagt, was passiert.
+- **Eingabefeld** mit Beschriftung darüber und Hilfe oder Fehler darunter. Ein Fehlertext sagt, wie es richtig geht.
+- **Schalter** für Einstellungen, die sofort wirken, immer mit dem Wort `an` oder `aus`.
+- **Reiter** für gleichrangige Ansichten, **Meldung** als schwebende Rückmeldung nach einer Aktion, **Leerzustand** für Flächen ohne Inhalt.
+- Rahmen von Bedienelementen in `rand-bedien` (mindestens 3 : 1 auf allen Flächen), Feldflächen in `feld`. Zustände: Überfahren, Fokusring in `fokus`, deaktiviert in `schwach` mit Begründung daneben.
+
 ## Zeichen
 
-- Das Monogramm **wb** in Bernstein auf `grund`, Ecke 6 px (`wb-monogramm.svg`), hell in Bernstein auf hellem Grund (`wb-monogramm-hell.svg`).
-- In 16 px die vereinfachte Fassung `wb-favicon.svg`.
-- Das Zeichen ist ein Entwurf. Es ist aus Linien gezeichnet, nicht aus der Schrift gesetzt, damit es als Bild ohne Webfont funktioniert.
+- Das Monogramm **wb** in Bernstein auf `grund`, aus Linien mit runden Enden gezeichnet (`wb-monogramm.svg`, hell `wb-monogramm-hell.svg`).
+- Der **Lockup** setzt die Wortmarke „Workbench“ in Atkinson Hyperlegible Next ExtraBold neben das Monogramm, als Pfade (`wb-lockup.svg`, `wb-lockup-hell.svg`). Die Wortmarke gibt es nur im Lockup.
+- In 16 bis 23 px gilt die Favicon-Fassung, für Startbildschirme das vollflächige App-Symbol in 180, 192 und 512 px.
+- Schutzraum ein Viertel der Kantenlänge des Monogramms, Mindestgröße 24 px bzw. 8 mm. Nie verzerren, umfärben oder mit Effekten versehen. Fassung 1.0 vom 14.10.2026, Einzelheiten im Baustein **Zeichen**.
