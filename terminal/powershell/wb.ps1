@@ -9,6 +9,8 @@
                                           --dezent (Bash-Schreibweise) geht ebenso.
                                           Fuer die Verwendung mitten im Satz: -NoNewline
     wb.ps1 band  <ton> <text>             Hinweisband ueber die volle Breite
+    wb.ps1 status <ton> <wort>            Statuspille in Konsolenform: [ WORT ]
+                                          schliesst MIT Zeilenumbruch ab, sonst -NoNewline
     wb.ps1 swatch                         Palettenuebersicht zum Gegenchecken
 
     Toene: amber  sage  gold  rose  steel
@@ -23,7 +25,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Position = 0, Mandatory)]
-    [ValidateSet('mark', 'band', 'swatch')]
+    [ValidateSet('mark', 'band', 'status', 'swatch')]
     [string]$Command,
 
     [Parameter(Position = 1)][string]$Tone,
@@ -66,6 +68,9 @@ $M = @{ amber = '47372c'; sage = '383c2f'; gold = '453d27'; rose = '44322f'; ste
 $S = @{ amber = '3e3128'; sage = '32352a'; gold = '3d3624'; rose = '3b2d2a'; steel = '2e3235' }
 # Band 33 % — leuchtender, nur fuer Baender
 $D = @{ amber = '554132'; sage = '424736'; gold = '53482c'; rose = '513b36'; steel = '3b4349' }
+# Statuswort (status-*, Design System)
+$ST = @{ amber = 'e0a87f'; sage = 'adbb8e'; gold = 'ddc274'; rose = 'd69a8d'; steel = '9ab2c4' }
+$MUTED = 'a49c90'
 
 function Assert-Tone([string]$t) {
     if (-not $t -or -not $A.ContainsKey($t)) {
@@ -87,6 +92,13 @@ switch ($Command) {
         if ($Dezent) { $bgHex = $S[$Tone]; $fgHex = $INK;  $weight = '' }
         else         { $bgHex = $M[$Tone]; $fgHex = $BOLD; $weight = $B }
         $out = "$(Bg $bgHex)$(Fg $fgHex)$weight $Text $R"
+        if ($NoNewline) { [Console]::Write($out) } else { [Console]::WriteLine($out) }
+    }
+
+    'status' {
+        # Statuspille Konsole: [ WORT ] wie beim Systemstart.
+        Assert-Tone $Tone
+        $out = "$(Fg $MUTED)[ $R$(Fg $ST[$Tone])$B$($Text.ToUpperInvariant())$R$(Fg $MUTED) ]$R"
         if ($NoNewline) { [Console]::Write($out) } else { [Console]::WriteLine($out) }
     }
 

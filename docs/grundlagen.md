@@ -40,7 +40,7 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - **Textmarker kräftig** `marker-*` (25 %): das Kernergebnis, Warnungen, FEHLER. Text `fett`.
 - **Textmarker dezent** `dezent-*` (20 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
 - **Hinweisband** `band-*` (33 %): die eine Kernaussage, über die volle Breite.
-- **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, rund, flach, Wort in Versalien. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
+- **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, flach, links eine Kantenleiste 3 px im vollen Ton, rechts Ecken 3 px, Wort in Versalien. Im Terminal und auf Statusdisplays in der Konsolenform `[ GESICHERT ]`. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
 - Die Werte sind feste Hexwerte, kaufmännisch gerundet, und auf allen Trägern identisch.
 
 ## Schrift
@@ -53,7 +53,7 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 ## Raster, Ecken, Tiefe
 
 - 4er-Raster: `abstand-1` 4 · `abstand-2` 8 · `abstand-3` 12 · `abstand-4` 16 · `abstand-6` 24 · `abstand-8` 32 · `abstand-12` 48.
-- Ecken: `ecke-karte` 6 px für Karten und Tafeln, `ecke-marker` 3 px für Marker und Knöpfe, `ecke-pille` rund nur für die Statuspille.
+- Ecken: `ecke-karte` 6 px für Karten und Tafeln, `ecke-marker` 3 px für Marker und Knöpfe, `ecke-pille` 3 px rechts an der Statuspille, `ecke-rund` nur für die Schalterspur.
 - Tiefe kommt aus den Flächen-Ebenen und der Linie. `schatten-schwebend` nur für Menüs und Dialoge, die über dem Inhalt liegen. Karten haben keinen Schatten.
 - Fokus: 2 px durchgehender Ring in `fokus` (Stahl), 2 px Abstand, auf allen Flächen ≥ 3 : 1.
 

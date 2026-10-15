@@ -205,7 +205,7 @@ Ein Schalter stellt eine Einstellung sofort an oder aus, und das Wort daneben sa
 </button>
 ```
 
-- Spur 36 × 20 px, rund (`ecke-pille`). Aus: Fläche `feld`, Rand `rand-bedien`, Knopf `gedaempft`. An: Fläche `bernstein`, Knopf `on-bernstein` rechts.
+- Spur 36 × 20 px, rund (`ecke-rund`). Aus: Fläche `feld`, Rand `rand-bedien`, Knopf `gedaempft`. An: Fläche `bernstein`, Knopf `on-bernstein` rechts.
 - **Farbe entscheidet nie allein:** Lage des Knopfs und das Wort `an`/`aus` tragen den Zustand.
 - Wirkt sofort. Muss erst gespeichert werden, ist es kein Schalter, sondern ein Kontrollkästchen.
 - Bewegung 150 ms, bei reduzierter Bewegung keine. Fokus: Ring in `fokus`.
@@ -226,21 +226,34 @@ Menüs, Dialoge und Aufklapper liegen über dem Inhalt und sind das Einzige mit 
 
 ## Statuspille
 
-Eine runde Pille mit Wort zeigt einen Zustand, und das Wort trägt die Bedeutung, nicht die Farbe.
+Eine flache Pille mit Kantenleiste und Wort zeigt einen Zustand, und das Wort trägt die Bedeutung, nicht die Farbe.
 
 **Was du lieferst:** ein Wort (gesichert, läuft, eng, gesättigt, geplant …), dazu den Ton über die Klasse.
 
 ```html
 <span class="wb-status wb-status--gut">gesichert</span>
+<span class="wb-status wb-status--gut wb-status--konsole">gesichert</span>
 ```
 
 - `--gut` Salbei · `--achtung` Gold · `--kritisch` Rosé · `--laeuft` Bernstein · ohne Zusatz Stahl.
-- **Form:** runde Enden (`ecke-pille`), flach, kein Rahmen, kein Schein. Innenabstand `abstand-1` oben und unten, `abstand-3` links und rechts, 20 px hoch.
+- **Form:** links eine **Kantenleiste 3 px im vollen Ton** (`salbei`, `gold` …), wie beim Hinweisband; rechts Ecken `ecke-pille` 3 px; flach, kein Schein. Innenabstand `abstand-1` oben und unten, links 9 px (mit Leiste 12), rechts `abstand-3`, 20 px hoch.
 - **Fläche** `pille-*`: 30 % Ton auf `grund`, als fester Hexwert. **Wort** in `status-*`, Atkinson Hyperlegible Next 12 px, Gewicht 700, **immer Versalien**, Sperrung 0,1em (Textstil `pille`).
-- **Kontrast**, berechnet nach WCAG: dunkel 4,6 bis 5,5 : 1, hell 4,5 bis 4,6 : 1. Damit das hell reicht, sind die hellen `status-*` am 14.10.2026 nachgedunkelt worden. Die Pille liegt als feste Fläche auf jedem Grund gleich.
-- **Druck:** Papier ist hell. `bundle.css` druckt deshalb immer die hellen Werte und setzt `print-color-adjust: exact`, sonst lassen Browser die Fläche weg. Auf Schwarz-Weiß-Druckern werden alle fünf Töne zum selben Grau (L* 83 bis 84); dann trägt nur das Wort.
+- **Kontrast**, berechnet nach WCAG: dunkel 4,6 bis 5,5 : 1, hell 4,5 bis 4,6 : 1. Die Form hat daran nichts geändert.
+- **Druck:** Papier ist hell. `bundle.css` druckt deshalb immer die hellen Werte, auch für die Kantenleiste, und setzt `print-color-adjust: exact`. Auf Schwarz-Weiß-Druckern werden alle fünf Töne zum selben Grau; dann tragen Wort und Leiste.
 - **Immer mit Wort.** Salbei und Rosé sind bei Deuteranopie nur ΔE 3,0 voneinander entfernt, Bernstein und Salbei bei Protanopie 2,8.
-- Ausgewählt am 14.10.2026 aus drei Runden mit 38 Varianten (Variante „4.4 Kräftig“, Stärke 30 %, flach). Vorgängerin: eckige Pille in JetBrains Mono auf `marker-*` (25 %).
+
+## Konsole (N1): Terminal und Statusdisplays
+
+Wo Mono gesetzt ist, also im Terminal, auf dem Statusdisplay und in der Agent' Konsole, gilt die Form vom Systemstart: `[ GESICHERT ]`.
+
+- Klammern in `gedaempft`, Wort in `status-*`, JetBrains Mono 12 px, Gewicht 600, Versalien, Sperrung 0,04em, **keine Fläche**.
+- Im HTML `wb-status--konsole` zusätzlich zur Tonklasse. Im Terminal `wb.sh status <ton> <wort>` bzw. `wb.ps1 status <ton> <wort>`.
+- Nicht in Fließtext auf Seiten in Atkinson: dort die Pille mit Kantenleiste.
+
+## Herkunft
+
+- 14.10.2026: rund, flach, 30 % (Variante „4.4 Kräftig“ aus 38 Varianten in drei Runden). Vorgängerin: eckige Pille in JetBrains Mono auf `marker-*` (25 %).
+- 16.10.2026: Die runde Pille wurde abgelöst. Aus 20 Alternativen (10 professionell, 10 nerdig) gewählt: **P3 Kantenleiste** allgemein, **N1 systemd** für Terminal und Statusdisplays.
 - Im Einsatz auf dem Statusdisplay (WLAN-Kanäle: frei, eng, gesättigt), in Host-Karten und als Tags im Obsidian-Theme.
 
 ---

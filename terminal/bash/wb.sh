@@ -8,6 +8,7 @@
 #
 #   wb.sh mark [--dezent] <ton> <text>   Textmarker mitten im Satz
 #   wb.sh band <ton> <text>              Hinweisband ueber die volle Breite
+#   wb.sh status <ton> <wort>            Statuspille in Konsolenform: [ WORT ]
 #   wb.sh swatch                         Paletten-Uebersicht zum Gegenchecken
 #
 # Toene: amber sage gold rose steel
@@ -36,8 +37,11 @@ A_AMBER=cc9166; A_SAGE=93a373; A_GOLD=c7a854; A_ROSE=c07f73; A_STEEL=7d97ab
 # --- Marker kraeftig 25 % ----------------------------------------------
 M_AMBER=47372c; M_SAGE=383c2f; M_GOLD=453d27; M_ROSE=44322f; M_STEEL=33383d
 
-# --- Marker dezent 20 % -------------------------------------------------
+# --- Marker dezent 20 % (seit 14.10.2026, vorher 14 %) -----------------
 S_AMBER=3e3128; S_SAGE=32352a; S_GOLD=3d3624; S_ROSE=3b2d2a; S_STEEL=2e3235
+
+# --- Statuswort (status-*, Design System) -------------------------------
+ST_AMBER=e0a87f; ST_SAGE=adbb8e; ST_GOLD=ddc274; ST_ROSE=d69a8d; ST_STEEL=9ab2c4
 
 # --- Band 33 % (leuchtender, bestaetigt 03.08.2026) ---------------------
 BAND_AMBER=554132; BAND_SAGE=424736; BAND_GOLD=53482c; BAND_ROSE=513b36; BAND_STEEL=3b4349
@@ -71,6 +75,14 @@ mark(){
     else                  printf '%s%s%s %s %s' "$(hexbg "$bg")" "$(hexfg "$fg")" "$B" "$text" "$R"; fi
 }
 
+# Statuspille Konsole: [ WORT ] wie beim Systemstart.
+# Klammern gedaempft, Wort fett im status-Ton, Versalien, keine Flaeche, kein Zeilenumbruch.
+status(){
+    local ton=${1:?Ton fehlt} wort=${2:?Wort fehlt} fg
+    fg=$(resolve ST "$ton")
+    printf '%s[ %s%s%s%s%s ]%s' "$(hexfg "$DIM")" "$R" "$(hexfg "$fg")" "$B" "${wort^^}" "$R$(hexfg "$DIM")" "$R"
+}
+
 band(){
     local ton=${1:?Ton fehlt} text=${2:?Text fehlt} akzent bg
     akzent=$(resolve A "$ton"); bg=$(resolve BAND "$ton")
@@ -100,6 +112,9 @@ swatch(){
     printf '    %s        %s\n' "$(mark rose 'Rose')"       "$(mark --dezent rose 'Rose')"
     printf '    %s       %s\n'  "$(mark steel 'Stahl')"     "$(mark --dezent steel 'Stahl')"
 
+    printf '\n  %sSTATUS — Konsolenform%s\n    ' "$(hexfg "$MUTED")" "$R"
+    status sage gesichert; printf ' '; status amber 'läuft'; printf ' '; status gold eng; printf ' '; status rose 'gesättigt'; printf ' '; status steel geplant; printf '\n'
+
     printf '\n  %sHINWEISBAENDER — 33 %%%s\n\n' "$(hexfg "$MUTED")" "$R"
     band sage  'Salbei — gut, erledigt, gesichert'
     band steel 'Stahl — neutral, Daten, Verweise'
@@ -112,6 +127,7 @@ swatch(){
 case "${1:-}" in
     mark)   shift; mark "$@"; printf '\n' ;;
     band)   shift; band "$@" ;;
+    status) shift; status "$@"; printf '\n' ;;
     swatch) swatch ;;
-    *)      sed -n '3,14p' "$0" | sed 's/^# \?//' ;;
+    *)      sed -n '3,15p' "$0" | sed 's/^# \?//' ;;
 esac

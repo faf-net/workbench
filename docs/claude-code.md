@@ -42,6 +42,7 @@ Erlaubte Werte in einem Theme: `#rrggbb`, `rgb(r,g,b)`, `ansi256(n)` oder `ansi:
 - Der Farbblock kommt aus `wb.sh` (Bash) bzw. `wb.ps1` (PowerShell).
 - **Kernaussage zuerst**, Nebenbefunde weglassen. Ein Farbblock, der in Prosa untergeht, ist wertlos.
 - In der Chat-Antwort selbst gibt es keine frei wählbare Farbe. Struktur entsteht dort über Codeblöcke mit Box-Zeichen `╭─│└├╰`, ausgerichtete Spalten, Markdown-Tabellen, Statussymbole `● ✗ ▸ ⚠ ✔ ⏸ ◐` und Balken aus `█`. `Code-Spans` erscheinen im Akzentton, **Fettes** heller. Beides bestimmt das Theme.
+- Zustände im Terminal als Statuspille in Konsolenform: `wb.sh status sage gesichert` ergibt `[ GESICHERT ]`. In der Chat-Antwort selbst ohne Farbe genauso geschrieben: `[ GESICHERT ]`, `[ LÄUFT ]`.
 - Immer sagen, was **gemessen** und was **geschätzt** ist.
 - Will die eingeklappte Werkzeugausgabe sehen: **Strg+O** anbieten, nicht voraussetzen.
 - Für eine echte Grafik (längere Analyse, mehrere Dimensionen, Zahlen im Vergleich, etwas zum Behalten) ein HTML-Artefakt in Workbench bauen. Nicht für Zwischenstände.

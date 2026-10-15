@@ -38,15 +38,15 @@ Dazu kommt: **Farbe entscheidet nie allein.** Jede Statusanzeige trägt ein Wort
 | Petrol | `#7fa79f` | `#4e716a` | Nebenton, dritte Datenreihe |
 | Malve | `#b1899b` | `#8c5c72` | Nebenton, Code |
 
-Alle 68 Tokens, darunter Textmarker (25 %), dezente Marker (14 %), Hinweisbänder (33 %), Pillenflächen (30 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
+Alle 68 Tokens, darunter Textmarker (25 %), dezente Marker (20 %), Hinweisbänder (33 %), Pillenflächen (30 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
 
 ## Schrift, Raster, Formen
 
 - **Atkinson Hyperlegible Next** für Überschriften und Text, gebaut für Lesbarkeit (I, l und 1 sind klar getrennt).
 - **JetBrains Mono** für Code, Zahlen und Beschriftungen.
 - **4er-Raster:** 4 · 8 · 12 · 16 · 24 · 32 · 48 px.
-- **Ecken:** 6 px für Karten, 3 px für Marker und Knöpfe, rund für Statuspillen.
-- **Statuspille:** rund, flach, 30 % Fläche, das Wort in Versalien. Gedruckt wird immer mit den hellen Werten und print-color-adjust: exact.
+- **Ecken:** 6 px für Karten, 3 px für Marker, Knöpfe und die rechte Seite der Statuspille. Rund ist nur die Schalterspur.
+- **Statuspille:** flach, 30 % Fläche, links eine Kantenleiste 3 px im vollen Ton, links gerade, rechts Ecken 3 px, das Wort in Versalien. Im Terminal und auf Statusdisplays in Konsolenform `[ GESICHERT ]`: Klammern gedämpft, Wort fett im Statuston, keine Fläche. Gedruckt wird immer mit den hellen Werten und print-color-adjust: exact.
 - **Tiefe** über Flächen-Ebenen statt Schatten. Ein Schatten nur für schwebende Elemente.
 - **Diagramme:** eine Reihe in Stahl mit dem wichtigen Wert in Bernstein. Mehrere Reihen in Bernstein · Stahl · Petrol · Gold, höchstens vier, direkt beschriftet.
 
@@ -159,7 +159,8 @@ Copy-Item terminal\powershell\wb.ps1 ~\bin\
 ```powershell
 wb band amber "Sicherung fertig, 52 von 52 Prüfungen bestanden"   # Hinweisband über die volle Breite
 wb mark sage "erledigt"                                            # Textmarker (25 %)
-wb mark -Dezent steel "Hinweis"                                    # dezenter Marker (14 %)
+wb mark -Dezent steel "Hinweis"                                    # dezenter Marker (20 %)
+wb status sage gesichert                                           # Status in Konsolenform: [ GESICHERT ]
 wb swatch                                                          # Palette anzeigen
 ```
 

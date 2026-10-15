@@ -81,7 +81,8 @@
   --abstand-12: 48px;
   --ecke-marker: 3px;
   --ecke-karte: 6px;
-  --ecke-pille: 999px;
+  --ecke-pille: 3px;
+  --ecke-rund: 999px;
   --font-sans: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "JetBrainsMono Nerd Font", ui-monospace, Consolas, monospace;
 }

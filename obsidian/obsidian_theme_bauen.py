@@ -125,7 +125,7 @@ head_new = """@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyp
 
 /*
  * Workbench — Obsidian-Theme in den Workbench-Farben
- * Version 1.1.0 · 14.10.2026 (Statuspille für Tags und Eigenschaften)
+ * Version 1.2.0 · 16.10.2026 (Statuspille mit Kantenleiste statt rund)
  *
  * Abgeleitet aus Soft Paper 1.2.1 von Nick Milo (https://github.com/nickmilo/soft-paper),
  * das wiederum auf AnuPpuccin von Anubis beruht (https://github.com/AnubisNekhet/AnuPpuccin).
@@ -253,8 +253,9 @@ body { --card-background-color: var(--wb-rahmen); }
 body { --text-selection: rgba(var(--ctp-sapphire), 0.3); }
 
 /*===============================================================
- * WORKBENCH — STATUSPILLE (Design System)
- * Rund, flach, 30 % Fläche (pille-*), Wort in status-*, Atkinson 700 in Versalien.
+ * WORKBENCH — STATUSPILLE (Design System, Fläche 14.10.2026, Form P3 16.10.2026)
+ * Kantenleiste 3 px im vollen Ton links, rechts Ecken 3 px, flach, 30 % Fläche (pille-*),
+ * Wort in status-*, Atkinson 700 in Versalien.
  * Tags tragen Bernstein, übrige Listenwerte in den Eigenschaften Stahl.
  *===============================================================*/
 body.theme-dark {
@@ -275,7 +276,7 @@ body.theme-dark, body.theme-light {
   --tag-color-hover: var(--wb-status-bernstein);
   --tag-decoration: none;
   --tag-decoration-hover: none;
-  --tag-radius: 999px;
+  --tag-radius: 3px;
   --tag-padding-x: 0.75em;
   --tag-padding-y: 0.25em;
   --tag-size: 0.72em;
@@ -289,7 +290,7 @@ body.theme-dark, body.theme-light {
   --pill-color-hover: var(--wb-status-stahl);
   --pill-color-remove: var(--wb-status-stahl);
   --pill-color-remove-hover: var(--wb-fett);
-  --pill-radius: 999px;
+  --pill-radius: 3px;
   --pill-weight: 700;
 }
 body a.tag, body .cm-hashtag, body .multi-select-pill-content {
@@ -297,20 +298,28 @@ body a.tag, body .cm-hashtag, body .multi-select-pill-content {
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
+/* Kantenleiste: links gerade, 3 px im vollen Ton, rechts 3 px Ecke */
+body a.tag { border-left: 3px solid var(--wb-bernstein); border-radius: 0 3px 3px 0; padding-left: calc(0.75em - 3px); }
+body .cm-hashtag.cm-hashtag-begin { border-left: 3px solid var(--wb-bernstein); border-radius: 0; padding-left: calc(0.75em - 3px); }
+body .cm-hashtag.cm-hashtag-end { border-radius: 0 3px 3px 0; }
+body .cm-hashtag.cm-hashtag-begin.cm-hashtag-end { border-radius: 0 3px 3px 0; }
+body .multi-select-pill { border-left: 3px solid var(--wb-stahl); border-radius: 0 3px 3px 0; }
 /* Tags in den Eigenschaften sehen aus wie Tags im Text */
 body .metadata-property[data-property-key="tags"] .multi-select-pill {
   background-color: var(--wb-pille-bernstein);
   color: var(--wb-status-bernstein);
+  border-left-color: var(--wb-bernstein);
 }
 @media print {
   body a.tag, body .cm-hashtag { background-color: #d5bfad !important; color: #734528 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body a.tag, body .cm-hashtag.cm-hashtag-begin { border-left-color: #975b34 !important; }
 }
 """
 css = css.rstrip() + TAIL
 
 os.makedirs(DST_DIR, exist_ok=True)
 io.open(os.path.join(DST_DIR, "theme.css"), "w", encoding="utf-8", newline="\n").write(css)
-json.dump({"name": "Workbench", "version": "1.1.0", "minAppVersion": "1.0.0",
+json.dump({"name": "Workbench", "version": "1.2.0", "minAppVersion": "1.0.0",
            "author": "faf-net (auf Basis von Soft Paper von Nick Milo)"},
           io.open(os.path.join(DST_DIR, "manifest.json"), "w", encoding="utf-8", newline="\n"),
           ensure_ascii=False, indent=2)

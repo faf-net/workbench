@@ -24,19 +24,24 @@ html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 1
 .wb-mark--dezent.wb-mark--rose { background: var(--dezent-rose); }
 .wb-mark--dezent.wb-mark--stahl { background: var(--dezent-stahl); }
 
-/* Statuspille: rund, flach, 30 % Fläche, Wort in Versalien */
-.wb-status { display: inline-flex; align-items: center; gap: var(--abstand-1); padding: var(--abstand-1) var(--abstand-3); border-radius: var(--ecke-pille); font: 700 12px/12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; color: var(--status-stahl); background: var(--pille-stahl); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-.wb-status--gut { color: var(--status-salbei); background: var(--pille-salbei); }
-.wb-status--achtung { color: var(--status-gold); background: var(--pille-gold); }
-.wb-status--kritisch { color: var(--status-rose); background: var(--pille-rose); }
-.wb-status--laeuft { color: var(--status-bernstein); background: var(--pille-bernstein); }
+/* Statuspille: Kantenleiste 3 px im vollen Ton, rechts 3 px Ecke, flach, 30 % Fläche, Wort in Versalien (Fläche 14.10.2026, Form P3 16.10.2026) */
+.wb-status { display: inline-flex; align-items: center; gap: var(--abstand-1); padding: var(--abstand-1) var(--abstand-3) var(--abstand-1) 9px; border-left: 3px solid var(--stahl); border-radius: 0 var(--ecke-pille) var(--ecke-pille) 0; font: 700 12px/12px var(--font-sans); letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; color: var(--status-stahl); background: var(--pille-stahl); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.wb-status--gut { color: var(--status-salbei); background: var(--pille-salbei); border-left-color: var(--salbei); }
+.wb-status--achtung { color: var(--status-gold); background: var(--pille-gold); border-left-color: var(--gold); }
+.wb-status--kritisch { color: var(--status-rose); background: var(--pille-rose); border-left-color: var(--rose); }
+.wb-status--laeuft { color: var(--status-bernstein); background: var(--pille-bernstein); border-left-color: var(--bernstein); }
+/* Statuspille Konsole (N1): [ WORT ] wie beim Systemstart, für Terminal und Statusdisplays. Keine Fläche, Klammern gedaempft. */
+.wb-status--konsole { padding: 0; border: 0; border-radius: 0; background: none; font: 600 12px/16px var(--font-mono); letter-spacing: .04em; white-space: pre; }
+.wb-status--konsole::before { content: "[ "; color: var(--gedaempft); }
+.wb-status--konsole::after { content: " ]"; color: var(--gedaempft); }
 /* Druck: Papier ist hell, deshalb immer die hellen Werte, und die Fläche wird mitgedruckt. */
 @media print {
-  .wb-status { color: #385262; background: #bcc2c2; }
-  .wb-status--gut { color: #485530; background: #c3c5b1; }
-  .wb-status--achtung { color: #5f4e18; background: #cdc3a7; }
-  .wb-status--kritisch { color: #7a3c32; background: #d6bbb1; }
-  .wb-status--laeuft { color: #734528; background: #d5bfad; }
+  .wb-status { color: #385262; background: #bcc2c2; border-left-color: #456579; }
+  .wb-status--gut { color: #485530; background: #c3c5b1; border-left-color: #5e7040; }
+  .wb-status--achtung { color: #5f4e18; background: #cdc3a7; border-left-color: #7e6820; }
+  .wb-status--kritisch { color: #7a3c32; background: #d6bbb1; border-left-color: #9c4d40; }
+  .wb-status--laeuft { color: #734528; background: #d5bfad; border-left-color: #975b34; }
+  .wb-status--konsole { background: none; }
 }
 
 /* Host-Karte */
@@ -111,7 +116,7 @@ html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 1
 
 /* Schalter: Lage des Knopfs und das Wort an/aus tragen den Zustand, nicht die Farbe */
 .wb-schalter { display: inline-flex; align-items: center; gap: var(--abstand-2); padding: 0; border: 0; background: none; color: var(--schrift); font: 400 15px/24px var(--font-sans); cursor: pointer; }
-.wb-schalter__spur { position: relative; flex: none; width: 36px; height: 20px; border: 1px solid var(--rand-bedien); border-radius: var(--ecke-pille); background: var(--feld); }
+.wb-schalter__spur { position: relative; flex: none; width: 36px; height: 20px; border: 1px solid var(--rand-bedien); border-radius: var(--ecke-rund); background: var(--feld); }
 .wb-schalter__spur::after { content: ""; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; border-radius: 50%; background: var(--gedaempft); transition: transform .15s ease; }
 .wb-schalter[aria-checked="true"] .wb-schalter__spur { background: var(--bernstein); border-color: var(--bernstein); }
 .wb-schalter[aria-checked="true"] .wb-schalter__spur::after { transform: translateX(16px); background: var(--on-bernstein); }
