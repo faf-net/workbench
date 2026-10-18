@@ -45,10 +45,14 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 
 ## Schrift
 
-- **Atkinson Hyperlegible Next** (`sans`) für Überschriften und Text. Gewählt für Lesbarkeit: I, l und 1 sind klar getrennt.
-- **JetBrains Mono** (`mono`) für Code, Befehle, Pfade, Zahlen in Tabellen und alle Beschriftungen. Ziffern mit `tabular-nums`.
-- Stile: `anzeige` 32 · `titel` 24 · `abschnitt` 19 · `text` 15 · `klein` 13 · `pille` 12 in Versalien; Mono: `mono-text` 13 · `beschriftung` 11 in Versalien mit 0,18em Sperrung · `zahl-gross` 34.
-- Beide Schriften kommen von Google Fonts. Im Terminal gilt JetBrains Mono bzw. die Nerd-Font-Variante.
+Drei Schriften, jede mit einer Aufgabe:
+
+- **Instrument Serif** (`serif`) für Seiten- und Abschnittstitel und kursiv für Anmerkungen. Sie gibt dem Titel einen eigenen Ton gegenüber dem Text. Nur Schnitt 400; Hervorhebung kommt aus Größe und `fett`, nicht aus Gewicht. Nie für Fließtext, Bedienelemente oder Zahlen. Seit 18.10.2026.
+- **Atkinson Hyperlegible Next** (`sans`) für Unterüberschriften, Text, Namen und Bedienelemente. Gewählt für Lesbarkeit: I, l und 1 sind klar getrennt.
+- **JetBrains Mono** (`mono`) für Code, Befehle, Pfade, Zahlen in Tabellen und alle Beschriftungen. Ziffern mit `tabular-nums`. Nur für Technisches, nie als Schrift für alles.
+- Stile: Serif `anzeige` 40 · `titel` 28 · `anmerkung` 16 kursiv; Sans `abschnitt` 19 · `text` 15 · `klein` 13 · `pille` 12 in Versalien · `knopf` 15; Mono `mono-text` 13 · `beschriftung` 11 in Versalien mit 0,18em Sperrung · `zahl-gross` 34.
+- Alle drei kommen von Google Fonts. Im Terminal gilt JetBrains Mono bzw. die Nerd-Font-Variante; dort gibt es keine Serife.
+- Die Wortmarke im Lockup bleibt Atkinson ExtraBold.
 
 ## Raster, Ecken, Tiefe
 
@@ -69,6 +73,7 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - Eine Reihe: `diagramm-reihe` (Stahl), der hervorgehobene Wert `diagramm-hervorhebung` (Bernstein).
 - Mehrere Reihen: `diagramm-1` bis `diagramm-4` (Bernstein · Stahl · Petrol · Gold), höchstens vier, Beschriftung direkt an der Reihe statt Legende.
 - Dauerbildschirme zeigen Fluss und Verlauf, nicht Zustand. Zustand meldet schon das Handy.
+- Schaubilder (Architektur, Abläufe, Zeitleisten) zeichnet das Claude-Code-Plugin diagram-design mit dem Profil `workbench`: Titel in `serif`, Namen in `sans`, Beschriftungen in `mono`, Bernstein nur für den Fokus. In Artefakten folgen die Diagrammfarben über CSS-Variablen dem Thema.
 
 ## Bedienelemente
 

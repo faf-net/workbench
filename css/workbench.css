@@ -1,5 +1,5 @@
 /* Workbench 1.0 — generiert aus tokens/tokens.json. Nicht von Hand ändern. */
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600;800&display=swap");
 
 :root {
   color-scheme: dark;
@@ -83,6 +83,7 @@
   --ecke-karte: 6px;
   --ecke-pille: 3px;
   --ecke-rund: 999px;
+  --font-serif: "Instrument Serif", Georgia, "Times New Roman", serif;
   --font-sans: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "JetBrainsMono Nerd Font", ui-monospace, Consolas, monospace;
 }

@@ -27,6 +27,8 @@ Zwei Regeln für Datenreihen, beide geprüft auf Rot-Grün-Schwäche (ΔE 2000, 
 - Salbei, Gold und Rosé bleiben Statusfarben. Gold als vierte Reihe nur, wenn im selben Bild kein Status vorkommt.
 - Achsen und Raster in `schwach`, Beschriftung in `gedaempft` oder in der Reihenfarbe, Werte in `fett`.
 - Bei Dauerbildschirmen zählt Verlauf, nicht Zustand: Kurven statt Ampeln.
+- Titel über dem Diagramm in `serif` (`titel`), Anmerkungen im Bild in `anmerkung` kursiv, Achsen- und Reihenbeschriftungen in `mono`.
+- Für Schaubilder ohne Datenreihen (Architektur, Abläufe) gibt es das Plugin diagram-design mit dem Profil `workbench`, Profil und Installer in `diagram-design/`.
 
 ---
 

@@ -44,8 +44,9 @@ All 68 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes 
 
 ## Type, grid, shapes
 
-- **Atkinson Hyperlegible Next** for headings and body text, designed for legibility (I, l and 1 are clearly distinct).
-- **JetBrains Mono** for code, numbers and labels.
+- **Instrument Serif** for page and section titles, and in italics for annotations. Weight 400 only; emphasis comes from size and the bold text colour.
+- **Atkinson Hyperlegible Next** for subheadings, body text, names and controls, designed for legibility (I, l and 1 are clearly distinct).
+- **JetBrains Mono** for code, numbers and labels, and only for technical content.
 - **4 px grid:** 4 · 8 · 12 · 16 · 24 · 32 · 48 px.
 - **Corners:** 6 px for cards, 3 px for markers, buttons and the right side of status pills. Only the switch track is fully round.
 - **Status pill:** flat, 30 % fill, a 3 px edge bar in the full tone on the left, square left corners, 3 px on the right, the word in capitals. In terminals and on status displays it takes the console form `[ BACKED UP ]`: brackets muted, word bold in the status tone, no fill. Printing always uses the light values with print-color-adjust: exact.
@@ -62,6 +63,7 @@ components/workbench-components.css   components: banner, text marker, status pi
                                       button, input, switch, tabs, toast, empty state
 components/README.md                  guide for each component (German)
 examples/bausteine.html               every component on one page, dark and light
+diagram-design/                       profile and installers for the diagram-design plugin
 docs/                                 basics, office, Obsidian, terminal, Claude Code (German)
 assets/                               "wb" monogram, lockup with wordmark, favicon,
                                       app icons 180/192/512 (rules in assets/README.md)
@@ -211,6 +213,23 @@ Allowed values in a theme are `#rrggbb`, `rgb(r,g,b)`, `ansi256(n)` and `ansi:<n
 
 More detail (German): [`docs/claude-code.md`](docs/claude-code.md).
 
+## Diagrams
+
+I draw architecture sketches, flows, sequences, timelines and about 40 other diagram types with the Claude Code plugin [diagram-design](https://github.com/cathrynlavery/diagram-design) by Cathryn Lavery (MIT). It writes one self-contained HTML file with inline SVG and takes its colours and fonts from a swappable profile. [`diagram-design/workbench.md`](diagram-design/workbench.md) is that profile for Workbench, and I use it on every machine that runs Claude Code.
+
+**Install:**
+
+```
+bash diagram-design/install.sh                          # Linux, macOS, Git Bash
+pwsh -File diagram-design/Install-DiagramDesign.ps1     # Windows
+```
+
+The scripts install the plugin, keep the shipped style guide as `~/.diagram-design/profiles/default.md` and make `workbench` the active profile. Then run `/reload-plugins` in Claude Code. Run the script again after every plugin update, because an update replaces the bundled style guide.
+
+The profile maps the plugin's roles onto Workbench: paper is `grund`, ink is `schrift`, the one accent is amber, links are steel, and extra series are steel · petrol · gold. Titles use Instrument Serif, names Atkinson Hyperlegible Next, labels JetBrains Mono. The plugin's checklist bans JetBrains Mono because generic diagrams use it for everything. Here it only sets technical labels, which is where the plugin wants a monospace face anyway. Dark is the main theme, print uses the light values.
+
+More detail (German): [`diagram-design/README.md`](diagram-design/README.md).
+
 ## Obsidian theme
 
 The theme "Workbench" is derived from [Soft Paper](https://github.com/nickmilo/soft-paper) 1.2.1 by Nick Milo. Layout, spacing and the Style Settings toggles come from Soft Paper. Colours and fonts come from Workbench.
@@ -263,4 +282,5 @@ More detail (German): [`docs/obsidian.md`](docs/obsidian.md).
 
 - **Everything except `obsidian/`:** [MIT](LICENSE).
 - **`obsidian/`:** [GPL-3.0](obsidian/LICENSE). The theme is derived from [Soft Paper](https://github.com/nickmilo/soft-paper) by Nick Milo, which builds on [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) by Anubis. Both are licensed under GPL-3.0.
-- **Fonts** are not included. Atkinson Hyperlegible Next and JetBrains Mono are licensed under the SIL Open Font License 1.1.
+- **Fonts** are not included. Instrument Serif, Atkinson Hyperlegible Next and JetBrains Mono are licensed under the SIL Open Font License 1.1.
+- **`diagram-design/`** contains only my profile and installers. The plugin itself is [diagram-design](https://github.com/cathrynlavery/diagram-design) by Cathryn Lavery (MIT) and is not included.
