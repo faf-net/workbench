@@ -235,14 +235,34 @@ Eine flache Pille mit Kantenleiste und Wort zeigt einen Zustand, und das Wort tr
 ```html
 <span class="wb-status wb-status--gut">gesichert</span>
 <span class="wb-status wb-status--gut wb-status--konsole">gesichert</span>
+<span class="wb-status wb-status--kritisch wb-status--schein">Fehler</span>
 ```
 
 - `--gut` Salbei · `--achtung` Gold · `--kritisch` Rosé · `--laeuft` Bernstein · ohne Zusatz Stahl.
-- **Form:** links eine **Kantenleiste 3 px im vollen Ton** (`salbei`, `gold` …), wie beim Hinweisband; rechts Ecken `ecke-pille` 3 px; flach, kein Schein. Innenabstand `abstand-1` oben und unten, links 9 px (mit Leiste 12), rechts `abstand-3`, 20 px hoch.
+- **Form:** links eine **Kantenleiste 3 px im vollen Ton** (`salbei`, `gold` …), wie beim Hinweisband; rechts Ecken `ecke-pille` 3 px; flach, kein Schein (Ausnahme siehe **Schein**). Innenabstand `abstand-1` oben und unten, links 9 px (mit Leiste 12), rechts `abstand-3`, 20 px hoch.
 - **Fläche** `pille-*`: 30 % Ton auf `grund`, als fester Hexwert. **Wort** in `status-*`, Atkinson Hyperlegible Next 12 px, Gewicht 700, **immer Versalien**, Sperrung 0,1em (Textstil `pille`).
 - **Kontrast**, berechnet nach WCAG: dunkel 4,6 bis 5,5 : 1, hell 4,5 bis 4,6 : 1. Die Form hat daran nichts geändert.
 - **Druck:** Papier ist hell. `bundle.css` druckt deshalb immer die hellen Werte, auch für die Kantenleiste, und setzt `print-color-adjust: exact`. Auf Schwarz-Weiß-Druckern werden alle fünf Töne zum selben Grau; dann tragen Wort und Leiste.
 - **Immer mit Wort.** Salbei und Rosé sind bei Deuteranopie nur ΔE 3,0 voneinander entfernt, Bernstein und Salbei bei Protanopie 2,8.
+
+## Schein: kritisch und läuft
+
+Eine Pille darf leuchten, wenn sie das Wichtigste auf dem Bildschirm ist. Abgeleitet vom SOS-Knopf: Ring, Innenschein, Außenschein, leuchtendes Wort.
+
+```html
+<span class="wb-status wb-status--kritisch wb-status--schein">Fehler</span>
+<span class="wb-status wb-status--laeuft wb-status--schein">läuft</span>
+<span class="wb-status wb-status--kritisch wb-status--konsole wb-status--schein">Fehler</span>
+```
+
+- **Nur `--kritisch` und `--laeuft`.** Bei anderen Tönen wirkt die Klasse nicht.
+- **Form:** Ring 1 px im vollen Ton (`rose` bzw. `bernstein`) statt Kantenleiste, Ecken 3 px rundum, 22 px hoch. Fläche als radialer Verlauf von `grund` in der Mitte zu `pille-*` am Rand.
+- **Schein** `schein-*` (30 % Ton): Innenschein 6 px, Außenschein 10 px, dazu ein Hof 4 px mit 7 % Ton. Das Wort in `schein-wort-*` mit Wortschein 6 px.
+- **Kontrast**, berechnet: Rosé 5,9 : 1 auf `pille-rose`, 9,4 : 1 auf `grund`; Bernstein 6,2 : 1 bzw. 10,6 : 1.
+- **Läuft pulsiert** in 2,4 s. Bei `prefers-reduced-motion` steht der Schein still.
+- **Konsole mit Schein:** keine Fläche, keine Bewegung, nur das Wort leuchtet.
+- **Nur dunkel und nur Bildschirm.** Im hellen Thema und im Druck fällt die Pille automatisch auf die flache Form P3 zurück.
+- **Sparsam:** Der Schein zählt als Hervorhebungsstufe. Höchstens eine leuchtende Pille je Bildschirm.
 
 ## Konsole (N1): Terminal und Statusdisplays
 
@@ -256,6 +276,7 @@ Wo Mono gesetzt ist, also im Terminal, auf dem Statusdisplay und in der Agent' K
 
 - 14.10.2026: rund, flach, 30 % (Variante „4.4 Kräftig“ aus 38 Varianten in drei Runden). Vorgängerin: eckige Pille in JetBrains Mono auf `marker-*` (25 %).
 - 16.10.2026: Die runde Pille wurde abgelöst. Aus 20 Alternativen (10 professionell, 10 nerdig) gewählt: **P3 Kantenleiste** allgemein, **N1 systemd** für Terminal und Statusdisplays.
+- 25.10.2026: Variante **Schein** für kritisch und läuft, abgeleitet vom Leuchten eines SOS-Knopfs. Nur dunkel, nur Bildschirm, P3 bleibt die Grundform.
 - Im Einsatz auf dem Statusdisplay (WLAN-Kanäle: frei, eng, gesättigt), in Host-Karten und als Tags im Obsidian-Theme.
 
 ---

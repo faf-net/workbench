@@ -16,7 +16,7 @@ Version **1.0** · 09.10.2026
 
 1. **Der Grund ist warm.** `#1a1918`, nie ein neutrales `#1e1e1e`.
 2. **Ein lauter Akzent.** Nur Bernstein `#cc9166` darf laut sein. Alles andere tritt zurück.
-3. **Eine Familie.** Gedämpft und erdig. Kein Neon, kein reines Rot, Grün oder Blau.
+3. **Eine Familie.** Gedämpft und erdig. Kein Neon, kein reines Rot, Grün oder Blau. Einzige Ausnahme: der gedämpfte Schein der Statuspille.
 
 Dazu kommt: **Farbe entscheidet nie allein.** Jede Statusanzeige trägt ein Wort, denn Salbei und Rosé sind bei Rot-Grün-Schwäche kaum zu unterscheiden.
 
@@ -38,7 +38,7 @@ Dazu kommt: **Farbe entscheidet nie allein.** Jede Statusanzeige trägt ein Wort
 | Petrol | `#7fa79f` | `#4e716a` | Nebenton, dritte Datenreihe |
 | Malve | `#b1899b` | `#8c5c72` | Nebenton, Code |
 
-Alle 68 Tokens, darunter Textmarker (25 %), dezente Marker (20 %), Hinweisbänder (33 %), Pillenflächen (30 %) und Statustöne, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
+Alle 72 Tokens, darunter Textmarker (25 %), dezente Marker (20 %), Hinweisbänder (33 %), Pillenflächen (30 %), Statustöne und der Schein der Statuspille, stehen in [`tokens/tokens.json`](tokens/tokens.json). Jeder Token trägt einen Verwendungshinweis mit Kontrastwerten.
 
 ## Schrift, Raster, Formen
 
@@ -48,6 +48,7 @@ Alle 68 Tokens, darunter Textmarker (25 %), dezente Marker (20 %), Hinweisbände
 - **4er-Raster:** 4 · 8 · 12 · 16 · 24 · 32 · 48 px.
 - **Ecken:** 6 px für Karten, 3 px für Marker, Knöpfe und die rechte Seite der Statuspille. Rund ist nur die Schalterspur.
 - **Statuspille:** flach, 30 % Fläche, links eine Kantenleiste 3 px im vollen Ton, links gerade, rechts Ecken 3 px, das Wort in Versalien. Im Terminal und auf Statusdisplays in Konsolenform `[ GESICHERT ]`: Klammern gedämpft, Wort fett im Statuston, keine Fläche. Gedruckt wird immer mit den hellen Werten und print-color-adjust: exact.
+- **Statuspille mit Schein:** `wb-status--schein` zu `--kritisch` oder `--laeuft`. Ring 1 px, Innen- und Außenschein, leuchtendes Wort, läuft pulsiert. Nur dunkel und am Bildschirm, höchstens eine je Bildschirm; hell und im Druck die flache Form.
 - **Tiefe** über Flächen-Ebenen statt Schatten. Ein Schatten nur für schwebende Elemente.
 - **Diagramme:** eine Reihe in Stahl mit dem wichtigen Wert in Bernstein. Mehrere Reihen in Bernstein · Stahl · Petrol · Gold, höchstens vier, direkt beschriftet.
 

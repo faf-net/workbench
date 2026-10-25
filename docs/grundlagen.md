@@ -11,7 +11,7 @@ Workbench ist ein persönlicher Hausstil für alles, was am Bildschirm erscheint
 
 1. **Der Grund ist warm.** `grund` ist `#1a1918`, nie ein neutrales `#1e1e1e`. Ein reines Grau wirkt unbedacht.
 2. **Ein lauter Akzent.** Nur `bernstein` darf laut sein: Cursor, Überschrift, das eine Wichtige. Alles andere tritt zurück.
-3. **Eine Familie.** Alle Buntwerte sind gedämpft und erdig, wie eine alte Instrumententafel. Kein Neon, kein reines Rot, Grün oder Blau.
+3. **Eine Familie.** Alle Buntwerte sind gedämpft und erdig, wie eine alte Instrumententafel. Kein Neon, kein reines Rot, Grün oder Blau. Die einzige Ausnahme ist der gedämpfte Schein der Statuspille für kritisch und läuft, nur dunkel.
 
 ## Sprache und Inhalt
 
@@ -41,6 +41,7 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - **Textmarker dezent** `dezent-*` (20 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
 - **Hinweisband** `band-*` (33 %): die eine Kernaussage, über die volle Breite.
 - **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, flach, links eine Kantenleiste 3 px im vollen Ton, rechts Ecken 3 px, Wort in Versalien. Im Terminal und auf Statusdisplays in der Konsolenform `[ GESICHERT ]`. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
+- **Statuspille mit Schein** `schein-*` (30 %): nur kritisch und läuft, nur dunkel und am Bildschirm. Ring 1 px, Innen- und Außenschein, leuchtendes Wort in `schein-wort-*`, läuft pulsiert. Sie **zählt als Hervorhebungsstufe**, höchstens eine je Bildschirm. Hell und im Druck die flache Form. Seit 25.10.2026, abgeleitet vom SOS-Knopf.
 - Die Werte sind feste Hexwerte, kaufmännisch gerundet, und auf allen Trägern identisch.
 
 ## Schrift

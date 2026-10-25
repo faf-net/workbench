@@ -55,6 +55,10 @@
   --status-rose: #d69a8d;
   --status-bernstein: #e0a87f;
   --status-stahl: #9ab2c4;
+  --schein-rose: #c07f734d;
+  --schein-bernstein: #cc91664d;
+  --schein-wort-rose: #e8b1a5;
+  --schein-wort-bernstein: #f0bf9a;
   --schimmer-schrift: #c0b8ab;
   --schimmer-bernstein: #e0a87f;
   --schimmer-gold: #dcc37a;
@@ -143,6 +147,10 @@
     --status-rose: #7a3c32;
     --status-bernstein: #734528;
     --status-stahl: #385262;
+    --schein-rose: #9c4d4000;
+    --schein-bernstein: #975b3400;
+    --schein-wort-rose: #7a3c32;
+    --schein-wort-bernstein: #734528;
     --schimmer-schrift: #a49c90;
     --schimmer-bernstein: #cc9166;
     --schimmer-gold: #c7a854;
@@ -217,6 +225,10 @@
   --status-rose: #7a3c32;
   --status-bernstein: #734528;
   --status-stahl: #385262;
+  --schein-rose: #9c4d4000;
+  --schein-bernstein: #975b3400;
+  --schein-wort-rose: #7a3c32;
+  --schein-wort-bernstein: #734528;
   --schimmer-schrift: #a49c90;
   --schimmer-bernstein: #cc9166;
   --schimmer-gold: #c7a854;

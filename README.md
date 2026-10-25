@@ -16,7 +16,7 @@ Version **1.0** · 9 October 2026
 
 1. **The ground is warm.** `#1a1918`, never a neutral `#1e1e1e`.
 2. **One loud accent.** Only amber (*Bernstein*) `#cc9166` may be loud. Everything else steps back.
-3. **One family.** Muted and earthy. No neon, no pure red, green or blue.
+3. **One family.** Muted and earthy. No neon, no pure red, green or blue. The one exception is the muted glow of the status pill.
 
 And one more: **colour never decides on its own.** Every status indicator carries a word, because sage and rosé are hard to tell apart for people with red-green colour blindness.
 
@@ -40,7 +40,7 @@ Token names are German. They are listed here with their English meaning.
 | `petrol` | `#7fa79f` | `#4e716a` | secondary tone, third data series |
 | `malve` (mauve) | `#b1899b` | `#8c5c72` | secondary tone, code |
 
-All 68 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes text markers (25 %), subtle markers (20 %), banners (33 %), status pill fills (30 %) and status tones. Every token has a usage note with contrast ratios. The notes and the documentation in `docs/` are written in German.
+All 72 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes text markers (25 %), subtle markers (20 %), banners (33 %), status pill fills (30 %), status tones and the status pill glow. Every token has a usage note with contrast ratios. The notes and the documentation in `docs/` are written in German.
 
 ## Type, grid, shapes
 
@@ -50,6 +50,7 @@ All 68 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes 
 - **4 px grid:** 4 · 8 · 12 · 16 · 24 · 32 · 48 px.
 - **Corners:** 6 px for cards, 3 px for markers, buttons and the right side of status pills. Only the switch track is fully round.
 - **Status pill:** flat, 30 % fill, a 3 px edge bar in the full tone on the left, square left corners, 3 px on the right, the word in capitals. In terminals and on status displays it takes the console form `[ BACKED UP ]`: brackets muted, word bold in the status tone, no fill. Printing always uses the light values with print-color-adjust: exact.
+- **Glowing status pill:** add `wb-status--schein` to `--kritisch` or `--laeuft`. A 1 px ring, inner and outer glow and a glowing word; the running state pulses. Dark theme and screen only, at most one per screen; the light theme and print fall back to the flat pill.
 - **Depth** comes from surface layers instead of shadows. Only floating elements get a shadow.
 - **Charts:** a single series in steel, with the value that matters in amber. Multiple series in amber · steel · petrol · gold, at most four, labelled directly.
 
