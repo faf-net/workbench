@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Textgrafik: Erdrand</title>
+<style>
+  /* Beispiel für textgrafik.js: eine Szene im Stil von Third Bloc, Schrift scharf darüber */
+  html, body { height: 100%; }
+  body { margin: 0; background: #0d0c0b; color: #a49c90; font: 13px "JetBrains Mono", Consolas, monospace; display: flex; align-items: center; justify-content: center; }
+  .rahmen { position: relative; border: 1px solid #3a3634; padding: 8px; }
+  .kopf { position: absolute; left: 14px; top: -9px; background: #0d0c0b; padding: 0 6px; letter-spacing: .08em; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div class="rahmen"><span class="kopf">BAHNVERFOLGUNG · KAPSEL 1 · T+10:11</span><canvas id="cv"></canvas></div>
+<script src="../textgrafik.js"></script>
+<script src="erdrand.js"></script>
+<script>Erdrand(document.getElementById('cv'), Math.min(innerWidth - 48, (innerHeight - 48) * 300 / 160));</script>
+</body>
+</html>

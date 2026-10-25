@@ -65,6 +65,7 @@ components/workbench-components.css   components: banner, text marker, status pi
 components/README.md                  guide for each component (German)
 examples/bausteine.html               every component on one page, dark and light
 diagram-design/                       profile and installers for the diagram-design plugin
+textgrafik/                           text graphics after Third Bloc: module, skill, example
 docs/                                 basics, office, Obsidian, terminal, Claude Code (German)
 assets/                               "wb" monogram, lockup with wordmark, favicon,
                                       app icons 180/192/512 (rules in assets/README.md)
@@ -230,6 +231,23 @@ The scripts install the plugin, keep the shipped style guide as `~/.diagram-desi
 The profile maps the plugin's roles onto Workbench: paper is `grund`, ink is `schrift`, the one accent is amber, links are steel, and extra series are steel · petrol · gold. Titles use Instrument Serif, names Atkinson Hyperlegible Next, labels JetBrains Mono. The plugin's checklist bans JetBrains Mono because generic diagrams use it for everything. Here it only sets technical labels, which is where the plugin wants a monospace face anyway. Dark is the main theme, print uses the light values.
 
 More detail (German): [`diagram-design/README.md`](diagram-design/README.md).
+
+## Text graphics
+
+Pictures made of characters instead of pixels, after the game *Third Bloc*: every point is a small glyph with a visible joint, each material gets a few tones with an ordered 4×4 dither between them, dark areas turn into grain, and light blooms across the glyphs. [`textgrafik/textgrafik.js`](textgrafik/textgrafik.js) is a dependency-free browser module that turns a painted canvas, a logo or a photo into such a picture. [`textgrafik/SKILL.md`](textgrafik/SKILL.md) holds the rules and doubles as a Claude Code skill.
+
+![Example scene: the Earth's limb at sunrise](textgrafik/beispiel/erdrand.png)
+
+**Install:**
+
+```
+bash textgrafik/install.sh                         # Linux, macOS, Git Bash
+pwsh -File textgrafik/Install-Textgrafik.ps1       # Windows
+```
+
+The Workbench palette is the default; a palette taken from the picture or tone ramps per material work as well. What testing taught me: on a light ground the joint has to be darker than the glyph, the automatic palette suits logos but loses small coloured objects in dark scenes, and grain belongs to scenes on black. `textgrafik/pruefen.sh` takes a headless-Chrome screenshot so every picture gets looked at before anyone else sees it.
+
+More detail (German): [`textgrafik/README.md`](textgrafik/README.md).
 
 ## Obsidian theme
 

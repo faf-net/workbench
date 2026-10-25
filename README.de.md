@@ -63,6 +63,7 @@ components/workbench-components.css   Bausteine: Hinweisband, Textmarker, Status
 components/README.md                  Anleitung je Baustein
 examples/bausteine.html               alle Bausteine zum Ansehen, dunkel und hell
 diagram-design/                       Profil und Installer für das Plugin diagram-design
+textgrafik/                           Textgrafik nach Third Bloc: Baustein, Skill, Beispiel
 docs/                                 Grundlagen, Office, Obsidian, Terminal, Claude Code
 assets/                               Monogramm „wb“, Lockup mit Wortmarke, Favicon,
                                       App-Symbole 180/192/512 (Regeln in assets/README.md)
@@ -228,6 +229,23 @@ Die Skripte installieren das Plugin, sichern die mitgelieferte Stilvorlage als `
 Das Profil ordnet die Rollen des Plugins Workbench zu: Papier ist `grund`, Tinte `schrift`, der eine Akzent Bernstein, Verweise Stahl, weitere Reihen Stahl · Petrol · Gold. Titel stehen in Instrument Serif, Namen in Atkinson Hyperlegible Next, Beschriftungen in JetBrains Mono. Die Checkliste des Plugins verbietet JetBrains Mono, weil generische Diagramme sie für alles verwenden. Hier setzt sie nur technische Beschriftungen, also genau dort, wo das Plugin ohnehin Monospace will. Dunkel ist das Hauptthema, gedruckt wird hell.
 
 Mehr dazu: [`diagram-design/README.md`](diagram-design/README.md).
+
+## Textgrafik
+
+Bilder aus Zeichen statt aus Pixeln, nach dem Vorbild des Spiels *Third Bloc*: Jeder Bildpunkt ist ein kleines Zeichen mit sichtbarer Fuge, jedes Material hat wenige Töne mit einem geordneten 4×4-Raster dazwischen, dunkle Flächen werden Körnung, und Licht leuchtet über die Zeichen hinaus. [`textgrafik/textgrafik.js`](textgrafik/textgrafik.js) ist ein Baustein für den Browser ohne Abhängigkeiten. Er macht aus einer gemalten Leinwand, einem Logo oder einem Foto ein solches Bild. [`textgrafik/SKILL.md`](textgrafik/SKILL.md) enthält die Regeln und ist zugleich ein Skill für Claude Code.
+
+![Beispielszene: Erdrand bei Sonnenaufgang](textgrafik/beispiel/erdrand.png)
+
+**Einrichten:**
+
+```
+bash textgrafik/install.sh                         # Linux, macOS, Git Bash
+pwsh -File textgrafik/Install-Textgrafik.ps1       # Windows
+```
+
+Standard ist die Workbench-Palette; eine Palette aus dem Bild oder Tonleitern je Material gehen ebenso. Beim Testen gelernt: Auf hellem Grund muss die Fuge dunkler sein als das Zeichen, die automatische Palette passt zu Logos, verliert aber kleine farbige Dinge in dunklen Szenen, und Körnung gehört zu Szenen auf Schwarz. `textgrafik/pruefen.sh` fotografiert eine Seite im kopflosen Chrome ab, damit jedes Bild angesehen wird, bevor es jemand anderes sieht.
+
+Mehr dazu: [`textgrafik/README.md`](textgrafik/README.md).
 
 ## Obsidian-Theme
 
