@@ -234,6 +234,8 @@ Mehr dazu: [`diagram-design/README.md`](diagram-design/README.md).
 
 Bilder aus Zeichen statt aus Pixeln, nach dem Vorbild des Spiels *Third Bloc*: Jeder Bildpunkt ist ein kleines Zeichen mit sichtbarer Fuge, jedes Material hat wenige Töne mit einem geordneten 4×4-Raster dazwischen, dunkle Flächen werden Körnung, und Licht leuchtet über die Zeichen hinaus. [`textgrafik/textgrafik.js`](textgrafik/textgrafik.js) ist ein Baustein für den Browser ohne Abhängigkeiten. Er macht aus einer gemalten Leinwand, einem Logo oder einem Foto ein solches Bild. [`textgrafik/SKILL.md`](textgrafik/SKILL.md) enthält die Regeln und ist zugleich ein Skill für Claude Code.
 
+Die Töne stehen als Tonleitern `textgrafik-*` in [`tokens/tokens.json`](tokens/tokens.json) (Grund 11 Stufen, Bernstein 6, Salbei, Stahl, Gold und Rosé je 5, dunkel nach hell). Ist `css/workbench.css` geladen, holt `Textgrafik.paletteAusCss()` sie von dort. Ein Beispiel steht als Baustein „Textgrafik“ in [`examples/bausteine.html`](examples/bausteine.html).
+
 ![Beispielszene: Erdrand bei Sonnenaufgang](textgrafik/beispiel/erdrand.png)
 
 **Einrichten:**

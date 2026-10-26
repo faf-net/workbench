@@ -20,6 +20,18 @@ if (Test-Path "$HOME\bin") {
     if ($env:PATH -notlike "*$HOME\bin*") { $env:PATH = "$HOME\bin;$env:PATH" }
 }
 
+# --- Startordner -----------------------------------------------------
+# Eine interaktive Shell beginnt in ~\Workbench.
+# Das Terminal setzt den Ordner selbst (startingDirectory); dies faengt den
+# Rest ab — Startmenue, Win+X, conhost. Nur wenn die Shell im Benutzer- oder
+# System32-Ordner aufgeht und kein Skript laeuft; Claude Code, VS Code und
+# "Im Terminal oeffnen" behalten ihren Ordner.
+if (-not $env:CLAUDECODE -and (Test-Path "$HOME\Workbench") -and
+    -not ([Environment]::GetCommandLineArgs() -match '^-(c|command|f|file|e|ec|encodedcommand)$') -and
+    ($PWD.Path -eq $HOME -or $PWD.Path -eq [Environment]::SystemDirectory)) {
+    Set-Location "$HOME\Workbench"
+}
+
 # --- Die Palette -----------------------------------------------------
 $e = [char]27
 function script:Fg([string]$h) { "$e[38;2;$([Convert]::ToInt32($h.Substring(0,2),16));$([Convert]::ToInt32($h.Substring(2,2),16));$([Convert]::ToInt32($h.Substring(4,2),16))m" }
@@ -97,6 +109,15 @@ if ($PSStyle) {
 # bekommen mindestens einen Farbblock. Traeger ist dieses Skript.
 if (Test-Path "$HOME\bin\wb.ps1") {
     function global:wb { & "$HOME\bin\wb.ps1" @args }
+}
+
+# --- md: Markdown lesen mit Glow ------------------------------------
+# md zeigt Markdown an und legt keinen Ordner mehr an
+# (eingebaut ist md = mkdir; Ordner jetzt mit mkdir). Nicht in Claude Code,
+# dort koennte ein Befehl md noch als mkdir erwarten.
+if (-not $env:CLAUDECODE -and (Get-Command glow -CommandType Application -ErrorAction Ignore)) {
+    Remove-Alias md -Force -ErrorAction Ignore
+    function global:md { glow @args }
 }
 
 # --- Prompt ----------------------------------------------------------

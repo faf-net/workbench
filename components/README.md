@@ -245,7 +245,7 @@ Eine flache Pille mit Kantenleiste und Wort zeigt einen Zustand, und das Wort tr
 - **Druck:** Papier ist hell. `bundle.css` druckt deshalb immer die hellen Werte, auch für die Kantenleiste, und setzt `print-color-adjust: exact`. Auf Schwarz-Weiß-Druckern werden alle fünf Töne zum selben Grau; dann tragen Wort und Leiste.
 - **Immer mit Wort.** Salbei und Rosé sind bei Deuteranopie nur ΔE 3,0 voneinander entfernt, Bernstein und Salbei bei Protanopie 2,8.
 
-## Schein: kritisch und läuft
+## Schein (25.10.2026): kritisch und läuft
 
 Eine Pille darf leuchten, wenn sie das Wichtigste auf dem Bildschirm ist. Abgeleitet vom SOS-Knopf: Ring, Innenschein, Außenschein, leuchtendes Wort.
 
@@ -260,8 +260,8 @@ Eine Pille darf leuchten, wenn sie das Wichtigste auf dem Bildschirm ist. Abgele
 - **Schein** `schein-*` (30 % Ton): Innenschein 6 px, Außenschein 10 px, dazu ein Hof 4 px mit 7 % Ton. Das Wort in `schein-wort-*` mit Wortschein 6 px.
 - **Kontrast**, berechnet: Rosé 5,9 : 1 auf `pille-rose`, 9,4 : 1 auf `grund`; Bernstein 6,2 : 1 bzw. 10,6 : 1.
 - **Läuft pulsiert** in 2,4 s. Bei `prefers-reduced-motion` steht der Schein still.
-- **Konsole mit Schein:** keine Fläche, keine Bewegung, nur das Wort leuchtet.
-- **Nur dunkel und nur Bildschirm.** Im hellen Thema und im Druck fällt die Pille automatisch auf die flache Form P3 zurück.
+- **Konsole mit Schein:** keine Fläche, keine Bewegung, nur das Wort leuchtet. Gut für das Statusdisplay und der Agent.
+- **Nur dunkel und nur Bildschirm.** Im hellen Thema und im Druck fällt die Pille automatisch auf die flache Form P3 zurück; im Terminal (ANSI) gibt es keinen Schein.
 - **Sparsam:** Der Schein zählt als Hervorhebungsstufe. Höchstens eine leuchtende Pille je Bildschirm.
 
 ## Konsole (N1): Terminal und Statusdisplays
@@ -278,6 +278,30 @@ Wo Mono gesetzt ist, also im Terminal, auf dem Statusdisplay und in der Agent' K
 - 16.10.2026: Die runde Pille wurde abgelöst. Aus 20 Alternativen (10 professionell, 10 nerdig) gewählt: **P3 Kantenleiste** allgemein, **N1 systemd** für Terminal und Statusdisplays.
 - 25.10.2026: Variante **Schein** für kritisch und läuft, abgeleitet vom Leuchten eines SOS-Knopfs. Nur dunkel, nur Bildschirm, P3 bleibt die Grundform.
 - Im Einsatz auf dem Statusdisplay (WLAN-Kanäle: frei, eng, gesättigt), in Host-Karten und als Tags im Obsidian-Theme.
+
+---
+
+## Textgrafik
+
+Bilder aus Zeichen statt aus Pixeln, nach dem Vorbild des Spiels *Third Bloc*: jeder Bildpunkt ein kleines Zeichen mit Fuge, wenige Töne je Material, dazwischen ein geordnetes Raster.
+
+**Die fünf Regeln**
+
+1. Erst mit Licht malen, dann rastern. Die Szene ist eine gewöhnliche Leinwand mit Verläufen und Schatten.
+2. Wenige Töne je Material, zwischen den zwei nächsten ein 4×4-Bayer-Raster.
+3. Jeder Bildpunkt ein Zeichen mit Fuge, nicht nahtlos.
+4. Dunkles wird Körnung auf dunklem Grund, nicht mattes Grau.
+5. Was leuchtet, kommt in eine eigene Lichtebene, weichgezeichnet und additiv darüber.
+
+**Tonleitern:** `textgrafik-grund-1…11`, `textgrafik-bernstein-1…6` und je fünf Stufen `salbei`, `stahl`, `gold`, `rose`, dunkel → hell. Sie leiten sich aus den Kernfarben ab (`grund`, `panel`, `linie`, `fett`, `bernstein` …) und gelten nur für Textgrafik, nie für Flächen oder Schrift. Die Regeln des Hauses gelten auch im Bild: Bernstein ist der eine laute Ton, alles andere tritt zurück.
+
+- Baustein `textgrafik.js` (ohne Abhängigkeiten). `Textgrafik.paletteAusCss()` liest die Leitern aus diesem System, `PALETTEN.workbench` ist dieselbe Liste als Ersatz für Seiten ohne `tokens.css`.
+- Die Leinwand nie hochskalieren, die Zeichengröße ganzzahlig wählen (`Textgrafik.groesse`). Schrift gehört scharf neben oder über das Bild, nicht hinein.
+- Das Bild bleibt in beiden Themen ein dunkles Feld, wie ein Foto. Auf hellem Grund muss die Fuge dunkler sein als das Zeichen.
+- Für Logos mit großen Farbflächen taugt die automatische Palette (`Textgrafik.ausBild`). Szenen mit kleinen farbigen Dingen brauchen die Leitern.
+- Prüfen statt raten: `pruefen.sh seite.html bild.png` fotografiert die Seite im kopflosen Chrome ab.
+- Ein Bild mit Wort daneben, nie Zustand allein über Farbe. Für Status gibt es die Statuspille.
+- Skill und Beispiele: Ordner `textgrafik/` in diesem Repository.
 
 ---
 

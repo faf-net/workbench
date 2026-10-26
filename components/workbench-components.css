@@ -58,9 +58,6 @@ html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 1
   .wb-status--laeuft { color: #734528; background: #d5bfad; border-left-color: #975b34; }
   .wb-status--konsole { background: none; }
   .wb-status--schein:not(.wb-status--konsole) { padding: var(--abstand-1) var(--abstand-3) var(--abstand-1) 9px; border: 0; border-left: 3px solid; border-radius: 0 var(--ecke-pille) var(--ecke-pille) 0; box-shadow: none; text-shadow: none; animation: none; }
-  .wb-status--schein.wb-status--kritisch { color: #7a3c32; background: #d6bbb1; border-left-color: #9c4d40; }
-  .wb-status--schein.wb-status--laeuft { color: #734528; background: #d5bfad; border-left-color: #975b34; }
-  .wb-status--schein { text-shadow: none; animation: none; }
 }
 
 /* Host-Karte */
@@ -160,5 +157,12 @@ html, body { margin: 0; background: var(--grund); color: var(--schrift); font: 1
 .wb-leer__marke { font: 600 11px/14px var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gedaempft); }
 .wb-leer__titel { margin: 0; color: var(--fett); font: 700 19px/26px var(--font-sans); }
 .wb-leer__text { margin: 0 0 var(--abstand-2); max-width: 48ch; color: var(--gedaempft); font: 400 15px/24px var(--font-sans); }
+
+/* Textgrafik (26.10.2026): Bild aus Zeichen, Tonleitern textgrafik-*. Die Leinwand nie hochskalieren, Schrift scharf daneben oder darüber. */
+.wb-textgrafik { display: grid; gap: var(--abstand-2); max-width: 100%; }
+.wb-textgrafik canvas { display: block; max-width: 100%; height: auto; background: var(--textgrafik-grund-1); border-radius: var(--ecke-marker); }
+.wb-textgrafik__titel { font: 600 11px/14px var(--font-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--gedaempft); }
+.wb-textgrafik__leitern { display: grid; grid-template-columns: max-content 1fr; gap: 0 var(--abstand-3); align-items: center; }
+.wb-textgrafik__leitern span { font: 11px/16px var(--font-mono); color: var(--gedaempft); }
 
 :focus-visible { outline: 2px solid var(--fokus); outline-offset: 2px; }

@@ -41,7 +41,7 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - **Textmarker dezent** `dezent-*` (20 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
 - **Hinweisband** `band-*` (33 %): die eine Kernaussage, über die volle Breite.
 - **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, flach, links eine Kantenleiste 3 px im vollen Ton, rechts Ecken 3 px, Wort in Versalien. Im Terminal und auf Statusdisplays in der Konsolenform `[ GESICHERT ]`. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
-- **Statuspille mit Schein** `schein-*` (30 %): nur kritisch und läuft, nur dunkel und am Bildschirm. Ring 1 px, Innen- und Außenschein, leuchtendes Wort in `schein-wort-*`, läuft pulsiert. Sie **zählt als Hervorhebungsstufe**, höchstens eine je Bildschirm. Hell und im Druck die flache Form. Seit 25.10.2026, abgeleitet vom SOS-Knopf.
+- **Statuspille mit Schein** `schein-*` (30 %): nur kritisch und läuft, nur dunkel und am Bildschirm. Ring 1 px, Innen- und Außenschein, leuchtendes Wort in `schein-wort-*`, läuft pulsiert. Sie **zählt als Hervorhebungsstufe**, höchstens eine je Bildschirm. Hell und im Druck die flache Form. Seit 25.10.2026 (Entscheidung Frank), abgeleitet vom SOS-Knopf.
 - Die Werte sind feste Hexwerte, kaufmännisch gerundet, und auf allen Trägern identisch.
 
 ## Schrift
@@ -59,7 +59,7 @@ Drei Schriften, jede mit einer Aufgabe:
 
 - 4er-Raster: `abstand-1` 4 · `abstand-2` 8 · `abstand-3` 12 · `abstand-4` 16 · `abstand-6` 24 · `abstand-8` 32 · `abstand-12` 48.
 - Ecken: `ecke-karte` 6 px für Karten und Tafeln, `ecke-marker` 3 px für Marker und Knöpfe, `ecke-pille` 3 px rechts an der Statuspille, `ecke-rund` nur für die Schalterspur.
-- Tiefe kommt aus den Flächen-Ebenen und der Linie. `schatten-schwebend` nur für Menüs und Dialoge, die über dem Inhalt liegen. Karten haben keinen Schatten.
+- Tiefe kommt aus den Flächen-Ebenen und der Linie. `schatten-schwebend` nur für Menüs und Dialoge, die über dem Inhalt liegen. Karten haben keinen Schatten. Einziger Schein ist der der Statuspille (`schein-*`).
 - Fokus: 2 px durchgehender Ring in `fokus` (Stahl), 2 px Abstand, auf allen Flächen ≥ 3 : 1.
 
 ## Druck
@@ -75,6 +75,12 @@ Drei Schriften, jede mit einer Aufgabe:
 - Mehrere Reihen: `diagramm-1` bis `diagramm-4` (Bernstein · Stahl · Petrol · Gold), höchstens vier, Beschriftung direkt an der Reihe statt Legende.
 - Dauerbildschirme zeigen Fluss und Verlauf, nicht Zustand. Zustand meldet schon das Handy.
 - Schaubilder (Architektur, Abläufe, Zeitleisten) zeichnet das Claude-Code-Plugin diagram-design mit dem Profil `workbench`: Titel in `serif`, Namen in `sans`, Beschriftungen in `mono`, Bernstein nur für den Fokus. In Artefakten folgen die Diagrammfarben über CSS-Variablen dem Thema.
+
+## Textgrafik
+
+- Bilder aus Zeichen statt aus Pixeln, nach dem Vorbild des Spiels *Third Bloc*: mit Licht malen, wenige Töne je Material mit 4×4-Bayer-Raster, jeder Bildpunkt ein Zeichen mit Fuge, Dunkles als Körnung, Leuchtendes in einer eigenen Lichtebene.
+- Die Töne kommen aus den Tonleitern `textgrafik-*` (Grund 11 Stufen, Bernstein 6, Salbei, Stahl, Gold, Rosé je 5), abgeleitet aus den Kernfarben. Nur für Bilder, nie für Flächen oder Schrift. Bernstein bleibt auch im Bild der eine laute Ton.
+- Das Bild bleibt in beiden Themen ein dunkles Feld. Schrift steht scharf daneben oder darüber. Einzelheiten im Baustein **Textgrafik**, Werkzeug ist der Skill `textgrafik` (`textgrafik.js`).
 
 ## Bedienelemente
 

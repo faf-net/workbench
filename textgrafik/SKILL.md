@@ -51,7 +51,10 @@ nach dem Grund gewählt), `koernung`, `dunkel` (80), `licht` (`{stark, weit}` od
 ## Paletten
 
 - **Workbench** (`Textgrafik.PALETTEN.workbench`) ist Standard: Tonleitern für Grund, Bernstein, Salbei,
-  Stahl, Gold, Rosé. Werte stammen aus dem Design System „Workbench“; bei Abweichung gilt das Design System.
+  Stahl, Gold, Rosé. Im Design System „Workbench“ stehen sie als Tokens `textgrafik-<leiter>-<stufe>`
+  (dunkel → hell, Baustein „Textgrafik“); bei Abweichung gilt das Design System. Hat die Seite dessen
+  `tokens.css` geladen, liefert `Textgrafik.paletteAusCss()` die Leitern von dort, sonst `null`:
+  `palette: Textgrafik.paletteAusCss() || Textgrafik.PALETTEN.workbench`.
 - **Aus Bild oder Szene** (`paletteAusLeinwand`, k-Means) für Logos und Bilder mit wenigen großen Farbflächen.
 - **Tonleitern je Material** für gemalte Szenen: 5–6 Stufen je Material plus Himmel und Boden.
 - **Originalfarben**, wenn das Vorbild sie verlangt (etwa ein nachgebautes Programm aus den Achtzigern).

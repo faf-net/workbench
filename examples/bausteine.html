@@ -193,6 +193,76 @@ document.querySelectorAll('.wb-schalter').forEach(function (s) {
   <p style="margin:0;font-size:13px;line-height:20px;color:var(--gedaempft)">Sicherung der Nacht <span class="wb-status wb-status--gut">gesichert</span>, Kanal 6 <span class="wb-status wb-status--kritisch">gesättigt</span></p>
 </div>
 </section>
+<section class="beispiel"><h2>Textgrafik</h2>
+<div class="wb-stapel">
+  <div class="wb-textgrafik">
+    <span class="wb-textgrafik__titel" id="tg-titel">Morgen · 160 × 60 Zeichen</span>
+    <canvas id="tg-szene" role="img" aria-label="Textgrafik: Sonne über zwei Hügelketten, ein Haus mit erleuchtetem Fenster, Sterne"></canvas>
+  </div>
+  <div class="wb-textgrafik__leitern" id="tg-leitern"></div>
+</div>
+<script src="../textgrafik/textgrafik.js"></script>
+<script>
+(function () {
+  var T = window.Textgrafik, pal = T.paletteAusCss(), quelle = pal ? 'tokens.css' : 'PALETTEN.workbench';
+  pal = pal || T.PALETTEN.workbench;
+  var breite = Math.max(240, document.querySelector('.wb-stapel').clientWidth - 32);
+
+  // Szene: erst mit Licht malen (Regel 1), dann rastern
+  var tg = T.erzeuge({ spalten: 160, zeilen: 60, palette: pal, grund: pal[2], licht: { stark: .6, weit: .5 } });
+  var S = tg.szene.getContext('2d'), L = tg.licht.getContext('2d'), W = tg.szene.width, H = tg.szene.height;
+  tg.neu();
+  var g = S.createLinearGradient(0, 0, 0, 92);
+  g.addColorStop(0, '#1a1918'); g.addColorStop(.45, '#1a1918'); g.addColorStop(.8, '#1f2a33'); g.addColorStop(1, '#3a4c5a');
+  S.fillStyle = g; S.fillRect(0, 0, W, 92);
+  var SX = 222, SY = 80;
+  g = S.createRadialGradient(SX, SY, 0, SX, SY, 70);
+  g.addColorStop(0, 'rgba(204,145,102,.85)'); g.addColorStop(.3, 'rgba(154,107,69,.5)'); g.addColorStop(1, 'rgba(107,74,48,0)');
+  S.fillStyle = g; S.fillRect(SX - 70, SY - 70, 140, 140);
+  function zufall(i) { var x = Math.sin(i * 127.1) * 43758.5453; return x - Math.floor(x); }
+  for (var i = 0; i < 46; i++) { var x = zufall(i) * W, y = zufall(i + 99) * 48; if (Math.hypot(x - SX, y - SY) > 60) { S.fillStyle = zufall(i + 7) > .7 ? '#e9e3d8' : '#a49c90'; S.fillRect(x, y, 1.2, 1.2); } }
+  g = S.createRadialGradient(SX, SY, 0, SX, SY, 12);
+  g.addColorStop(0, '#f3d6bb'); g.addColorStop(.6, '#e3b48e'); g.addColorStop(1, '#cc9166');
+  S.fillStyle = g; S.beginPath(); S.arc(SX, SY, 12, 0, 7); S.fill();
+  function huegel(y0, a, f, ph, oben, unten) {
+    S.beginPath(); S.moveTo(0, H);
+    for (var x = 0; x <= W; x += 2) S.lineTo(x, y0 + a * Math.sin(x * f + ph) + a * .4 * Math.sin(x * f * 2.7 + ph * 2));
+    S.lineTo(W, H); S.closePath();
+    var gg = S.createLinearGradient(0, y0 - a, 0, H); gg.addColorStop(0, oben); gg.addColorStop(1, unten); S.fillStyle = gg; S.fill();
+  }
+  huegel(84, 6, .018, 1.2, '#3a4c5a', '#1f2a33');
+  huegel(98, 7, .012, 4.0, '#4a5638', '#151413');
+  S.fillStyle = '#2a3020'; S.fillRect(78, 84, 20, 12);
+  S.beginPath(); S.moveTo(75, 85); S.lineTo(88, 76); S.lineTo(101, 85); S.closePath(); S.fillStyle = '#3a1f1b'; S.fill();
+  S.fillStyle = '#e4cd85'; S.fillRect(84, 88, 4, 3);
+  // Lichtebene (Regel 5): Sonne und Fenster leuchten über die Zeichen hinaus
+  g = L.createRadialGradient(SX, SY, 0, SX, SY, 46);
+  g.addColorStop(0, 'rgba(255,236,210,.95)'); g.addColorStop(.35, 'rgba(204,145,102,.45)'); g.addColorStop(1, 'rgba(204,145,102,0)');
+  L.fillStyle = g; L.fillRect(SX - 46, SY - 46, 92, 92);
+  g = L.createRadialGradient(86, 89, 0, 86, 89, 10);
+  g.addColorStop(0, 'rgba(228,205,133,.8)'); g.addColorStop(1, 'rgba(199,168,84,0)');
+  L.fillStyle = g; L.fillRect(76, 79, 20, 20);
+  var cv = document.getElementById('tg-szene'), s = T.groesse(tg, breite);
+  tg.zeichne(cv, s);
+  cv.style.width = (cv.width / (window.devicePixelRatio || 1)) + 'px';
+  document.getElementById('tg-titel').textContent = 'Morgen · 160 × 60 Zeichen · Töne aus ' + quelle;
+
+  // Die Tonleitern als Verlauf, gerastert (Regel 2): zwischen zwei Stufen nur das 4×4-Bayer-Raster
+  var box = document.getElementById('tg-leitern'), start = 0;
+  Object.keys(T.LEITERN).forEach(function (n) {
+    var k = T.LEITERN[n], leiter = pal.slice(start, start + k); start += k;
+    var t2 = T.erzeuge({ spalten: 120, zeilen: 3, palette: leiter, grund: null, licht: false, koernung: false });
+    var c = t2.szene.getContext('2d'), gr = c.createLinearGradient(0, 0, t2.szene.width, 0);
+    leiter.forEach(function (h, j) { gr.addColorStop(j / (k - 1), '#' + h); });
+    c.fillStyle = gr; c.fillRect(0, 0, t2.szene.width, t2.szene.height);
+    var lab = document.createElement('span'); lab.textContent = 'textgrafik-' + n + '-1…' + k;
+    var z = document.createElement('canvas'); t2.zeichne(z, Math.max(2, s - 1));
+    z.style.width = Math.min(z.width / (window.devicePixelRatio || 1), breite - 200) + 'px'; z.style.display = 'block';
+    box.appendChild(lab); box.appendChild(z);
+  });
+})();
+</script>
+</section>
 <section class="beispiel"><h2>Textmarker</h2>
 <div class="wb-stapel">
   <p style="margin:0">Ergebnis: <span class="wb-mark">52 von 52 wie Soll</span>, Sicherung <span class="wb-mark wb-mark--rose">überfällig</span>, Sicherung <span class="wb-mark wb-mark--salbei">gesichert</span>.</p>

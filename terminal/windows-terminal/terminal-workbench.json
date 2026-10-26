@@ -12,7 +12,8 @@
     "padding": "12,10,12,10",
     "historySize": 32767,
     "useAcrylic": false,
-    "opacity": 100
+    "opacity": 100,
+    "startingDirectory": "%USERPROFILE%\\Workbench"
   },
   "scheme": {
     "name": "Workbench",

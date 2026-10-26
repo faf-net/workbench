@@ -236,6 +236,8 @@ More detail (German): [`diagram-design/README.md`](diagram-design/README.md).
 
 Pictures made of characters instead of pixels, after the game *Third Bloc*: every point is a small glyph with a visible joint, each material gets a few tones with an ordered 4×4 dither between them, dark areas turn into grain, and light blooms across the glyphs. [`textgrafik/textgrafik.js`](textgrafik/textgrafik.js) is a dependency-free browser module that turns a painted canvas, a logo or a photo into such a picture. [`textgrafik/SKILL.md`](textgrafik/SKILL.md) holds the rules and doubles as a Claude Code skill.
 
+The tones live as ramps `textgrafik-*` in [`tokens/tokens.json`](tokens/tokens.json) (ground 11 steps, amber 6, sage, steel, gold and rose 5 each, dark to light). With `css/workbench.css` loaded, `Textgrafik.paletteAusCss()` reads them from there. There is a live example under "Textgrafik" in [`examples/bausteine.html`](examples/bausteine.html).
+
 ![Example scene: the Earth's limb at sunrise](textgrafik/beispiel/erdrand.png)
 
 **Install:**

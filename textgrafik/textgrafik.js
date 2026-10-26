@@ -33,6 +33,20 @@
     ]
   };
 
+  // Dieselben Tonleitern als Tokens im Design System (`textgrafik-<leiter>-<stufe>`, dunkel → hell). Steht auf der Seite
+  // das tokens.css von Workbench, liest paletteAusCss() sie von dort; sonst null, dann gilt PALETTEN.workbench.
+  var LEITERN = { grund: 11, bernstein: 6, salbei: 5, stahl: 5, gold: 5, rose: 5 };
+  function paletteAusCss(el) {
+    if (typeof getComputedStyle === 'undefined') return null;
+    var cs = getComputedStyle(el || document.documentElement), p = [];
+    for (var n in LEITERN) for (var i = 1; i <= LEITERN[n]; i++) {
+      var v = cs.getPropertyValue('--textgrafik-' + n + '-' + i).trim();
+      if (!/^#[0-9a-f]{6}$/i.test(v)) return null;
+      p.push(v.slice(1).toLowerCase());
+    }
+    return p;
+  }
+
   // k-Means über die deckenden Bildpunkte einer Leinwand (Verfahren für Logos): n Töne
   function paletteAusLeinwand(c, n) {
     var d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data, px = [];
@@ -217,5 +231,5 @@
   }
 
   root.Textgrafik = { erzeuge: erzeuge, ausBild: ausBild, glanz: glanz, groesse: groesse,
-                      paletteAusLeinwand: paletteAusLeinwand, PALETTEN: PALETTEN, BAYER: BAYER };
+                      paletteAusLeinwand: paletteAusLeinwand, paletteAusCss: paletteAusCss, PALETTEN: PALETTEN, LEITERN: LEITERN, BAYER: BAYER };
 })(typeof window !== 'undefined' ? window : globalThis);
