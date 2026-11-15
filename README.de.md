@@ -12,6 +12,17 @@ Version **1.0** · 09.10.2026
 
 ---
 
+## Für KI-Agenten
+
+Drei Dinge in diesem Repository sind dafür gemacht, dass ein Sprachmodell sie abholt: das **Design** als Skill, ein **Profil für Diagramme** und ein **Textgrafik-Skill**. [`AGENTS.md`](AGENTS.md) sagt, welche Dateien für welche Aufgabe zu lesen sind, [`llms.txt`](llms.txt) listet sie für Modelle, die nur aus dem Netz abrufen. Beide sind englisch.
+
+```
+bash install.sh                    # Linux, macOS, Git Bash: alle drei für Claude Code
+pwsh -File Install-Workbench.ps1   # Windows
+```
+
+Das Diagramm-Profil gehört zum Plugin [diagram-design](https://github.com/cathrynlavery/diagram-design) von Cathryn Lavery, das nicht Teil dieses Repositorys ist.
+
 ## Die drei Regeln
 
 1. **Der Grund ist warm.** `#1a1918`, nie ein neutrales `#1e1e1e`.
@@ -55,6 +66,9 @@ Alle 72 Tokens, darunter Textmarker (25 %), dezente Marker (20 %), Hinweisbände
 ## Inhalt
 
 ```
+AGENTS.md · llms.txt                  Einstieg für KI-Agenten: was für welche Aufgabe zu lesen ist
+install.sh · Install-Workbench.ps1    richtet Design-Skill, Textgrafik und Diagramm-Profil ein
+workbench-design/SKILL.md             das Design als Skill für Claude Code
 tokens/tokens.json                    alle Tokens, dunkel und hell (Quelle)
 css/workbench.css                     CSS-Variablen, generiert aus den Tokens
 components/workbench-components.css   Bausteine: Hinweisband, Textmarker, Statuspille, Knopf,

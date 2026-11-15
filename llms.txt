@@ -1,0 +1,36 @@
+# Workbench
+
+> A personal design system in warm, muted colours with one amber accent, named after the operating system of the Amiga 500. For the terminal, the web, office documents and Obsidian. It ships a design skill, a profile for the diagram-design plugin and a text-graphics skill for AI agents.
+
+Token and class names are German. Values always come from tokens/tokens.json, never from memory.
+
+## Start here
+
+- [AGENTS.md](https://raw.githubusercontent.com/faf-net/workbench/main/AGENTS.md): entry point for agents, which files to read for which task
+- [README.md](https://raw.githubusercontent.com/faf-net/workbench/main/README.md): overview for people, in English
+
+## Design
+
+- [workbench-design/SKILL.md](https://raw.githubusercontent.com/faf-net/workbench/main/workbench-design/SKILL.md): how to apply the design, rules, glossary, checklist
+- [tokens/tokens.json](https://raw.githubusercontent.com/faf-net/workbench/main/tokens/tokens.json): all tokens, dark and light (the source)
+- [css/workbench.css](https://raw.githubusercontent.com/faf-net/workbench/main/css/workbench.css): CSS custom properties generated from the tokens
+- [components/workbench-components.css](https://raw.githubusercontent.com/faf-net/workbench/main/components/workbench-components.css): component classes
+- [components/README.md](https://raw.githubusercontent.com/faf-net/workbench/main/components/README.md): guide for each component (German)
+- [docs/grundlagen.md](https://raw.githubusercontent.com/faf-net/workbench/main/docs/grundlagen.md): the full rules (German)
+
+## Diagrams
+
+- [diagram-design/README.md](https://raw.githubusercontent.com/faf-net/workbench/main/diagram-design/README.md): setup and lessons (German)
+- [diagram-design/workbench.md](https://raw.githubusercontent.com/faf-net/workbench/main/diagram-design/workbench.md): the profile for the third-party plugin diagram-design
+
+## Text graphics
+
+- [textgrafik/SKILL.md](https://raw.githubusercontent.com/faf-net/workbench/main/textgrafik/SKILL.md): rules and usage (German)
+- [textgrafik/textgrafik.js](https://raw.githubusercontent.com/faf-net/workbench/main/textgrafik/textgrafik.js): the module, no dependencies
+
+## Optional
+
+- [docs/terminal-und-powershell.md](https://raw.githubusercontent.com/faf-net/workbench/main/docs/terminal-und-powershell.md): terminal colours and the colour helper wb (German)
+- [docs/office.md](https://raw.githubusercontent.com/faf-net/workbench/main/docs/office.md): Word, Excel, PowerPoint (German)
+- [docs/obsidian.md](https://raw.githubusercontent.com/faf-net/workbench/main/docs/obsidian.md): Obsidian theme (German)
+- [docs/claude-code.md](https://raw.githubusercontent.com/faf-net/workbench/main/docs/claude-code.md): theme for Claude Code (German)

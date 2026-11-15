@@ -12,6 +12,17 @@ Version **1.0** · 9 October 2026
 
 ---
 
+## For AI agents
+
+Three things in this repository are made to be picked up by a language model: the **design** as a skill, a **profile for diagrams** and a **text-graphics skill**. [`AGENTS.md`](AGENTS.md) says which files to read for which task, [`llms.txt`](llms.txt) lists them for models that only fetch from the web.
+
+```
+bash install.sh                    # Linux, macOS, Git Bash: all three for Claude Code
+pwsh -File Install-Workbench.ps1   # Windows
+```
+
+The diagram profile belongs to the plugin [diagram-design](https://github.com/cathrynlavery/diagram-design) by Cathryn Lavery, which is not part of this repository.
+
 ## The three rules
 
 1. **The ground is warm.** `#1a1918`, never a neutral `#1e1e1e`.
@@ -57,6 +68,9 @@ All 72 tokens live in [`tokens/tokens.json`](tokens/tokens.json). That includes 
 ## Contents
 
 ```
+AGENTS.md · llms.txt                  entry point for AI agents: what to read for which task
+install.sh · Install-Workbench.ps1    set up design skill, text graphics and diagram profile
+workbench-design/SKILL.md             the design as a skill for Claude Code
 tokens/tokens.json                    all tokens, dark and light (the source)
 css/workbench.css                     CSS custom properties, generated from the tokens
 components/workbench-components.css   components: banner, text marker, status pill,
