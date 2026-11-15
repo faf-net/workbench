@@ -41,7 +41,7 @@ Fünf Stufen, aufsteigend: `gedaempft` · `schrift` · `fett` · `bernstein` · 
 - **Textmarker dezent** `dezent-*` (20 %): Einordnungen im Fließtext, INFO/OK, Diff-Zeilen. Text `schrift`.
 - **Hinweisband** `band-*` (33 %): die eine Kernaussage, über die volle Breite.
 - **Statuspille** `pille-*` (30 %): ein Zustand mit Wort, flach, links eine Kantenleiste 3 px im vollen Ton, rechts Ecken 3 px, Wort in Versalien. Im Terminal und auf Statusdisplays in der Konsolenform `[ GESICHERT ]`. Sie zählt nicht als Hervorhebungsstufe, sondern als Inhalt.
-- **Statuspille mit Schein** `schein-*` (30 %): nur kritisch und läuft, nur dunkel und am Bildschirm. Ring 1 px, Innen- und Außenschein, leuchtendes Wort in `schein-wort-*`, läuft pulsiert. Sie **zählt als Hervorhebungsstufe**, höchstens eine je Bildschirm. Hell und im Druck die flache Form. Seit 25.10.2026 (Entscheidung Frank), abgeleitet vom SOS-Knopf.
+- **Statuspille mit Schein** `schein-*` (30 %): nur kritisch und läuft, nur dunkel und am Bildschirm. Ring 1 px, Innen- und Außenschein, leuchtendes Wort in `schein-wort-*`, läuft pulsiert. Sie **zählt als Hervorhebungsstufe**, höchstens eine je Bildschirm. Hell und im Druck die flache Form. Seit 25.10.2026, abgeleitet vom SOS-Knopf.
 - Die Werte sind feste Hexwerte, kaufmännisch gerundet, und auf allen Trägern identisch.
 
 ## Schrift
